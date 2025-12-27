@@ -35,7 +35,7 @@ export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
   };
 
   return (
-    <Card className="p-8 md:p-12 space-y-8 border-none shadow-2xl">
+    <Card className="p-8 md:p-12 space-y-8 border-none">
       <h2 className="text-3xl md:text-4xl font-bold text-center leading-tight">
         {question}
       </h2>
@@ -48,12 +48,14 @@ export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
               key={option.id}
               variant={isSelected ? 'default' : 'outline'}
               size="lg"
-              className="h-auto py-6 text-lg font-medium relative"
+              className="h-auto min-h-[4rem] py-4 px-6 text-lg font-medium relative whitespace-normal text-left"
               onClick={() => handleOptionClick(option.id)}
             >
-              {option.label}
+              <span className={allowMultiple ? 'pr-8' : ''}>
+                {option.label}
+              </span>
               {allowMultiple && isSelected && (
-                <Check className="absolute right-4 h-5 w-5" />
+                <Check className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 flex-shrink-0" />
               )}
             </Button>
           );

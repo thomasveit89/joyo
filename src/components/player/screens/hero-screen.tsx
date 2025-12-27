@@ -14,10 +14,16 @@ interface HeroScreenProps {
 export function HeroScreen({ node, onNext }: HeroScreenProps) {
   const { headline, body, backgroundImage } = node.content;
 
+  // Check if image URL is valid (not a placeholder)
+  const hasValidImage = backgroundImage &&
+    backgroundImage.url &&
+    !backgroundImage.url.startsWith('UNSPLASH:') &&
+    backgroundImage.url.startsWith('http');
+
   return (
-    <Card className="p-8 md:p-12 text-center space-y-6 relative overflow-hidden min-h-[400px] flex flex-col justify-center border-none shadow-2xl bg-card text-card-foreground"
+    <Card className="relative overflow-hidden min-h-[400px] flex flex-col justify-center border-none bg-card text-card-foreground"
     >
-      {backgroundImage && (
+      {hasValidImage && (
         <>
           <div className="absolute inset-0">
             <Image
@@ -32,10 +38,10 @@ export function HeroScreen({ node, onNext }: HeroScreenProps) {
         </>
       )}
 
-      <div className="relative z-10 space-y-6">
+      <div className="relative z-10 p-8 md:p-12 text-center space-y-6">
         <h1
           className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-          style={{ color: backgroundImage ? 'white' : undefined }}
+          style={{ color: hasValidImage ? 'white' : undefined }}
         >
           {headline}
         </h1>
@@ -43,7 +49,7 @@ export function HeroScreen({ node, onNext }: HeroScreenProps) {
         {body && (
           <p
             className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto leading-relaxed"
-            style={{ color: backgroundImage ? 'rgba(255,255,255,0.9)' : undefined }}
+            style={{ color: hasValidImage ? 'rgba(255,255,255,0.9)' : undefined }}
           >
             {body}
           </p>

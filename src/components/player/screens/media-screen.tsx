@@ -14,8 +14,20 @@ interface MediaScreenProps {
 export function MediaScreen({ node, onNext }: MediaScreenProps) {
   const { image, caption } = node.content;
 
+  // Check if image URL is valid (not a placeholder)
+  const hasValidImage = image &&
+    image.url &&
+    !image.url.startsWith('UNSPLASH:') &&
+    image.url.startsWith('http');
+
+  // If no valid image, skip this screen
+  if (!hasValidImage) {
+    onNext();
+    return null;
+  }
+
   return (
-    <Card className="p-6 md:p-8 space-y-6 border-none shadow-2xl">
+    <Card className="p-6 md:p-8 space-y-6 border-none">
       <div className="relative w-full aspect-video rounded-lg overflow-hidden">
         <Image
           src={image.url}

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Node Types
-export type NodeType = 'hero' | 'choice' | 'text-input' | 'reveal' | 'media' | 'end';
+export type NodeType = 'hero' | 'choice' | 'text-input' | 'reveal' | 'media';
 
 // Theme Types
 export type Theme = 'playful-pastel' | 'elegant-dark' | 'warm-mediterranean' | 'minimal-zen';
@@ -9,7 +9,7 @@ export type Theme = 'playful-pastel' | 'elegant-dark' | 'warm-mediterranean' | '
 // Base Node Schema
 export const BaseNodeSchema = z.object({
   id: z.string().uuid(),
-  type: z.enum(['hero', 'choice', 'text-input', 'reveal', 'media', 'end']),
+  type: z.enum(['hero', 'choice', 'text-input', 'reveal', 'media']),
   orderIndex: z.number().int().min(0),
 });
 
@@ -93,18 +93,6 @@ export const MediaNodeSchema = BaseNodeSchema.extend({
   content: MediaNodeContentSchema,
 });
 
-// End Node
-export const EndNodeContentSchema = z.object({
-  headline: z.string().min(1).max(200),
-  body: z.string().max(500).optional(),
-  sharePrompt: z.string().max(100).optional(),
-});
-
-export const EndNodeSchema = BaseNodeSchema.extend({
-  type: z.literal('end'),
-  content: EndNodeContentSchema,
-});
-
 // Union of all node types
 export const NodeSchema = z.discriminatedUnion('type', [
   HeroNodeSchema,
@@ -112,7 +100,6 @@ export const NodeSchema = z.discriminatedUnion('type', [
   TextInputNodeSchema,
   RevealNodeSchema,
   MediaNodeSchema,
-  EndNodeSchema,
 ]);
 
 export type Node = z.infer<typeof NodeSchema>;
@@ -121,7 +108,6 @@ export type ChoiceNode = z.infer<typeof ChoiceNodeSchema>;
 export type TextInputNode = z.infer<typeof TextInputNodeSchema>;
 export type RevealNode = z.infer<typeof RevealNodeSchema>;
 export type MediaNode = z.infer<typeof MediaNodeSchema>;
-export type EndNode = z.infer<typeof EndNodeSchema>;
 
 // Flow Structure (what AI generates)
 export const FlowSpecSchema = z.object({

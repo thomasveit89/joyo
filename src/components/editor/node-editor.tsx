@@ -52,8 +52,8 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
     switch (node.type) {
       case 'hero':
         return (
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-6">
+            <div className="space-y-2">
               <Label htmlFor="headline">Headline *</Label>
               <Input
                 id="headline"
@@ -63,7 +63,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter headline..."
               />
             </div>
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="body">Body Text</Label>
               <Textarea
                 id="body"
@@ -74,22 +74,13 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter body text..."
               />
             </div>
-            <div>
-              <Label htmlFor="backgroundColor">Background Color</Label>
-              <Input
-                id="backgroundColor"
-                value={content.backgroundColor || ''}
-                onChange={(e) => updateField('backgroundColor', e.target.value)}
-                placeholder="#000000 or transparent"
-              />
-            </div>
           </div>
         );
 
       case 'choice':
         return (
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-6">
+            <div className="space-y-2">
               <Label htmlFor="question">Question *</Label>
               <Input
                 id="question"
@@ -120,8 +111,8 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
 
       case 'text-input':
         return (
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-6">
+            <div className="space-y-2">
               <Label htmlFor="question">Question *</Label>
               <Input
                 id="question"
@@ -131,7 +122,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter question..."
               />
             </div>
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="placeholder">Placeholder</Label>
               <Input
                 id="placeholder"
@@ -141,7 +132,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter placeholder text..."
               />
             </div>
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="maxLength">Max Length</Label>
               <Input
                 id="maxLength"
@@ -157,8 +148,8 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
 
       case 'reveal':
         return (
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-6">
+            <div className="space-y-2">
               <Label htmlFor="headline">Headline *</Label>
               <Input
                 id="headline"
@@ -168,7 +159,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter headline..."
               />
             </div>
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="body">Body Text</Label>
               <Textarea
                 id="body"
@@ -181,7 +172,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
             </div>
             {content.cta && (
               <>
-                <div>
+                <div className="space-y-2">
                   <Label htmlFor="ctaLabel">CTA Button Label</Label>
                   <Input
                     id="ctaLabel"
@@ -193,7 +184,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                     placeholder="Button label..."
                   />
                 </div>
-                <div>
+                <div className="space-y-2">
                   <Label htmlFor="ctaUrl">CTA Button URL</Label>
                   <Input
                     id="ctaUrl"
@@ -209,8 +200,8 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
 
       case 'media':
         return (
-          <div className="space-y-4">
-            <div>
+          <div className="space-y-6">
+            <div className="space-y-2">
               <Label>Image URL</Label>
               <Input
                 value={content.image?.url || ''}
@@ -220,7 +211,7 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="https://..."
               />
             </div>
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="caption">Caption</Label>
               <Textarea
                 id="caption"
@@ -229,43 +220,6 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 maxLength={200}
                 rows={2}
                 placeholder="Enter caption..."
-              />
-            </div>
-          </div>
-        );
-
-      case 'end':
-        return (
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="headline">Headline *</Label>
-              <Input
-                id="headline"
-                value={content.headline || ''}
-                onChange={(e) => updateField('headline', e.target.value)}
-                maxLength={200}
-                placeholder="Enter headline..."
-              />
-            </div>
-            <div>
-              <Label htmlFor="body">Body Text</Label>
-              <Textarea
-                id="body"
-                value={content.body || ''}
-                onChange={(e) => updateField('body', e.target.value)}
-                maxLength={500}
-                rows={3}
-                placeholder="Enter body text..."
-              />
-            </div>
-            <div>
-              <Label htmlFor="sharePrompt">Share Prompt</Label>
-              <Input
-                id="sharePrompt"
-                value={content.sharePrompt || ''}
-                onChange={(e) => updateField('sharePrompt', e.target.value)}
-                maxLength={100}
-                placeholder="Share prompt text..."
               />
             </div>
           </div>

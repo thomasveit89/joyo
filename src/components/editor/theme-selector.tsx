@@ -70,7 +70,7 @@ export function ThemeSelector({
           {Object.entries(themes).map(([key, theme]) => (
             <Card
               key={key}
-              className={`p-4 cursor-pointer transition-all hover:shadow-md ${
+              className={`p-4 cursor-pointer transition-all ${
                 selectedTheme === key ? 'ring-2 ring-primary' : ''
               }`}
               onClick={() => setSelectedTheme(key)}

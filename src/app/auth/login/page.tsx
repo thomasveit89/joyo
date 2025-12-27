@@ -46,7 +46,7 @@ export default function LoginPage() {
   if (sent) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-        <Card className="w-full max-w-md shadow-lg">
+        <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 text-6xl">📧</div>
             <CardTitle className="text-2xl">Check your email</CardTitle>
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      <Card className="w-full max-w-md shadow-lg">
+      <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 text-6xl">✨</div>
           <CardTitle className="text-3xl font-bold">Experience Builder</CardTitle>

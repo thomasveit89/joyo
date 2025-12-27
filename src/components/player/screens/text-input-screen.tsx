@@ -23,7 +23,7 @@ export function TextInputScreen({ node, onAnswer }: TextInputScreenProps) {
   };
 
   return (
-    <Card className="p-8 md:p-12 border-none shadow-2xl">
+    <Card className="p-8 md:p-12 border-none">
       <form onSubmit={handleSubmit} className="space-y-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center leading-tight">
           {question}

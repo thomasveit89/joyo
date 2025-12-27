@@ -120,8 +120,6 @@ export function NodeList({ nodes, projectId, onNodesChange }: NodeListProps) {
         return '🎉';
       case 'media':
         return '🖼️';
-      case 'end':
-        return '👋';
       default:
         return '📄';
     }
@@ -139,8 +137,6 @@ export function NodeList({ nodes, projectId, onNodesChange }: NodeListProps) {
         return 'Big Reveal';
       case 'media':
         return 'Media Screen';
-      case 'end':
-        return 'End Screen';
       default:
         return 'Unknown';
     }
@@ -150,6 +146,8 @@ export function NodeList({ nodes, projectId, onNodesChange }: NodeListProps) {
     const content = node.content;
     if (content.headline) return content.headline;
     if (content.question) return content.question;
+    if (content.caption) return content.caption;
+    if (content.image?.alt) return content.image.alt;
     return 'Untitled';
   };
 

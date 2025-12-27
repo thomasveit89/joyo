@@ -11,9 +11,8 @@ AVAILABLE SCREEN TYPES:
 1. hero: Opening/story screen with headline, body text, optional background image (DO NOT set backgroundColor - theme handles this)
 2. choice: Multiple choice question (2-4 options) - records answer but doesn't branch
 3. text-input: Free text question with character limit
-4. reveal: Big dramatic moment (proposal, announcement, gift reveal) with optional CTA button (DO NOT set backgroundColor - theme handles this)
+4. reveal: Big dramatic moment AND final closing (proposal, announcement, gift reveal) with optional CTA button, confetti, and warm closing message (DO NOT set backgroundColor - theme handles this)
 5. media: Image with optional caption
-6. end: Closing thank-you screen with optional share prompt
 
 THEMES (match to emotional tone - each theme has its own color palette):
 - playful-pastel: Soft pink/purple colors, fun and lighthearted (birthdays, casual surprises, inside jokes)
@@ -35,9 +34,9 @@ FLOW STRUCTURE RULES:
 1. Linear flows only (no branching)
 2. 4-12 screens total (sweet spot: 6-8)
 3. ALWAYS start with a 'hero' screen to set context
-4. ALWAYS end with an 'end' screen
+4. ALWAYS end with a 'reveal' screen (this is both the big moment AND the closing - make it warm and complete)
 5. Include 1-2 interactive elements (choice or text-input)
-6. Place 'reveal' screen near the end (position 4-5 in a 6-screen flow)
+6. Build up to the final 'reveal' screen (it should feel like both a climax and a proper goodbye)
 7. Keep copy concise, warm, and conversational
 8. Use second person ("you") to create intimacy
 
@@ -64,7 +63,7 @@ Return ONLY valid JSON matching this schema (no markdown, no explanation, no cod
   "nodes": [
     {
       "id": "uuid",
-      "type": "hero" | "choice" | "text-input" | "reveal" | "media" | "end",
+      "type": "hero" | "choice" | "text-input" | "reveal" | "media",
       "orderIndex": 0,
       "content": { /* type-specific content */ }
     }
@@ -154,7 +153,7 @@ EXAMPLE OUTPUT:
       "orderIndex": 6,
       "content": {
         "headline": "Sarah, will you marry me?",
-        "body": "You make every day feel like Paris. Let's spend forever together... starting with Barcelona next month.",
+        "body": "You make every day feel like Paris. Let's spend forever together... starting with Barcelona next month. I love you, Sarah. Thank you for experiencing this moment with me.",
         "confetti": true,
         "backgroundImage": {
           "url": "UNSPLASH:engagement ring diamond love",
@@ -165,16 +164,6 @@ EXAMPLE OUTPUT:
           "url": "https://example.com/barcelona-trip"
         }
       }
-    },
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440007",
-      "type": "end",
-      "orderIndex": 7,
-      "content": {
-        "headline": "I love you, Sarah",
-        "body": "Thank you for experiencing this moment with me. Whatever your answer, you mean the world to me.",
-        "sharePrompt": "Share your answer with friends?"
-      }
     }
   ]
 }
@@ -184,8 +173,8 @@ IMPORTANT REMINDERS:
 - Ensure orderIndex starts at 0 and increments by 1
 - Keep the flow length appropriate (don't make it too long or too short)
 - Match the theme to the emotional context
-- Place reveal screen strategically (not too early, not at the very end)
-- Always include both hero at start and end screen at finish
+- Always start with hero and end with reveal
+- The final reveal screen should feel complete - include both the big moment AND a warm closing message
 - Make copy personal and emotionally resonant
 - Return ONLY JSON (no markdown, no backticks, no explanation)`;
 

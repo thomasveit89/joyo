@@ -27,15 +27,15 @@ export default async function DashboardPage() {
   // Get node counts for each project
   const projectsWithCounts = projects
     ? await Promise.all(
-        projects.map(async (project) => {
-          const { count } = await supabase
-            .from('nodes')
-            .select('*', { count: 'exact', head: true })
-            .eq('project_id', project.id);
+      projects.map(async (project) => {
+        const { count } = await supabase
+          .from('nodes')
+          .select('*', { count: 'exact', head: true })
+          .eq('project_id', project.id);
 
-          return { ...project, nodeCount: count || 0 };
-        })
-      )
+        return { ...project, nodeCount: count || 0 };
+      })
+    )
     : [];
 
   return (
@@ -61,16 +61,16 @@ export default async function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projectsWithCounts.map((project) => (
             <Link key={project.id} href={`/dashboard/projects/${project.id}`}>
-              <Card className="hover:border-primary transition-all cursor-pointer hover:shadow-md h-full">
+              <Card className="hover:border-primary transition-all cursor-pointer h-full">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="line-clamp-2">{project.title}</CardTitle>
+                    <CardTitle>{project.title}</CardTitle>
                     {project.published ? (
-                      <Badge variant="default" className="shrink-0">
+                      <Badge variant="success" className="shrink-0">
                         Published
                       </Badge>
                     ) : (
-                      <Badge variant="secondary" className="shrink-0">
+                      <Badge variant="warning" className="shrink-0">
                         Draft
                       </Badge>
                     )}

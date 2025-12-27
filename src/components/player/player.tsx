@@ -10,7 +10,6 @@ import { ChoiceScreen } from './screens/choice-screen';
 import { TextInputScreen } from './screens/text-input-screen';
 import { RevealScreen } from './screens/reveal-screen';
 import { MediaScreen } from './screens/media-screen';
-import { EndScreen } from './screens/end-screen';
 import { themes } from '@/config/themes';
 import { createSessionAction, updateSessionAction } from '@/app/actions/sessions';
 import type { Project, Node, SessionAnswer } from '@/types/flow';
@@ -156,8 +155,6 @@ export function Player({ project, nodes }: PlayerProps) {
         return <RevealScreen node={currentNode} onNext={handleNext} />;
       case 'media':
         return <MediaScreen node={currentNode} onNext={handleNext} />;
-      case 'end':
-        return <EndScreen node={currentNode} projectId={project.id} />;
       default:
         return null;
     }
@@ -192,13 +189,13 @@ export function Player({ project, nodes }: PlayerProps) {
       </div>
 
       {/* Back Navigation */}
-      {currentIndex > 0 && currentNode.type !== 'end' && (
+      {currentIndex > 0 && currentNode.type !== 'reveal' && (
         <div className="fixed bottom-8 left-8">
           <Button
             variant="outline"
             size="icon"
             onClick={handlePrevious}
-            className="rounded-full shadow-lg"
+            className="rounded-full"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>

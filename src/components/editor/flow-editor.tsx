@@ -71,9 +71,9 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold">{project.title}</h1>
             {project.published ? (
-              <Badge variant="default">Published</Badge>
+              <Badge variant="success">Published</Badge>
             ) : (
-              <Badge variant="secondary">Draft</Badge>
+              <Badge variant="warning">Draft</Badge>
             )}
           </div>
           {project.description && (
@@ -111,7 +111,7 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={handleDelete} className="text-destructive">
                 <Trash2 className="mr-2 h-4 w-4" />
-                Delete Project
+                Delete Gift
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

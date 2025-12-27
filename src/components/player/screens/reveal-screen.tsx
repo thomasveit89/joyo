@@ -17,6 +17,12 @@ export function RevealScreen({ node, onNext }: RevealScreenProps) {
   const { headline, body, cta, confetti: showConfetti, backgroundImage } = node.content;
   const [revealed, setRevealed] = useState(false);
 
+  // Check if image URL is valid (not a placeholder)
+  const hasValidImage = backgroundImage &&
+    backgroundImage.url &&
+    !backgroundImage.url.startsWith('UNSPLASH:') &&
+    backgroundImage.url.startsWith('http');
+
   useEffect(() => {
     setTimeout(() => {
       setRevealed(true);
@@ -55,9 +61,9 @@ export function RevealScreen({ node, onNext }: RevealScreenProps) {
 
   return (
     <Card
-      className="p-8 md:p-12 text-center space-y-6 relative overflow-hidden min-h-[500px] flex flex-col justify-center border-none shadow-2xl"
+      className="relative overflow-hidden min-h-[500px] flex flex-col justify-center border-none"
     >
-      {backgroundImage && (
+      {hasValidImage && (
         <>
           <div className="absolute inset-0">
             <Image
@@ -71,12 +77,12 @@ export function RevealScreen({ node, onNext }: RevealScreenProps) {
         </>
       )}
 
-      <div className="relative z-10 space-y-6">
+      <div className="relative z-10 p-8 md:p-12 text-center space-y-6">
         <h1
           className={`text-4xl md:text-6xl lg:text-7xl font-bold transition-all duration-700 ${
             revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
-          style={{ color: backgroundImage ? 'white' : undefined }}
+          style={{ color: hasValidImage ? 'white' : undefined }}
         >
           {headline}
         </h1>
@@ -86,7 +92,7 @@ export function RevealScreen({ node, onNext }: RevealScreenProps) {
             className={`text-xl md:text-2xl max-w-2xl mx-auto transition-all duration-700 delay-300 ${
               revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
-            style={{ color: backgroundImage ? 'rgba(255,255,255,0.95)' : undefined }}
+            style={{ color: hasValidImage ? 'rgba(255,255,255,0.95)' : undefined }}
           >
             {body}
           </p>

@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
+import { NodeType, NodeSchema } from '@/types/flow';
 
 export async function updateNodeAction(nodeId: string, content: any) {
   try {
@@ -168,6 +169,146 @@ export async function deleteProjectAction(projectId: string) {
     return { success: true };
   } catch (error) {
     console.error('Delete project action error:', error);
+    return { error: 'An unexpected error occurred' };
+  }
+}
+
+export async function addNodeAction(
+  projectId: string,
+  nodeType: NodeType,
+  content: any,
+  insertAtIndex?: number
+) {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return { error: 'Unauthorized' };
+    }
+
+    // Verify project ownership
+    const { data: project, error: projectError } = await supabase
+      .from('projects')
+      .select('id')
+      .eq('id', projectId)
+      .eq('user_id', user.id)
+      .single();
+
+    if (projectError || !project) {
+      console.error('Add node: Project not found or unauthorized', projectError);
+      return { error: 'Unauthorized' };
+    }
+
+    // Validate node content with Zod schema
+    try {
+      // Create a temporary node object for validation
+      const tempNode = {
+        id: crypto.randomUUID(),
+        type: nodeType,
+        orderIndex: 0,
+        content,
+      };
+      NodeSchema.parse(tempNode);
+    } catch (validationError) {
+      console.error('Add node: Validation error', validationError);
+      return { error: 'Invalid node content' };
+    }
+
+    // Fetch current nodes to determine order
+    const { data: existingNodes, error: fetchError } = await supabase
+      .from('nodes')
+      .select('id, order_index')
+      .eq('project_id', projectId)
+      .order('order_index', { ascending: true });
+
+    if (fetchError) {
+      console.error('Add node: Failed to fetch existing nodes', fetchError);
+      return { error: 'Failed to fetch nodes' };
+    }
+
+    const nodeCount = existingNodes?.length || 0;
+
+    // Determine target order_index
+    let targetOrderIndex: number;
+
+    if (insertAtIndex !== undefined && insertAtIndex >= 0 && insertAtIndex <= nodeCount) {
+      // Insert at specific position
+      targetOrderIndex = insertAtIndex;
+
+      // If inserting (not appending), need to shift existing nodes
+      if (insertAtIndex < nodeCount) {
+        console.log(`Inserting node at index ${insertAtIndex}, shifting ${nodeCount - insertAtIndex} nodes`);
+
+        // Step 1: Move nodes at/after insert position to negative indices
+        for (let i = insertAtIndex; i < nodeCount; i++) {
+          const nodeToShift = existingNodes[i];
+          const { error } = await supabase
+            .from('nodes')
+            .update({ order_index: -(i + 1), updated_at: new Date().toISOString() })
+            .eq('id', nodeToShift.id)
+            .eq('project_id', projectId);
+
+          if (error) {
+            console.error(`Shift prep ${i} error:`, error);
+            return { error: 'Failed to prepare node insertion' };
+          }
+        }
+
+        // Step 2: Move them to their final positions (shifted by +1)
+        for (let i = insertAtIndex; i < nodeCount; i++) {
+          const nodeToShift = existingNodes[i];
+          const { error } = await supabase
+            .from('nodes')
+            .update({ order_index: i + 1, updated_at: new Date().toISOString() })
+            .eq('id', nodeToShift.id)
+            .eq('project_id', projectId);
+
+          if (error) {
+            console.error(`Shift node ${i} error:`, error);
+            return { error: 'Failed to shift nodes' };
+          }
+        }
+      }
+    } else {
+      // Append to end
+      targetOrderIndex = nodeCount;
+    }
+
+    // Insert new node
+    const { data: newNode, error: insertError } = await supabase
+      .from('nodes')
+      .insert({
+        project_id: projectId,
+        type: nodeType,
+        order_index: targetOrderIndex,
+        content,
+      })
+      .select()
+      .single();
+
+    if (insertError || !newNode) {
+      console.error('Add node: Insert error', insertError);
+      return { error: 'Failed to create node' };
+    }
+
+    console.log(`Node added successfully at index ${targetOrderIndex}`);
+    revalidatePath(`/dashboard/projects/${projectId}`);
+    revalidatePath(`/editor/${projectId}`);
+
+    return {
+      success: true,
+      node: {
+        id: newNode.id,
+        type: newNode.type as NodeType,
+        orderIndex: newNode.order_index,
+        content: newNode.content,
+      }
+    };
+  } catch (error) {
+    console.error('Add node action error:', error);
     return { error: 'An unexpected error occurred' };
   }
 }

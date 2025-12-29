@@ -6,6 +6,15 @@ export type NodeType = 'hero' | 'choice' | 'text-input' | 'reveal' | 'media';
 // Theme Types
 export type Theme = 'playful-pastel' | 'elegant-dark' | 'warm-mediterranean' | 'minimal-zen';
 
+// Image Schema (with source tracking)
+export const ImageSchema = z.object({
+  url: z.string().url(),
+  alt: z.string(),
+  attribution: z.string().optional(),
+  source: z.enum(['unsplash', 'upload', 'manual']).optional(),
+  assetId: z.string().uuid().optional(),
+});
+
 // Base Node Schema
 export const BaseNodeSchema = z.object({
   id: z.string().uuid(),
@@ -18,11 +27,7 @@ export const HeroNodeContentSchema = z.object({
   headline: z.string().min(1).max(200),
   body: z.string().max(1000).optional(),
   backgroundColor: z.string().optional(), // hex color or 'transparent'
-  backgroundImage: z.object({
-    url: z.string().url(),
-    alt: z.string(),
-    attribution: z.string().optional(),
-  }).optional(),
+  backgroundImage: ImageSchema.optional(),
 });
 
 export const HeroNodeSchema = BaseNodeSchema.extend({
@@ -66,11 +71,7 @@ export const RevealNodeContentSchema = z.object({
     url: z.string().url(),
   }).optional(),
   confetti: z.boolean().default(true),
-  backgroundImage: z.object({
-    url: z.string().url(),
-    alt: z.string(),
-    attribution: z.string().optional(),
-  }).optional(),
+  backgroundImage: ImageSchema.optional(),
 });
 
 export const RevealNodeSchema = BaseNodeSchema.extend({
@@ -80,11 +81,7 @@ export const RevealNodeSchema = BaseNodeSchema.extend({
 
 // Media Node
 export const MediaNodeContentSchema = z.object({
-  image: z.object({
-    url: z.string().url(),
-    alt: z.string(),
-    attribution: z.string().optional(),
-  }),
+  image: ImageSchema,
   caption: z.string().max(200).optional(),
 });
 

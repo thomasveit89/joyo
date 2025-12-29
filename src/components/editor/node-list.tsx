@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { GripVertical, Pencil, Trash2 } from 'lucide-react';
+import { GripVertical, Pencil, Trash2, Plus } from 'lucide-react';
 import { Reorder, useDragControls } from 'framer-motion';
 import { NodeEditor } from './node-editor';
+import { AddScreenDialog } from './add-screen-dialog';
 import { deleteNodeAction, reorderNodesAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { AlertDialogConfirm } from '@/components/ui/alert-dialog-confirm';
@@ -24,6 +25,9 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [nodeToDelete, setNodeToDelete] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [showAddDialog, setShowAddDialog] = useState(false);
+  const [insertAtIndex, setInsertAtIndex] = useState<number | undefined>(undefined);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const pendingReorderRef = useRef<any[] | null>(null);
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -57,6 +61,25 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
       nodes.map((n) => (n.id === editingNode.id ? { ...n, content: updatedContent } : n))
     );
     setEditingNode(null);
+  };
+
+  const handleAddClick = (index?: number) => {
+    setInsertAtIndex(index);
+    setShowAddDialog(true);
+  };
+
+  const handleNodeAdded = (newNode: any) => {
+    const insertIndex = insertAtIndex ?? nodes.length;
+    const newNodes = [...nodes];
+    newNodes.splice(insertIndex, 0, { ...newNode, orderIndex: insertIndex });
+
+    // Recalculate order indices
+    const reindexedNodes = newNodes.map((node, idx) => ({
+      ...node,
+      orderIndex: idx,
+    }));
+
+    onNodesChange(reindexedNodes);
   };
 
   const handleReorder = (newNodes: any[]) => {
@@ -164,8 +187,21 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
 
   if (nodes.length === 0) {
     return (
-      <div className="text-center py-8 text-muted-foreground">
-        <p>No screens found.</p>
+      <div className="space-y-4">
+        <div className="text-center py-8 text-muted-foreground">
+          <p>No screens yet. Add your first screen to get started.</p>
+        </div>
+        <Button onClick={() => handleAddClick()} className="w-full" variant="outline">
+          <Plus className="h-4 w-4 mr-2" />
+          Add First Screen
+        </Button>
+        <AddScreenDialog
+          open={showAddDialog}
+          onClose={() => setShowAddDialog(false)}
+          projectId={projectId}
+          insertAtIndex={insertAtIndex}
+          onAdded={handleNodeAdded}
+        />
       </div>
     );
   }
@@ -183,70 +219,107 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
         variant="destructive"
       />
 
-      <Reorder.Group
-        axis="y"
-        values={nodes}
-        onReorder={handleReorder}
-        className="space-y-2"
-      >
-        {nodes.map((node, index) => {
-          const isActive = currentSlideIndex === index;
-          return (
-            <Reorder.Item key={node.id} value={node}>
-              <Card
-                className={`p-4 cursor-pointer transition-all ${isActive
-                  ? 'bg-gray-100 border border-gray-300'
-                  : 'hover:bg-gray-100/50 hover:border-gray-200'
+      <div className="space-y-2">
+        <Reorder.Group
+          axis="y"
+          values={nodes}
+          onReorder={handleReorder}
+          className="space-y-2"
+        >
+          {nodes.map((node, index) => {
+            const isActive = currentSlideIndex === index;
+            const isHovered = hoveredIndex === index;
+            return (
+              <div key={node.id}>
+                {/* Add button above current node (on hover) */}
+                <div
+                  className={`transition-all overflow-hidden ${
+                    isHovered ? 'max-h-12 opacity-100 mb-2' : 'max-h-0 opacity-0'
                   }`}
-                onClick={() => onSlideClick?.(index)}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-muted-foreground touch-none cursor-grab active:cursor-grabbing"
-                    onPointerDown={(e) => e.stopPropagation()}>
-                    <GripVertical className="h-5 w-5" />
-                  </div>
-
-                  <div className="flex-1 min-w-0 pointer-events-none">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{getNodeIcon(node.type)}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-muted-foreground">
-                            {index + 1}.
-                          </span>
-                          <span className="text-sm text-muted-foreground">
-                            {getNodeLabel(node.type)}
-                          </span>
-                        </div>
-                        <p className="text-sm font-medium truncate">{getNodePreview(node)}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleEdit(node)}
-                      disabled={isDragging}
-                    >
-                      <Pencil className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleDeleteClick(node.id)}
-                      disabled={deletingNodeId === node.id || isDragging}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  onMouseEnter={() => setHoveredIndex(index)}
+                >
+                  <Button
+                    onClick={() => handleAddClick(index)}
+                    variant="outline"
+                    size="sm"
+                    className="w-full border-dashed"
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add Screen Here
+                  </Button>
                 </div>
-              </Card>
-            </Reorder.Item>
-          );
-        })}
-      </Reorder.Group>
+
+                <Reorder.Item value={node}>
+                  <div
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <Card
+                      className={`p-4 cursor-pointer transition-all ${
+                        isActive
+                          ? 'bg-gray-100 border border-gray-300'
+                          : 'hover:bg-gray-100/50 hover:border-gray-200'
+                      }`}
+                      onClick={() => onSlideClick?.(index)}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="text-muted-foreground touch-none cursor-grab active:cursor-grabbing"
+                          onPointerDown={(e) => e.stopPropagation()}
+                        >
+                          <GripVertical className="h-5 w-5" />
+                        </div>
+
+                        <div className="flex-1 min-w-0 pointer-events-none">
+                          <div className="flex items-center gap-2">
+                            <span className="text-2xl">{getNodeIcon(node.type)}</span>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-medium text-muted-foreground">
+                                  {index + 1}.
+                                </span>
+                                <span className="text-sm text-muted-foreground">
+                                  {getNodeLabel(node.type)}
+                                </span>
+                              </div>
+                              <p className="text-sm font-medium truncate">{getNodePreview(node)}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleEdit(node)}
+                            disabled={isDragging}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeleteClick(node.id)}
+                            disabled={deletingNodeId === node.id || isDragging}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                </Reorder.Item>
+              </div>
+            );
+          })}
+        </Reorder.Group>
+
+        {/* Add Screen button at the end */}
+        <Button onClick={() => handleAddClick()} className="w-full" variant="outline">
+          <Plus className="h-4 w-4 mr-2" />
+          Add Screen
+        </Button>
+      </div>
 
       {editingNode && (
         <NodeEditor
@@ -254,8 +327,17 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
           open={!!editingNode}
           onClose={() => setEditingNode(null)}
           onSave={handleSaveEdit}
+          projectId={projectId}
         />
       )}
+
+      <AddScreenDialog
+        open={showAddDialog}
+        onClose={() => setShowAddDialog(false)}
+        projectId={projectId}
+        insertAtIndex={insertAtIndex}
+        onAdded={handleNodeAdded}
+      />
     </>
   );
 }

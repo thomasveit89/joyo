@@ -16,15 +16,17 @@ import { Label } from '@/components/ui/label';
 import { updateNodeAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
+import { ImagePicker } from './image-picker';
 
 interface NodeEditorProps {
   node: any;
   open: boolean;
   onClose: () => void;
   onSave: (content: any) => void;
+  projectId: string;
 }
 
-export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
+export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEditorProps) {
   const [content, setContent] = useState(node.content);
   const [saving, setSaving] = useState(false);
 
@@ -72,6 +74,14 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 maxLength={1000}
                 rows={4}
                 placeholder="Enter body text..."
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Background Image</Label>
+              <ImagePicker
+                projectId={projectId}
+                value={content.backgroundImage}
+                onSelect={(img) => updateField('backgroundImage', img)}
               />
             </div>
           </div>
@@ -159,6 +169,14 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
                 placeholder="Enter body text..."
               />
             </div>
+            <div className="space-y-2">
+              <Label>Background Image</Label>
+              <ImagePicker
+                projectId={projectId}
+                value={content.backgroundImage}
+                onSelect={(img) => updateField('backgroundImage', img)}
+              />
+            </div>
             {content.cta && (
               <>
                 <div className="space-y-2">
@@ -191,13 +209,11 @@ export function NodeEditor({ node, open, onClose, onSave }: NodeEditorProps) {
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label>Image URL</Label>
-              <Input
-                value={content.image?.url || ''}
-                onChange={(e) =>
-                  updateField('image', { ...content.image, url: e.target.value })
-                }
-                placeholder="https://..."
+              <Label>Image *</Label>
+              <ImagePicker
+                projectId={projectId}
+                value={content.image}
+                onSelect={(img) => updateField('image', img)}
               />
             </div>
             <div className="space-y-2">

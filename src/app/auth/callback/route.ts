@@ -6,6 +6,7 @@ export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
   const next = requestUrl.searchParams.get('next');
+  const type = requestUrl.searchParams.get('type');
   const origin = requestUrl.origin;
 
   if (code) {
@@ -17,6 +18,11 @@ export async function GET(request: Request) {
       // Redirect to login with error
       return NextResponse.redirect(`${origin}/${defaultLocale}/auth/login?error=auth_failed`);
     }
+  }
+
+  // If this is a password recovery, redirect to reset password page
+  if (type === 'recovery') {
+    return NextResponse.redirect(`${origin}/${defaultLocale}/auth/reset-password`);
   }
 
   // Redirect to 'next' URL if provided, otherwise dashboard

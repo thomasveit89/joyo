@@ -351,9 +351,9 @@ interface CategorySectionProps {
   categoryLabel: string;
   examples: ExamplePrompt[];
   onExampleClick: (prompt: string) => void;
-  getThemeColors: (theme: Theme) => any;
+  getThemeColors: (theme: Theme) => { primary: string; accent: string; muted: string };
   getThemeDisplayName: (theme: Theme) => string;
-  tExamples: any;
+  tExamples: (key: string) => string;
 }
 
 function CategorySection({ category, categoryLabel, examples, onExampleClick, getThemeColors, getThemeDisplayName, tExamples }: CategorySectionProps) {

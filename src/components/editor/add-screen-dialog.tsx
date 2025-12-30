@@ -26,10 +26,10 @@ interface AddScreenDialogProps {
   onClose: () => void;
   projectId: string;
   insertAtIndex?: number;
-  onAdded: (node: any) => void;
+  onAdded: (node: { id: string; type: NodeType; content: unknown }) => void;
 }
 
-const NODE_TYPE_ICONS: Record<string, any> = {
+const NODE_TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   'hero': MessageSquare,
   'choice': ListChecks,
   'text-input': TextCursorInput,

@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { NodeType, NodeSchema } from '@/types/flow';
 
-export async function updateNodeAction(nodeId: string, content: any) {
+export async function updateNodeAction(nodeId: string, content: Record<string, unknown>) {
   try {
     const supabase = await createClient();
     const {
@@ -123,7 +123,7 @@ export async function deleteNodeAction(nodeId: string, projectId: string) {
 
 // Helper function to check if an asset is still referenced and delete if orphaned
 async function cleanupOrphanedAsset(
-  supabase: any,
+  supabase: Awaited<ReturnType<typeof createClient>>,
   assetId: string,
   projectId: string,
   userId: string
@@ -141,7 +141,7 @@ async function cleanupOrphanedAsset(
     }
 
     // Check if any node still references this assetId
-    const isStillReferenced = allNodes?.some((node: any) => {
+    const isStillReferenced = allNodes?.some((node: { content?: Record<string, unknown> }) => {
       const content = node.content;
       return (
         content?.backgroundImage?.assetId === assetId ||
@@ -359,7 +359,7 @@ export async function deleteProjectAction(projectId: string) {
 export async function addNodeAction(
   projectId: string,
   nodeType: NodeType,
-  content: any,
+  content: Record<string, unknown>,
   insertAtIndex?: number
 ) {
   try {

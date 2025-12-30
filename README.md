@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joyo - AI Gift Journey Builder
+
+A SaaS platform that enables creators to generate emotional "gift journeys" via AI chat, then publish them to a unique URL that recipients experience as a delightful, guided flow.
 
 ## Getting Started
 

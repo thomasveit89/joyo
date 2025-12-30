@@ -24,7 +24,7 @@ export function ImagePicker({ onSelect, defaultTab = 'unsplash', value, projectI
   const [activeTab, setActiveTab] = useState(defaultTab);
 
   return (
-    <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} className="w-full">
+    <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'unsplash' | 'upload' | 'url')} className="w-full">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="unsplash" className="flex items-center gap-2">
           <Search className="h-4 w-4" />
@@ -174,7 +174,7 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): string | null => {
-    if (!ALLOWED_IMAGE_TYPES.includes(file.type as any)) {
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type as (typeof ALLOWED_IMAGE_TYPES)[number])) {
       return 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.';
     }
     if (file.size > MAX_FILE_SIZE) {
@@ -253,7 +253,7 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
     if (file) {
       handleFileUpload(file);
     }
-  }, []);
+  }, [handleFileUpload]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();

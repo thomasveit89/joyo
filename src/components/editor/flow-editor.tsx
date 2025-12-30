@@ -4,13 +4,11 @@ import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Eye, Settings, Share2, MoreVertical, Trash2 } from 'lucide-react';
@@ -20,12 +18,12 @@ import { ThemeSelector } from './theme-selector';
 import { PublishDialog } from './publish-dialog';
 import { deleteProjectAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
-import type { Project } from '@/types/flow';
+import type { Project, Node } from '@/types/flow';
 import { AlertDialogConfirm } from '@/components/ui/alert-dialog-confirm';
 
 interface FlowEditorProps {
   project: Project;
-  nodes: any[];
+  nodes: Node[];
 }
 
 export function FlowEditor({ project: initialProject, nodes: initialNodes }: FlowEditorProps) {
@@ -52,7 +50,7 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
   };
 
   const handleThemeChange = (newTheme: string) => {
-    setProject({ ...project, theme: newTheme as any });
+    setProject({ ...project, theme: newTheme as 'playful-pastel' | 'elegant-dark' | 'warm-mediterranean' | 'minimal-zen' });
   };
 
   const handlePublished = (shareSlug: string) => {

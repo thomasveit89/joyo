@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Player } from '@/components/player/player';
 import type { Project, Node } from '@/types/flow';
 
 interface LivePreviewProps {
@@ -23,7 +22,7 @@ export function LivePreview({
 
   // Force re-render when currentSlideIndex changes externally (from node list click)
   useEffect(() => {
-    setKey((prev) => prev + 1);
+    setKey((prev: number) => prev + 1);
   }, [currentSlideIndex]);
 
   const handleNext = () => {
@@ -118,18 +117,19 @@ function PreviewFrame({
   currentSlideIndex: number;
 }) {
   const currentNode = nodes[currentSlideIndex];
-  const containerRef = useState<HTMLDivElement | null>(null)[0];
 
   if (!currentNode) {
     return null;
   }
 
-  // Import the individual screen components
+  // Dynamic imports using require (needed for preview isolation)
+  /* eslint-disable @typescript-eslint/no-require-imports */
   const { HeroScreen } = require('@/components/player/screens/hero-screen');
   const { ChoiceScreen } = require('@/components/player/screens/choice-screen');
   const { TextInputScreen } = require('@/components/player/screens/text-input-screen');
   const { RevealScreen } = require('@/components/player/screens/reveal-screen');
   const { MediaScreen } = require('@/components/player/screens/media-screen');
+  /* eslint-enable @typescript-eslint/no-require-imports */
 
   const renderScreen = () => {
     // Dummy handlers for preview mode
@@ -152,7 +152,9 @@ function PreviewFrame({
   };
 
   // Get theme colors as inline styles
+  /* eslint-disable @typescript-eslint/no-require-imports */
   const { themes } = require('@/config/themes');
+  /* eslint-enable @typescript-eslint/no-require-imports */
   const theme = themes[project.theme];
 
   const themeStyles = {

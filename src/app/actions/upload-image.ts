@@ -24,16 +24,17 @@ function checkMagicNumber(buffer: ArrayBuffer, mimeType: string): boolean {
   return validPrefixes.some((prefix) => hex.startsWith(prefix));
 }
 
-async function getImageDimensions(_buffer: ArrayBuffer): Promise<{ width: number; height: number } | null> {
-  try {
-    // For server-side, we'll use the sharp library if available
-    // For now, return null and we can add sharp later
-    return null;
-  } catch (error) {
-    console.error('Error getting image dimensions:', error);
-    return null;
-  }
-}
+// Note: This function is kept for future implementation with sharp library
+// async function getImageDimensions(_buffer: ArrayBuffer): Promise<{ width: number; height: number } | null> {
+//   try {
+//     // For server-side, we'll use the sharp library if available
+//     // For now, return null and we can add sharp later
+//     return null;
+//   } catch (error) {
+//     console.error('Error getting image dimensions:', error);
+//     return null;
+//   }
+// }
 
 export async function uploadImageAction(formData: FormData): Promise<
   { success: true; asset: AssetMetadata; publicUrl: string } | { success: false; error: string }

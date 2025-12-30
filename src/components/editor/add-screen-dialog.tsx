@@ -237,7 +237,7 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
                       variant="ghost"
                       size="sm"
                       onClick={() => {
-                        const newOptions = content.options.filter((_: any, i: number) => i !== index);
+                        const newOptions = (content.options as Array<{ id: string; label: string }>).filter((_, i: number) => i !== index);
                         updateField('options', newOptions);
                       }}
                     >
@@ -319,7 +319,7 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
                     if (e.target.checked) {
                       updateField('cta', { label: '', url: '' });
                     } else {
-                      const { cta, ...rest } = content;
+                      const { cta: _cta, ...rest } = content;
                       setContent(rest);
                     }
                   }}

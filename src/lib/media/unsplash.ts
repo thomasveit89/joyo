@@ -72,7 +72,7 @@ export async function resolveUnsplashImages(flowSpec: FlowSpec): Promise<FlowSpe
           };
         } else {
           // Remove background image if Unsplash fails
-          const { backgroundImage, ...restContent } = node.content;
+          const { backgroundImage: _backgroundImage, ...restContent } = node.content;
           return {
             ...node,
             content: restContent,
@@ -112,7 +112,7 @@ export async function resolveUnsplashImages(flowSpec: FlowSpec): Promise<FlowSpe
           };
         } else {
           // Remove background image if Unsplash fails
-          const { backgroundImage, ...restContent } = node.content;
+          const { backgroundImage: _backgroundImage, ...restContent } = node.content;
           return {
             ...node,
             content: restContent,

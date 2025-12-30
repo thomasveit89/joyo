@@ -262,7 +262,20 @@ export default function SignupPage() {
           </div>
 
           <p className="text-xs text-center text-muted-foreground">
-            {t('termsNotice')}
+            {t('termsNotice.prefix')}{' '}
+            <Link
+              href={`/${locale}/terms`}
+              className="text-primary hover:underline"
+            >
+              {t('termsNotice.termsLink')}
+            </Link>{' '}
+            {t('termsNotice.and')}{' '}
+            <Link
+              href={`/${locale}/privacy`}
+              className="text-primary hover:underline"
+            >
+              {t('termsNotice.privacyLink')}
+            </Link>
           </p>
         </CardContent>
       </Card>

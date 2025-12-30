@@ -62,7 +62,12 @@
       "googleError": "Failed to sign up with Google. Please try again.",
       "haveAccount": "Already have an account?",
       "signInLink": "Sign in",
-      "termsNotice": "By signing up, you agree to our Terms of Service and Privacy Policy",
+      "termsNotice": {
+        "prefix": "By signing up, you agree to our",
+        "termsLink": "Terms of Service",
+        "and": "and",
+        "privacyLink": "Privacy Policy"
+      },
       "checkEmailTitle": "Check your email",
       "checkEmailMessage": "We sent a confirmation link to",
       "checkEmailDescription": "Click the link in the email to verify your account and get started.",
@@ -408,5 +413,150 @@
     "weeksAgo": "{count} weeks ago",
     "monthsAgo": "{count} months ago",
     "yearsAgo": "{count} years ago"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: December 30, 2025",
+      "backToLogin": "Back to login",
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using Joyo, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our service."
+      },
+      "description": {
+        "title": "2. Description of Service",
+        "content": "Joyo is a platform that allows users to create and share interactive gift experiences. The service includes AI-powered flow generation, visual editing tools, media integration, and sharing capabilities."
+      },
+      "accounts": {
+        "title": "3. User Accounts",
+        "content": "To use Joyo, you must create an account. You are responsible for:",
+        "responsibilities": {
+          "accurate": "Providing accurate and complete information during registration",
+          "security": "Maintaining the security of your account credentials",
+          "unauthorized": "All activities that occur under your account",
+          "notify": "Notifying us immediately of any unauthorized use of your account"
+        }
+      },
+      "content": {
+        "title": "4. User Content",
+        "ownership": "You retain all rights to the content you create using Joyo. By using our service, you grant us a limited license to store, process, and display your content solely for the purpose of providing the service.",
+        "responsibility": "You are solely responsible for the content you create and share. You must ensure that your content:",
+        "prohibited": {
+          "title": "Does not:",
+          "illegal": "Violate any laws or regulations",
+          "harmful": "Contain harmful, threatening, or harassing material",
+          "infringing": "Infringe on the intellectual property rights of others",
+          "spam": "Contain spam, malware, or other malicious code"
+        }
+      },
+      "intellectual": {
+        "title": "5. Intellectual Property",
+        "ownership": "The Joyo service, including its original content, features, and functionality, is owned by Joyo and is protected by international copyright, trademark, and other intellectual property laws.",
+        "license": "We grant you a limited, non-exclusive, non-transferable license to use the service for your personal or commercial purposes, subject to these terms."
+      },
+      "termination": {
+        "title": "6. Termination",
+        "content": "We reserve the right to suspend or terminate your account at any time, with or without notice, for violating these terms or for any other reason. You may also terminate your account at any time by contacting us."
+      },
+      "disclaimer": {
+        "title": "7. Disclaimer of Warranties",
+        "content": "Joyo is provided 'as is' and 'as available' without warranties of any kind, either express or implied. We do not guarantee that the service will be uninterrupted, secure, or error-free."
+      },
+      "limitation": {
+        "title": "8. Limitation of Liability",
+        "content": "To the maximum extent permitted by law, Joyo shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service."
+      },
+      "changes": {
+        "title": "9. Changes to Terms",
+        "content": "We reserve the right to modify these terms at any time. We will notify users of any material changes by email or through the service. Your continued use of the service after such changes constitutes acceptance of the new terms."
+      },
+      "contact": {
+        "title": "10. Contact Information",
+        "content": "If you have any questions about these Terms of Service, please contact us at:"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: December 30, 2025",
+      "backToLogin": "Back to login",
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "Joyo ('we', 'us', or 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service."
+      },
+      "dataCollection": {
+        "title": "2. Information We Collect",
+        "content": "We collect several types of information:",
+        "types": {
+          "account": "Account Information: Email address, name, and authentication credentials (when using email/password login)",
+          "content": "Content Data: The gift experiences you create, including text, images, and configuration settings",
+          "usage": "Usage Data: How you interact with our service, including features used and time spent",
+          "technical": "Technical Data: IP address, browser type, device information, and cookies"
+        }
+      },
+      "dataUse": {
+        "title": "3. How We Use Your Information",
+        "content": "We use the collected information to:",
+        "purposes": {
+          "service": "Provide, maintain, and improve our service",
+          "improvement": "Develop new features and functionality",
+          "communication": "Send you updates, notifications, and support messages",
+          "security": "Monitor and analyze usage patterns to enhance security"
+        }
+      },
+      "dataSharing": {
+        "title": "4. Information Sharing",
+        "content": "We do not sell your personal information. We may share your information with:",
+        "parties": {
+          "providers": "Service Providers: Third-party companies that help us operate our service (Supabase, Google, Anthropic, Unsplash)",
+          "legal": "Legal Requirements: When required by law or to protect our rights",
+          "business": "Business Transfers: In connection with any merger, acquisition, or sale of assets"
+        }
+      },
+      "dataSecurity": {
+        "title": "5. Data Security",
+        "content": "We implement appropriate technical and organizational measures to protect your information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security."
+      },
+      "cookies": {
+        "title": "6. Cookies and Tracking",
+        "content": "We use cookies and similar tracking technologies to improve your experience, analyze usage, and maintain your session. You can control cookies through your browser settings."
+      },
+      "thirdParty": {
+        "title": "7. Third-Party Services",
+        "content": "Our service integrates with third-party services:",
+        "services": {
+          "supabase": "Supabase: Database and authentication (see Supabase Privacy Policy)",
+          "google": "Google OAuth: Authentication service (see Google Privacy Policy)",
+          "anthropic": "Anthropic Claude: AI content generation (see Anthropic Privacy Policy)",
+          "unsplash": "Unsplash: Image search and integration (see Unsplash Privacy Policy)"
+        }
+      },
+      "userRights": {
+        "title": "8. Your Rights",
+        "content": "You have the right to:",
+        "rights": {
+          "access": "Access the personal information we hold about you",
+          "correction": "Request correction of inaccurate information",
+          "deletion": "Request deletion of your account and data",
+          "portability": "Export your content in a portable format",
+          "withdraw": "Withdraw consent for data processing"
+        }
+      },
+      "dataRetention": {
+        "title": "9. Data Retention",
+        "content": "We retain your information for as long as your account is active or as needed to provide you services. If you delete your account, we will delete your personal information within 30 days, except where we are required to retain it for legal purposes."
+      },
+      "children": {
+        "title": "10. Children's Privacy",
+        "content": "Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13."
+      },
+      "changes": {
+        "title": "11. Changes to Privacy Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify you of any material changes by email or through the service. Your continued use after such changes constitutes acceptance of the updated policy."
+      },
+      "contact": {
+        "title": "12. Contact Us",
+        "content": "If you have questions about this Privacy Policy or want to exercise your rights, please contact us at:"
+      }
+    }
   }
 }

@@ -62,7 +62,12 @@
       "googleError": "Registrierung mit Google fehlgeschlagen. Bitte versuche es erneut.",
       "haveAccount": "Bereits ein Konto?",
       "signInLink": "Anmelden",
-      "termsNotice": "Mit der Registrierung stimmst du unseren Nutzungsbedingungen und Datenschutzrichtlinien zu",
+      "termsNotice": {
+        "prefix": "Mit der Registrierung stimmst du unseren",
+        "termsLink": "Nutzungsbedingungen",
+        "and": "und",
+        "privacyLink": "Datenschutzrichtlinien"
+      },
       "checkEmailTitle": "Überprüfe deine E-Mails",
       "checkEmailMessage": "Wir haben einen Bestätigungslink gesendet an",
       "checkEmailDescription": "Klicke auf den Link in der E-Mail, um dein Konto zu verifizieren und loszulegen.",
@@ -408,5 +413,150 @@
     "weeksAgo": "vor {count} Wochen",
     "monthsAgo": "vor {count} Monaten",
     "yearsAgo": "vor {count} Jahren"
+  },
+  "legal": {
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "lastUpdated": "Zuletzt aktualisiert: 30. Dezember 2025",
+      "backToLogin": "Zurück zur Anmeldung",
+      "acceptance": {
+        "title": "1. Annahme der Bedingungen",
+        "content": "Durch den Zugriff auf und die Nutzung von Joyo akzeptieren Sie die Bedingungen dieser Vereinbarung. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unseren Service bitte nicht."
+      },
+      "description": {
+        "title": "2. Beschreibung des Service",
+        "content": "Joyo ist eine Plattform, die es Nutzern ermöglicht, interaktive Geschenkerlebnisse zu erstellen und zu teilen. Der Service umfasst KI-gestützte Flow-Generierung, visuelle Bearbeitungstools, Medienintegration und Sharing-Funktionen."
+      },
+      "accounts": {
+        "title": "3. Benutzerkonten",
+        "content": "Um Joyo zu nutzen, müssen Sie ein Konto erstellen. Sie sind verantwortlich für:",
+        "responsibilities": {
+          "accurate": "Die Angabe korrekter und vollständiger Informationen bei der Registrierung",
+          "security": "Die Sicherheit Ihrer Konto-Zugangsdaten",
+          "unauthorized": "Alle Aktivitäten, die unter Ihrem Konto stattfinden",
+          "notify": "Die sofortige Benachrichtigung bei unbefugter Nutzung Ihres Kontos"
+        }
+      },
+      "content": {
+        "title": "4. Benutzerinhalte",
+        "ownership": "Sie behalten alle Rechte an den Inhalten, die Sie mit Joyo erstellen. Durch die Nutzung unseres Service gewähren Sie uns eine eingeschränkte Lizenz zum Speichern, Verarbeiten und Anzeigen Ihrer Inhalte ausschließlich zum Zweck der Bereitstellung des Service.",
+        "responsibility": "Sie sind allein verantwortlich für die Inhalte, die Sie erstellen und teilen. Sie müssen sicherstellen, dass Ihre Inhalte:",
+        "prohibited": {
+          "title": "Nicht:",
+          "illegal": "Gegen Gesetze oder Vorschriften verstoßen",
+          "harmful": "Schädliches, bedrohliches oder belästigendes Material enthalten",
+          "infringing": "Die geistigen Eigentumsrechte anderer verletzen",
+          "spam": "Spam, Malware oder anderen bösartigen Code enthalten"
+        }
+      },
+      "intellectual": {
+        "title": "5. Geistiges Eigentum",
+        "ownership": "Der Joyo-Service, einschließlich seiner ursprünglichen Inhalte, Funktionen und Funktionalität, ist Eigentum von Joyo und durch internationale Urheber-, Marken- und andere Gesetze zum Schutz des geistigen Eigentums geschützt.",
+        "license": "Wir gewähren Ihnen eine eingeschränkte, nicht-exklusive, nicht übertragbare Lizenz zur Nutzung des Service für Ihre persönlichen oder kommerziellen Zwecke, vorbehaltlich dieser Bedingungen."
+      },
+      "termination": {
+        "title": "6. Kündigung",
+        "content": "Wir behalten uns das Recht vor, Ihr Konto jederzeit mit oder ohne Vorankündigung zu sperren oder zu kündigen, wenn Sie gegen diese Bedingungen verstoßen oder aus einem anderen Grund. Sie können Ihr Konto auch jederzeit kündigen, indem Sie uns kontaktieren."
+      },
+      "disclaimer": {
+        "title": "7. Haftungsausschluss",
+        "content": "Joyo wird 'wie besehen' und 'wie verfügbar' ohne jegliche Garantien bereitgestellt, weder ausdrücklich noch stillschweigend. Wir garantieren nicht, dass der Service ununterbrochen, sicher oder fehlerfrei sein wird."
+      },
+      "limitation": {
+        "title": "8. Haftungsbeschränkung",
+        "content": "Im gesetzlich zulässigen Umfang haftet Joyo nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden, die sich aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Service ergeben."
+      },
+      "changes": {
+        "title": "9. Änderungen der Bedingungen",
+        "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wir werden Benutzer über wesentliche Änderungen per E-Mail oder über den Service informieren. Ihre fortgesetzte Nutzung des Service nach solchen Änderungen stellt die Annahme der neuen Bedingungen dar."
+      },
+      "contact": {
+        "title": "10. Kontaktinformationen",
+        "content": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:"
+      }
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "lastUpdated": "Zuletzt aktualisiert: 30. Dezember 2025",
+      "backToLogin": "Zurück zur Anmeldung",
+      "introduction": {
+        "title": "1. Einleitung",
+        "content": "Joyo ('wir', 'uns' oder 'unser') verpflichtet sich zum Schutz Ihrer Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen erfassen, verwenden, offenlegen und schützen, wenn Sie unseren Service nutzen."
+      },
+      "dataCollection": {
+        "title": "2. Informationen, die wir sammeln",
+        "content": "Wir sammeln verschiedene Arten von Informationen:",
+        "types": {
+          "account": "Kontoinformationen: E-Mail-Adresse, Name und Authentifizierungsdaten (bei E-Mail/Passwort-Login)",
+          "content": "Inhaltsdaten: Die Geschenkerlebnisse, die Sie erstellen, einschließlich Text, Bilder und Konfigurationseinstellungen",
+          "usage": "Nutzungsdaten: Wie Sie mit unserem Service interagieren, einschließlich verwendeter Funktionen und verbrachter Zeit",
+          "technical": "Technische Daten: IP-Adresse, Browsertyp, Geräteinformationen und Cookies"
+        }
+      },
+      "dataUse": {
+        "title": "3. Wie wir Ihre Informationen verwenden",
+        "content": "Wir verwenden die gesammelten Informationen, um:",
+        "purposes": {
+          "service": "Unseren Service bereitzustellen, zu warten und zu verbessern",
+          "improvement": "Neue Funktionen und Features zu entwickeln",
+          "communication": "Ihnen Updates, Benachrichtigungen und Support-Nachrichten zu senden",
+          "security": "Nutzungsmuster zu überwachen und zu analysieren, um die Sicherheit zu erhöhen"
+        }
+      },
+      "dataSharing": {
+        "title": "4. Weitergabe von Informationen",
+        "content": "Wir verkaufen Ihre persönlichen Informationen nicht. Wir können Ihre Informationen teilen mit:",
+        "parties": {
+          "providers": "Dienstleistern: Drittunternehmen, die uns beim Betrieb unseres Service helfen (Supabase, Google, Anthropic, Unsplash)",
+          "legal": "Rechtlichen Anforderungen: Wenn gesetzlich vorgeschrieben oder zum Schutz unserer Rechte",
+          "business": "Geschäftsübertragungen: Im Zusammenhang mit einer Fusion, Übernahme oder dem Verkauf von Vermögenswerten"
+        }
+      },
+      "dataSecurity": {
+        "title": "5. Datensicherheit",
+        "content": "Wir implementieren angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer Informationen. Keine Übertragungsmethode über das Internet ist jedoch zu 100% sicher, und wir können absolute Sicherheit nicht garantieren."
+      },
+      "cookies": {
+        "title": "6. Cookies und Tracking",
+        "content": "Wir verwenden Cookies und ähnliche Tracking-Technologien, um Ihre Erfahrung zu verbessern, die Nutzung zu analysieren und Ihre Sitzung aufrechtzuerhalten. Sie können Cookies über Ihre Browsereinstellungen steuern."
+      },
+      "thirdParty": {
+        "title": "7. Drittanbieter-Services",
+        "content": "Unser Service ist integriert mit Drittanbieter-Services:",
+        "services": {
+          "supabase": "Supabase: Datenbank und Authentifizierung (siehe Supabase-Datenschutzerklärung)",
+          "google": "Google OAuth: Authentifizierungsservice (siehe Google-Datenschutzerklärung)",
+          "anthropic": "Anthropic Claude: KI-Inhaltsgenerierung (siehe Anthropic-Datenschutzerklärung)",
+          "unsplash": "Unsplash: Bildsuche und Integration (siehe Unsplash-Datenschutzerklärung)"
+        }
+      },
+      "userRights": {
+        "title": "8. Ihre Rechte",
+        "content": "Sie haben das Recht:",
+        "rights": {
+          "access": "Auf die persönlichen Informationen zuzugreifen, die wir über Sie speichern",
+          "correction": "Die Korrektur ungenauer Informationen zu verlangen",
+          "deletion": "Die Löschung Ihres Kontos und Ihrer Daten zu verlangen",
+          "portability": "Ihre Inhalte in einem portablen Format zu exportieren",
+          "withdraw": "Die Einwilligung zur Datenverarbeitung zu widerrufen"
+        }
+      },
+      "dataRetention": {
+        "title": "9. Datenspeicherung",
+        "content": "Wir speichern Ihre Informationen so lange, wie Ihr Konto aktiv ist oder wie es zur Bereitstellung unserer Dienste erforderlich ist. Wenn Sie Ihr Konto löschen, löschen wir Ihre persönlichen Informationen innerhalb von 30 Tagen, außer wenn wir sie aus rechtlichen Gründen aufbewahren müssen."
+      },
+      "children": {
+        "title": "10. Datenschutz für Kinder",
+        "content": "Unser Service richtet sich nicht an Kinder unter 13 Jahren. Wir sammeln wissentlich keine persönlichen Informationen von Kindern unter 13 Jahren."
+      },
+      "changes": {
+        "title": "11. Änderungen der Datenschutzerklärung",
+        "content": "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen per E-Mail oder über den Service informieren. Ihre fortgesetzte Nutzung nach solchen Änderungen stellt die Annahme der aktualisierten Richtlinie dar."
+      },
+      "contact": {
+        "title": "12. Kontakt",
+        "content": "Wenn Sie Fragen zu dieser Datenschutzerklärung haben oder Ihre Rechte ausüben möchten, kontaktieren Sie uns bitte unter:"
+      }
+    }
   }
 }

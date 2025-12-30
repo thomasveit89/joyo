@@ -8,6 +8,7 @@ import confetti from 'canvas-confetti';
 import type { RevealNode } from '@/types/flow';
 import type { Theme } from '@/types/flow';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface RevealScreenProps {
   node: RevealNode;
@@ -41,6 +42,7 @@ const CONFETTI_CONFIGS = {
 };
 
 export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableConfetti = false }: RevealScreenProps) {
+  const t = useTranslations('player.buttons');
   const { headline, body, cta, confetti: showConfetti, backgroundImage } = node.content;
   const [revealed, setRevealed] = useState(false);
 
@@ -196,7 +198,7 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
             onClick={onNext}
             className={hasValidImage ? 'bg-white/10 hover:bg-white/20 text-white border-white/30' : ''}
           >
-            Continue
+            {t('continue')}
             <ChevronRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

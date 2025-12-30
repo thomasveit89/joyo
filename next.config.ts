@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig = {
   images: {
@@ -15,9 +18,11 @@ const nextConfig = {
       },
     ],
   },
-  serverActions: {
-    bodySizeLimit: '6mb', // Allow 5MB images + overhead
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '6mb', // Allow 5MB images + overhead
+    },
   },
 } satisfies NextConfig;
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

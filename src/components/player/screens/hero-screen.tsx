@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import type { HeroNode } from '@/types/flow';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface HeroScreenProps {
   node: HeroNode;
@@ -12,6 +13,7 @@ interface HeroScreenProps {
 }
 
 export function HeroScreen({ node, onNext }: HeroScreenProps) {
+  const t = useTranslations('player.buttons');
   const { headline, body, backgroundImage } = node.content;
 
   // Check if image URL is valid (not a placeholder)
@@ -56,7 +58,7 @@ export function HeroScreen({ node, onNext }: HeroScreenProps) {
         )}
 
         <Button size="xl" onClick={onNext} className="mt-4">
-          Continue
+          {t('continue')}
           <ChevronRight className="ml-2 h-5 w-5" />
         </Button>
       </div>

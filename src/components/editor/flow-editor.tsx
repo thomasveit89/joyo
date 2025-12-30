@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +30,14 @@ interface FlowEditorProps {
 
 export function FlowEditor({ project: initialProject, nodes: initialNodes }: FlowEditorProps) {
   const router = useRouter();
+  const params = useParams();
+  const locale = params.locale as string;
+  const t = useTranslations('editor');
+  const tStatus = useTranslations('editor.status');
+  const tFlow = useTranslations('editor.flowEditor');
+  const tToolbar = useTranslations('editor.toolbar');
+  const tDelete = useTranslations('editor.deleteConfirm');
+
   const [project, setProject] = useState(initialProject);
   const [nodes, setNodes] = useState(initialNodes);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -39,7 +48,7 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
 
   const handlePreview = () => {
     // Open preview in new tab
-    window.open(`/preview/${project.id}`, '_blank');
+    window.open(`/${locale}/preview/${project.id}`, '_blank');
   };
 
   const handleThemeChange = (newTheme: string) => {
@@ -59,10 +68,10 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
     const result = await deleteProjectAction(project.id);
 
     if (result.success) {
-      toast.success('Project deleted successfully');
-      router.push('/dashboard');
+      toast.success(tFlow('deleteSuccess'));
+      router.push(`/${locale}/dashboard`);
     } else {
-      toast.error(result.error || 'Failed to delete project');
+      toast.error(result.error || tFlow('deleteError'));
       setDeleting(false);
     }
   };
@@ -73,10 +82,10 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
         onConfirm={handleDeleteConfirm}
-        title="Delete this gift?"
-        description="This will permanently delete your gift and all its screens. This action cannot be undone."
-        confirmText="Delete"
-        cancelText="Cancel"
+        title={tDelete('title')}
+        description={tDelete('description')}
+        confirmText={tDelete('confirm')}
+        cancelText={tDelete('cancel')}
         variant="destructive"
       />
 
@@ -87,9 +96,9 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
           <div className="flex items-center gap-3">
             <h1 className="text-2xl font-bold">{project.title}</h1>
             {project.published ? (
-              <Badge variant="success">Published</Badge>
+              <Badge variant="success">{tStatus('published')}</Badge>
             ) : (
-              <Badge variant="warning">Draft</Badge>
+              <Badge variant="warning">{tStatus('draft')}</Badge>
             )}
           </div>
           <div className="flex items-center gap-2 text-sm">
@@ -97,22 +106,22 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
               {project.theme.replace('-', ' ')}
             </Badge>
             <span className="text-muted-foreground">•</span>
-            <span className="text-muted-foreground">{nodes.length} screens</span>
+            <span className="text-muted-foreground">{nodes.length} {tFlow('screens')}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={() => setShowThemeSelector(true)}>
             <Settings className="mr-2 h-4 w-4" />
-            Theme
+            {tToolbar('theme')}
           </Button>
           <Button variant="outline" size="sm" onClick={handlePreview}>
             <Eye className="mr-2 h-4 w-4" />
-            Full Preview
+            {tToolbar('fullPreview')}
           </Button>
           <Button size="sm" onClick={() => setShowPublishDialog(true)}>
             <Share2 className="mr-2 h-4 w-4" />
-            {project.published ? 'Share' : 'Publish'}
+            {project.published ? tToolbar('share') : tToolbar('publish')}
           </Button>
 
           <DropdownMenu>
@@ -124,7 +133,7 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={handleDeleteClick} className="text-destructive">
                 <Trash2 className="mr-2 h-4 w-4" />
-                Delete Gift
+                {tToolbar('deleteGift')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -136,8 +145,8 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
         {/* Left: Node List (1/3) */}
         <div className="flex flex-col overflow-hidden">
           <div className="mb-4">
-            <h2 className="text-lg font-semibold">Screens ({nodes.length})</h2>
-            <p className="text-sm text-muted-foreground">Click a screen to preview it</p>
+            <h2 className="text-lg font-semibold">{tFlow('screensList', { count: nodes.length })}</h2>
+            <p className="text-sm text-muted-foreground">{tFlow('clickToPreview')}</p>
           </div>
           <div className="flex-1 overflow-y-auto pr-2">
             <NodeList
@@ -153,9 +162,9 @@ export function FlowEditor({ project: initialProject, nodes: initialNodes }: Flo
         {/* Right: Live Preview */}
         <div className="flex flex-col overflow-hidden border-l pl-6">
           <div className="mb-4">
-            <h2 className="text-lg font-semibold">Live Preview</h2>
+            <h2 className="text-lg font-semibold">{tFlow('livePreview')}</h2>
             <p className="text-sm text-muted-foreground">
-              Screen {currentSlideIndex + 1} of {nodes.length}
+              {t('header.screenCount', { current: currentSlideIndex + 1, total: nodes.length })}
             </p>
           </div>
           <div className="flex-1 overflow-hidden">

@@ -16,6 +16,7 @@ import { toast } from 'sonner';
 import { Check, Copy, ExternalLink, Loader2, Lock } from 'lucide-react';
 import { Project } from '@/types/flow';
 import { AlertDialogConfirm } from '@/components/ui/alert-dialog-confirm';
+import { useTranslations } from 'next-intl';
 
 interface PublishDialogProps {
   open: boolean;
@@ -25,6 +26,9 @@ interface PublishDialogProps {
 }
 
 export function PublishDialog({ open, onClose, project, onPublished }: PublishDialogProps) {
+  const t = useTranslations('editor.publish.dialog');
+  const tToast = useTranslations('editor.publish.toast');
+  const tCommon = useTranslations('common');
   const [publishing, setPublishing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showUnpublishDialog, setShowUnpublishDialog] = useState(false);
@@ -40,9 +44,9 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
 
     if (result.success && result.shareSlug) {
       onPublished(result.shareSlug);
-      toast.success('Gift published successfully!');
+      toast.success(tToast('published'));
     } else {
-      toast.error(result.error || 'Failed to publish gift');
+      toast.error(result.error || tToast('publishError'));
     }
 
     setPublishing(false);
@@ -58,11 +62,11 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
     const result = await unpublishProjectAction(project.id);
 
     if (result.success) {
-      toast.success('Gift unpublished successfully');
+      toast.success(tToast('unpublished'));
       onClose();
       window.location.reload(); // Refresh to update state
     } else {
-      toast.error(result.error || 'Failed to unpublish gift');
+      toast.error(result.error || tToast('unpublishError'));
     }
 
     setPublishing(false);
@@ -72,7 +76,7 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
     if (shareUrl) {
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
-      toast.success('Link copied to clipboard!');
+      toast.success(tToast('linkCopied'));
       setTimeout(() => setCopied(false), 2000);
     }
   };
@@ -91,18 +95,18 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
           open={showUnpublishDialog}
           onOpenChange={setShowUnpublishDialog}
           onConfirm={handleUnpublishConfirm}
-          title="Unpublish this gift?"
-          description="The share link will stop working and your recipient won't be able to access it anymore. You can always publish it again later."
-          confirmText="Unpublish"
-          cancelText="Cancel"
+          title={t('unpublishTitle')}
+          description={t('unpublishDescription')}
+          confirmText={t('unpublishButton')}
+          cancelText={tCommon('cancel')}
           variant="destructive"
         />
         <Dialog open={open} onOpenChange={onClose}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Share Your Gift</DialogTitle>
+            <DialogTitle>{t('shareTitle')}</DialogTitle>
             <DialogDescription>
-              Your gift is live! Share this link with your recipient.
+              {t('shareDescription')}
             </DialogDescription>
           </DialogHeader>
 
@@ -117,11 +121,11 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
             <div className="flex gap-2">
               <Button onClick={handleViewLive} variant="outline" className="flex-1">
                 <ExternalLink className="mr-2 h-4 w-4" />
-                View Live
+                {t('viewButton')}
               </Button>
               <Button onClick={handleCopy} className="flex-1">
                 <Copy className="mr-2 h-4 w-4" />
-                Copy Link
+                {t('copyButton')}
               </Button>
             </div>
 
@@ -135,12 +139,12 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
                 {publishing ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Unpublishing...
+                    {t('unpublishing')}
                   </>
                 ) : (
                   <>
                     <Lock className="mr-2 h-4 w-4" />
-                    Unpublish Gift
+                    {t('unpublishButton')}
                   </>
                 )}
               </Button>
@@ -157,42 +161,42 @@ export function PublishDialog({ open, onClose, project, onPublished }: PublishDi
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Publish Your Gift?</DialogTitle>
+          <DialogTitle>{t('publishTitle')}</DialogTitle>
           <DialogDescription>
-            Once published, you'll get a unique link to share with your recipient.
+            {t('publishDescription')}
           </DialogDescription>
         </DialogHeader>
 
         <div className="py-4 space-y-4">
           <div className="bg-muted p-4 rounded-lg space-y-2">
-            <h4 className="font-medium text-sm">What happens when you publish:</h4>
+            <h4 className="font-medium text-sm">{t('whatHappens')}</h4>
             <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li>A unique shareable link is created</li>
-              <li>Your recipient can view the experience</li>
-              <li>You can still edit and update the content</li>
-              <li>You can unpublish at any time</li>
+              <li>{t('features.shareLink')}</li>
+              <li>{t('features.recipientAccess')}</li>
+              <li>{t('features.editLater')}</li>
+              <li>{t('features.unpublishAnytime')}</li>
             </ul>
           </div>
 
           <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
             <p className="text-sm text-blue-900">
-              <strong>Tip:</strong> Preview your gift before publishing to make sure everything looks perfect!
+              {t('publishTip')}
             </p>
           </div>
         </div>
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose} disabled={publishing}>
-            Cancel
+            {tCommon('cancel')}
           </Button>
           <Button onClick={handlePublish} disabled={publishing}>
             {publishing ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Publishing...
+                {t('publishingButton')}
               </>
             ) : (
-              'Publish Gift'
+              t('publishButton')
             )}
           </Button>
         </DialogFooter>

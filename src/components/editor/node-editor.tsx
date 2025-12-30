@@ -17,6 +17,7 @@ import { updateNodeAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 import { ImagePicker } from './image-picker';
+import { useTranslations } from 'next-intl';
 
 interface NodeEditorProps {
   node: any;
@@ -27,6 +28,8 @@ interface NodeEditorProps {
 }
 
 export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEditorProps) {
+  const t = useTranslations('editor.nodeEditor');
+  const tCommon = useTranslations('common');
   const [content, setContent] = useState(node.content);
   const [saving, setSaving] = useState(false);
 
@@ -37,10 +40,10 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
 
     if (result.success) {
       onSave(content);
-      toast.success('Screen updated successfully');
+      toast.success(t('success'));
       onClose();
     } else {
-      toast.error(result.error || 'Failed to update screen');
+      toast.error(result.error || t('error'));
     }
 
     setSaving(false);
@@ -56,28 +59,28 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="headline">Headline *</Label>
+              <Label htmlFor="headline">{t('labels.headlineRequired')}</Label>
               <Input
                 id="headline"
                 value={content.headline || ''}
                 onChange={(e) => updateField('headline', e.target.value)}
                 maxLength={200}
-                placeholder="Enter headline..."
+                placeholder={t('placeholders.headline')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="body">Body Text</Label>
+              <Label htmlFor="body">{t('labels.body')}</Label>
               <Textarea
                 id="body"
                 value={content.body || ''}
                 onChange={(e) => updateField('body', e.target.value)}
                 maxLength={1000}
                 rows={4}
-                placeholder="Enter body text..."
+                placeholder={t('placeholders.body')}
               />
             </div>
             <div className="space-y-2">
-              <Label>Background Image</Label>
+              <Label>{t('labels.backgroundImage')}</Label>
               <ImagePicker
                 projectId={projectId}
                 value={content.backgroundImage}
@@ -91,17 +94,17 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="question">Question *</Label>
+              <Label htmlFor="question">{t('labels.questionRequired')}</Label>
               <Input
                 id="question"
                 value={content.question || ''}
                 onChange={(e) => updateField('question', e.target.value)}
                 maxLength={200}
-                placeholder="Enter question..."
+                placeholder={t('placeholders.question')}
               />
             </div>
             <div className="space-y-2">
-              <Label>Options (2-4 required)</Label>
+              <Label>{t('labels.optionsRequired')}</Label>
               {content.options?.map((option: any, index: number) => (
                 <Input
                   key={option.id}
@@ -111,7 +114,7 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
                     newOptions[index] = { ...option, label: e.target.value };
                     updateField('options', newOptions);
                   }}
-                  placeholder={`Option ${index + 1}`}
+                  placeholder={`${t('placeholders.option')} ${index + 1}`}
                   maxLength={100}
                 />
               ))}
@@ -123,23 +126,23 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="question">Question *</Label>
+              <Label htmlFor="question">{t('labels.questionRequired')}</Label>
               <Input
                 id="question"
                 value={content.question || ''}
                 onChange={(e) => updateField('question', e.target.value)}
                 maxLength={200}
-                placeholder="Enter question..."
+                placeholder={t('placeholders.question')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="placeholder">Placeholder</Label>
+              <Label htmlFor="placeholder">{t('labels.placeholder')}</Label>
               <Input
                 id="placeholder"
                 value={content.placeholder || ''}
                 onChange={(e) => updateField('placeholder', e.target.value)}
                 maxLength={100}
-                placeholder="Enter placeholder text..."
+                placeholder={t('placeholders.textInput')}
               />
             </div>
           </div>
@@ -149,28 +152,28 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="headline">Headline *</Label>
+              <Label htmlFor="headline">{t('labels.headlineRequired')}</Label>
               <Input
                 id="headline"
                 value={content.headline || ''}
                 onChange={(e) => updateField('headline', e.target.value)}
                 maxLength={200}
-                placeholder="Enter headline..."
+                placeholder={t('placeholders.headline')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="body">Body Text</Label>
+              <Label htmlFor="body">{t('labels.body')}</Label>
               <Textarea
                 id="body"
                 value={content.body || ''}
                 onChange={(e) => updateField('body', e.target.value)}
                 maxLength={1000}
                 rows={4}
-                placeholder="Enter body text..."
+                placeholder={t('placeholders.body')}
               />
             </div>
             <div className="space-y-2">
-              <Label>Background Image</Label>
+              <Label>{t('labels.backgroundImage')}</Label>
               <ImagePicker
                 projectId={projectId}
                 value={content.backgroundImage}
@@ -180,7 +183,7 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
             {content.cta && (
               <>
                 <div className="space-y-2">
-                  <Label htmlFor="ctaLabel">CTA Button Label</Label>
+                  <Label htmlFor="ctaLabel">{t('labels.ctaLabel')}</Label>
                   <Input
                     id="ctaLabel"
                     value={content.cta?.label || ''}
@@ -188,16 +191,16 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
                       updateField('cta', { ...content.cta, label: e.target.value })
                     }
                     maxLength={50}
-                    placeholder="Button label..."
+                    placeholder={t('placeholders.ctaLabel')}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="ctaUrl">CTA Button URL</Label>
+                  <Label htmlFor="ctaUrl">{t('labels.ctaUrl')}</Label>
                   <Input
                     id="ctaUrl"
                     value={content.cta?.url || ''}
                     onChange={(e) => updateField('cta', { ...content.cta, url: e.target.value })}
-                    placeholder="https://..."
+                    placeholder={t('placeholders.ctaUrl')}
                   />
                 </div>
               </>
@@ -209,7 +212,7 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         return (
           <div className="space-y-6">
             <div className="space-y-2">
-              <Label>Image *</Label>
+              <Label>{t('labels.imageRequired')}</Label>
               <ImagePicker
                 projectId={projectId}
                 value={content.image}
@@ -217,21 +220,21 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="caption">Caption</Label>
+              <Label htmlFor="caption">{t('labels.caption')}</Label>
               <Textarea
                 id="caption"
                 value={content.caption || ''}
                 onChange={(e) => updateField('caption', e.target.value)}
                 maxLength={200}
                 rows={2}
-                placeholder="Enter caption..."
+                placeholder={t('placeholders.caption')}
               />
             </div>
           </div>
         );
 
       default:
-        return <p>Unknown node type</p>;
+        return <p>{t('unknownType')}</p>;
     }
   };
 
@@ -239,9 +242,9 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Edit Screen</DialogTitle>
+          <DialogTitle>{t('title')}</DialogTitle>
           <DialogDescription>
-            Make changes to this screen. Changes will be saved to your draft.
+            {t('description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -249,16 +252,16 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose} disabled={saving}>
-            Cancel
+            {t('buttons.cancel')}
           </Button>
           <Button onClick={handleSave} disabled={saving}>
             {saving ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Saving...
+                {t('buttons.saving')}
               </>
             ) : (
-              'Save Changes'
+              t('buttons.save')
             )}
           </Button>
         </DialogFooter>

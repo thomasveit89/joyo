@@ -12,8 +12,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function LoginPage() {
+  const t = useTranslations('auth.login');
+  const tApp = useTranslations('app');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
@@ -49,14 +52,14 @@ export default function LoginPage() {
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 text-6xl">📧</div>
-            <CardTitle className="text-2xl">Check your email</CardTitle>
+            <CardTitle className="text-2xl">{t('checkEmailTitle')}</CardTitle>
             <CardDescription className="text-base">
-              We sent a magic link to <strong>{email}</strong>
+              {t('checkEmailMessage')} <strong>{email}</strong>
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground text-center">
-              Click the link in the email to sign in. You can close this window.
+              {t('noPassword')}
             </p>
             <Button
               variant="outline"
@@ -66,7 +69,7 @@ export default function LoginPage() {
                 setEmail('');
               }}
             >
-              Use a different email
+              {t('useDifferentEmail')}
             </Button>
           </CardContent>
         </Card>
@@ -79,16 +82,16 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 text-6xl">✨</div>
-          <CardTitle className="text-3xl font-bold">joyo</CardTitle>
+          <CardTitle className="text-3xl font-bold">{tApp('name')}</CardTitle>
           <CardDescription className="text-base mt-2">
-            Create beautiful, emotional gift journeys
+            {tApp('tagline')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleMagicLink} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium">
-                Email address
+                {t('emailLabel')}
               </label>
               <Input
                 id="email"
@@ -109,11 +112,11 @@ export default function LoginPage() {
             )}
 
             <Button type="submit" className="w-full h-11" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Magic Link'}
+              {loading ? t('sendingButton') : t('sendButton')}
             </Button>
 
             <p className="text-xs text-center text-muted-foreground">
-              No password needed. We&apos;ll email you a secure link.
+              {t('noPassword')}
             </p>
           </form>
         </CardContent>

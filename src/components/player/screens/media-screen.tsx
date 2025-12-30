@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import type { MediaNode } from '@/types/flow';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface MediaScreenProps {
   node: MediaNode;
@@ -13,6 +14,7 @@ interface MediaScreenProps {
 }
 
 export function MediaScreen({ node, onNext }: MediaScreenProps) {
+  const t = useTranslations('player.buttons');
   const { image, caption } = node.content;
 
   // Check if image URL is valid (not a placeholder)
@@ -53,7 +55,7 @@ export function MediaScreen({ node, onNext }: MediaScreenProps) {
 
       <div className="text-center pt-4">
         <Button size="xl" onClick={onNext}>
-          Continue
+          {t('continue')}
           <ChevronRight className="ml-2 h-5 w-5" />
         </Button>
       </div>

@@ -1,0 +1,299 @@
+{
+  "app": {
+    "name": "joyo",
+    "tagline": "Create beautiful, emotional gift journeys"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to joyo",
+      "emailLabel": "Email address",
+      "sendButton": "Send Magic Link",
+      "sendingButton": "Sending...",
+      "checkEmailTitle": "Check your email",
+      "checkEmailMessage": "We sent a magic link to",
+      "noPassword": "No password needed. We'll email you a secure link.",
+      "useDifferentEmail": "Use a different email"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "myGifts": "My Gifts",
+      "signOut": "Sign Out"
+    },
+    "title": "My Gifts",
+    "createNew": "Create New Gift",
+    "createFirst": "Create Your First Gift",
+    "emptyState": {
+      "title": "No gifts yet",
+      "description": "Start creating your first emotional gift experience"
+    },
+    "status": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "metadata": {
+      "screens": "screens",
+      "created": "Created",
+      "noDescription": "No description"
+    }
+  },
+  "chat": {
+    "title": "Create Your Gift Experience",
+    "subtitle": "Describe your gift and AI will create a beautiful journey for your recipient.",
+    "placeholder": "Describe your gift experience... Who's it for and what's the occasion?",
+    "characterCount": "{current} / {max}",
+    "generateButton": "Generate Gift Experience",
+    "generatingButton": "Generating...",
+    "replaceDialog": {
+      "title": "Replace existing text?",
+      "description": "You already have text in the input. Do you want to replace it with this example?",
+      "confirm": "Replace",
+      "cancel": "Keep my text"
+    },
+    "exampleCategories": {
+      "romantic": "Romantic Moments",
+      "family": "Family Announcements",
+      "travel": "Travel Surprises",
+      "celebrations": "Celebrations"
+    },
+    "examples": {
+      "romantic1": {
+        "title": "Anniversary Journey",
+        "prompt": "Create a romantic journey celebrating our 5-year anniversary. Include our favorite memories, a photo slideshow, and end with a surprise weekend getaway reveal."
+      },
+      "romantic2": {
+        "title": "Proposal Story",
+        "prompt": "Build a story of how we met, with choices about our first date memories, leading to a big proposal reveal with a beautiful ring photo."
+      },
+      "romantic3": {
+        "title": "Love Letter Journey",
+        "prompt": "Create an emotional journey with love letters I've written, questions about our future, ending with a promise ring reveal."
+      },
+      "family1": {
+        "title": "Pregnancy Announcement",
+        "prompt": "Make a playful journey for announcing our pregnancy to grandparents. Include baby-themed questions and reveal with an ultrasound photo."
+      },
+      "family2": {
+        "title": "New Home Reveal",
+        "prompt": "Create an exciting journey revealing our new home to family. Include photos of house hunting, neighborhood shots, and final house reveal."
+      },
+      "family3": {
+        "title": "Grandparent Gift",
+        "prompt": "Build a warm journey from the grandkids with photos, voice messages, and a special reveal about our upcoming visit."
+      },
+      "travel1": {
+        "title": "Surprise Trip",
+        "prompt": "Create a mysterious journey with travel hints and clues, leading to the big reveal of a surprise trip to Japan."
+      },
+      "travel2": {
+        "title": "Birthday Adventure",
+        "prompt": "Build an adventure story for a birthday surprise. Include destination clues, packing list questions, and reveal a tropical island getaway."
+      },
+      "travel3": {
+        "title": "Honeymoon Reveal",
+        "prompt": "Create a romantic journey revealing our honeymoon destination. Include dream location questions and beautiful destination photos."
+      },
+      "celebration1": {
+        "title": "Birthday Story",
+        "prompt": "Make a fun birthday journey with memories from the past year, favorite moments, and a special gift reveal at the end."
+      },
+      "celebration2": {
+        "title": "Graduation Celebration",
+        "prompt": "Build a celebratory journey for graduation with achievements, future dreams questions, and a surprise gift reveal."
+      },
+      "celebration3": {
+        "title": "Retirement Journey",
+        "prompt": "Create a heartfelt journey celebrating a retirement with career highlights, memories, and a special vacation reveal."
+      }
+    }
+  },
+  "editor": {
+    "header": {
+      "screens": "Screens",
+      "preview": "Live Preview",
+      "screenCount": "Screen {current} of {total}"
+    },
+    "toolbar": {
+      "theme": "Theme",
+      "fullPreview": "Full Preview",
+      "publish": "Publish",
+      "share": "Share",
+      "deleteGift": "Delete Gift"
+    },
+    "status": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "flowEditor": {
+      "screensList": "Screens ({count})",
+      "clickToPreview": "Click a screen to preview it",
+      "livePreview": "Live Preview",
+      "noScreens": "No screens yet. Add your first screen to get started.",
+      "deleteSuccess": "Project deleted successfully",
+      "deleteError": "Failed to delete project",
+      "screens": "screens"
+    },
+    "nodeList": {
+      "addScreen": "Add Screen",
+      "addFirstScreen": "Add First Screen",
+      "deleteSuccess": "Screen deleted successfully",
+      "deleteError": "Failed to delete screen",
+      "deleteTitle": "Delete this screen?",
+      "deleteDescription": "This screen will be permanently removed from your gift. This action cannot be undone.",
+      "reorderError": "Failed to reorder screens"
+    },
+    "nodeTypes": {
+      "hero": "Story Screen",
+      "choice": "Choice Question",
+      "textInput": "Text Input",
+      "reveal": "Big Reveal",
+      "media": "Media Screen",
+      "end": "End Screen"
+    },
+    "nodeEditor": {
+      "title": "Edit Screen",
+      "description": "Make changes to this screen. Changes will be saved to your draft.",
+      "labels": {
+        "headline": "Headline",
+        "headlineRequired": "Headline *",
+        "body": "Body Text",
+        "backgroundImage": "Background Image",
+        "image": "Image",
+        "imageRequired": "Image *",
+        "question": "Question",
+        "questionRequired": "Question *",
+        "options": "Options",
+        "optionsRequired": "Options (2-4 required)",
+        "placeholder": "Placeholder",
+        "caption": "Caption",
+        "ctaLabel": "CTA Button Label",
+        "ctaUrl": "CTA Button URL",
+        "mediaUrl": "Media URL",
+        "minChoices": "Minimum Choices",
+        "maxChoices": "Maximum Choices",
+        "maxLength": "Maximum Length"
+      },
+      "placeholders": {
+        "headline": "Enter headline...",
+        "body": "Enter body text...",
+        "question": "Enter your question...",
+        "option": "Option",
+        "textInput": "Type your answer...",
+        "caption": "Enter caption...",
+        "ctaLabel": "Button label...",
+        "ctaUrl": "https://..."
+      },
+      "buttons": {
+        "save": "Save Changes",
+        "cancel": "Cancel",
+        "saving": "Saving..."
+      },
+      "success": "Screen updated successfully",
+      "error": "Failed to update screen",
+      "unknownType": "Unknown node type"
+    },
+    "publish": {
+      "dialog": {
+        "publishTitle": "Publish Your Gift?",
+        "publishDescription": "Once published, you'll get a unique link to share with your recipient.",
+        "publishTip": "Preview your gift before publishing to make sure everything looks perfect!",
+        "publishButton": "Publish Gift",
+        "publishingButton": "Publishing...",
+        "shareTitle": "Share Your Gift",
+        "shareDescription": "Your gift is live! Share this link with your recipient.",
+        "copyButton": "Copy Link",
+        "viewButton": "View Live",
+        "unpublishButton": "Unpublish Gift",
+        "unpublishTitle": "Unpublish this gift?",
+        "unpublishDescription": "The share link will stop working and your recipient won't be able to access it anymore. You can always publish it again later.",
+        "unpublishing": "Unpublishing...",
+        "whatHappens": "What happens when you publish:",
+        "features": {
+          "shareLink": "A unique shareable link is created",
+          "recipientAccess": "Your recipient can view the experience",
+          "editLater": "You can still edit and update the content",
+          "unpublishAnytime": "You can unpublish at any time"
+        }
+      },
+      "toast": {
+        "published": "Gift published successfully!",
+        "unpublished": "Gift unpublished",
+        "linkCopied": "Link copied to clipboard!",
+        "error": "Something went wrong. Please try again.",
+        "publishError": "Failed to publish gift",
+        "unpublishError": "Failed to unpublish gift"
+      }
+    },
+    "theme": {
+      "dialog": {
+        "title": "Choose a Theme",
+        "description": "Select a theme that matches the emotional tone of your gift experience.",
+        "applyButton": "Apply Theme",
+        "updating": "Updating...",
+        "success": "Theme updated successfully",
+        "error": "Failed to update theme"
+      },
+      "names": {
+        "playful-pastel": "Playful Pastel",
+        "elegant-dark": "Elegant Dark",
+        "warm-mediterranean": "Warm Mediterranean",
+        "minimal-zen": "Minimal Zen"
+      },
+      "descriptions": {
+        "playful-pastel": "Light, fun, and cheerful with soft colors",
+        "elegant-dark": "Sophisticated and dramatic with dark tones",
+        "warm-mediterranean": "Warm and inviting with earthy colors",
+        "minimal-zen": "Clean, simple, and calming"
+      }
+    },
+    "deleteConfirm": {
+      "title": "Delete this gift?",
+      "description": "This will permanently delete your gift and all its screens. This action cannot be undone.",
+      "confirm": "Delete",
+      "cancel": "Cancel"
+    }
+  },
+  "player": {
+    "buttons": {
+      "continue": "Continue",
+      "continueWithSelection": "Continue ({count} selected)"
+    },
+    "textInput": {
+      "placeholder": "Type your answer...",
+      "characterCount": "{current} / {max} characters"
+    },
+    "imageAttribution": "Photo by {name} on Unsplash",
+    "previewMode": "Preview Mode"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You need to be signed in to do that.",
+    "notFound": "Not found",
+    "validation": "Please check your input and try again."
+  },
+  "time": {
+    "ago": "ago",
+    "justNow": "just now",
+    "minutesAgo": "{count} minutes ago",
+    "hoursAgo": "{count} hours ago",
+    "daysAgo": "{count} days ago",
+    "weeksAgo": "{count} weeks ago",
+    "monthsAgo": "{count} months ago",
+    "yearsAgo": "{count} years ago"
+  }
+}

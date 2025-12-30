@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import type { TextInputNode } from '@/types/flow';
+import { useTranslations } from 'next-intl';
 
 interface TextInputScreenProps {
   node: TextInputNode;
@@ -12,6 +13,8 @@ interface TextInputScreenProps {
 }
 
 export function TextInputScreen({ node, onAnswer }: TextInputScreenProps) {
+  const t = useTranslations('player.buttons');
+  const tInput = useTranslations('player.textInput');
   const { question, placeholder, maxLength } = node.content;
   const [value, setValue] = useState('');
 
@@ -32,7 +35,7 @@ export function TextInputScreen({ node, onAnswer }: TextInputScreenProps) {
         <Textarea
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder={placeholder || 'Type your answer...'}
+          placeholder={placeholder || tInput('placeholder')}
           maxLength={maxLength}
           rows={6}
           className="resize-none text-lg"
@@ -41,10 +44,10 @@ export function TextInputScreen({ node, onAnswer }: TextInputScreenProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">
-            {value.length} / {maxLength} characters
+            {tInput('characterCount', { current: value.length, max: maxLength })}
           </span>
           <Button type="submit" size="xl" disabled={!value.trim()}>
-            Continue
+            {t('continue')}
           </Button>
         </div>
       </form>

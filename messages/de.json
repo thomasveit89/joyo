@@ -1,0 +1,299 @@
+{
+  "app": {
+    "name": "joyo",
+    "tagline": "Erschaffe wunderschöne, emotionale Geschenkreisen"
+  },
+  "auth": {
+    "login": {
+      "title": "Bei joyo anmelden",
+      "emailLabel": "E-Mail-Adresse",
+      "sendButton": "Magic Link senden",
+      "sendingButton": "Wird gesendet...",
+      "checkEmailTitle": "Überprüfe deine E-Mails",
+      "checkEmailMessage": "Wir haben einen Magic Link gesendet an",
+      "noPassword": "Kein Passwort nötig. Wir senden dir einen sicheren Link per E-Mail.",
+      "useDifferentEmail": "Andere E-Mail verwenden"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "myGifts": "Meine Geschenke",
+      "signOut": "Abmelden"
+    },
+    "title": "Meine Geschenke",
+    "createNew": "Neues Geschenk erstellen",
+    "createFirst": "Erstelle dein erstes Geschenk",
+    "emptyState": {
+      "title": "Noch keine Geschenke",
+      "description": "Beginne mit der Erstellung deiner ersten emotionalen Geschenkerfahrung"
+    },
+    "status": {
+      "published": "Veröffentlicht",
+      "draft": "Entwurf"
+    },
+    "metadata": {
+      "screens": "Screens",
+      "created": "Erstellt",
+      "noDescription": "Keine Beschreibung"
+    }
+  },
+  "chat": {
+    "title": "Erstelle deine Geschenkerfahrung",
+    "subtitle": "Beschreibe dein Geschenk und die KI wird eine wunderschöne Geschichte für den Empfänger erstellen.",
+    "placeholder": "Beschreibe deine Geschenkerfahrung... Für wen ist es und was ist der Anlass?",
+    "characterCount": "{current} / {max}",
+    "generateButton": "Geschenkerfahrung generieren",
+    "generatingButton": "Wird generiert...",
+    "replaceDialog": {
+      "title": "Vorhandenen Text ersetzen?",
+      "description": "Du hast bereits Text im Eingabefeld. Möchtest du ihn durch dieses Beispiel ersetzen?",
+      "confirm": "Ersetzen",
+      "cancel": "Meinen Text behalten"
+    },
+    "exampleCategories": {
+      "romantic": "Romantische Momente",
+      "family": "Familienankündigungen",
+      "travel": "Reiseüberraschungen",
+      "celebrations": "Feiern"
+    },
+    "examples": {
+      "romantic1": {
+        "title": "Jubiläumsreise",
+        "prompt": "Erstelle eine romantische Reise zur Feier unseres 5-jährigen Jubiläums. Füge unsere Lieblingserinnerungen hinzu, eine Fotodiashow und ende mit einer überraschenden Wochenendreise."
+      },
+      "romantic2": {
+        "title": "Heiratsantrag-Geschichte",
+        "prompt": "Baue eine Geschichte darüber, wie wir uns kennengelernt haben, mit Auswahlmöglichkeiten über unser erstes Date, die zu einem großen Heiratsantrag mit einem schönen Ringfoto führen."
+      },
+      "romantic3": {
+        "title": "Liebesbrief-Reise",
+        "prompt": "Erstelle eine emotionale Reise mit Liebesbriefen, die ich geschrieben habe, Fragen über unsere Zukunft und ende mit der Enthüllung eines Versprechensrings."
+      },
+      "family1": {
+        "title": "Schwangerschaftsankündigung",
+        "prompt": "Mache eine verspielte Reise zur Ankündigung unserer Schwangerschaft an die Großeltern. Füge Baby-Fragen hinzu und enthülle ein Ultraschallfoto."
+      },
+      "family2": {
+        "title": "Neues Zuhause Enthüllung",
+        "prompt": "Erstelle eine spannende Reise, um unser neues Zuhause der Familie zu zeigen. Füge Fotos von der Haussuche, Nachbarschaftsaufnahmen und die finale Hausenthüllung hinzu."
+      },
+      "family3": {
+        "title": "Geschenk für Großeltern",
+        "prompt": "Baue eine herzliche Reise von den Enkelkindern mit Fotos, Sprachnachrichten und einer besonderen Enthüllung über unseren kommenden Besuch."
+      },
+      "travel1": {
+        "title": "Überraschungsreise",
+        "prompt": "Erstelle eine mysteriöse Reise mit Reisehinweisen und Hinweisen, die zur großen Enthüllung einer Überraschungsreise nach Japan führen."
+      },
+      "travel2": {
+        "title": "Geburtstags-Abenteuer",
+        "prompt": "Baue eine Abenteuergeschichte für eine Geburtstagsüberraschung. Füge Zielhinweise, Packlisten-Fragen hinzu und enthülle einen tropischen Insel-Ausflug."
+      },
+      "travel3": {
+        "title": "Flitterwochen-Enthüllung",
+        "prompt": "Erstelle eine romantische Reise zur Enthüllung unseres Flitterwochen-Ziels. Füge Fragen zum Traumziel und schöne Zielfotos hinzu."
+      },
+      "celebration1": {
+        "title": "Geburtstags-Geschichte",
+        "prompt": "Mache eine lustige Geburtstagsreise mit Erinnerungen aus dem letzten Jahr, Lieblingsmomenten und einer besonderen Geschenkenthüllung am Ende."
+      },
+      "celebration2": {
+        "title": "Abschlussfeier",
+        "prompt": "Baue eine festliche Reise für den Abschluss mit Erfolgen, Zukunftsträumen-Fragen und einer Überraschungsgeschenk-Enthüllung."
+      },
+      "celebration3": {
+        "title": "Ruhestands-Reise",
+        "prompt": "Erstelle eine herzliche Reise zur Feier eines Ruhestands mit Karriere-Höhepunkten, Erinnerungen und einer besonderen Urlaubsenthüllung."
+      }
+    }
+  },
+  "editor": {
+    "header": {
+      "screens": "Screens",
+      "preview": "Live-Vorschau",
+      "screenCount": "Screen {current} von {total}"
+    },
+    "toolbar": {
+      "theme": "Theme",
+      "fullPreview": "Vollvorschau",
+      "publish": "Veröffentlichen",
+      "share": "Teilen",
+      "deleteGift": "Geschenk löschen"
+    },
+    "status": {
+      "published": "Veröffentlicht",
+      "draft": "Entwurf"
+    },
+    "flowEditor": {
+      "screensList": "Screens ({count})",
+      "clickToPreview": "Klicke auf einen Screen zur Vorschau",
+      "livePreview": "Live-Vorschau",
+      "noScreens": "Noch keine Screens. Füge deinen ersten Screen hinzu.",
+      "deleteSuccess": "Projekt erfolgreich gelöscht",
+      "deleteError": "Fehler beim Löschen des Projekts",
+      "screens": "Screens"
+    },
+    "nodeList": {
+      "addScreen": "Screen hinzufügen",
+      "addFirstScreen": "Ersten Screen hinzufügen",
+      "deleteSuccess": "Screen erfolgreich gelöscht",
+      "deleteError": "Fehler beim Löschen des Screens",
+      "deleteTitle": "Diesen Screen löschen?",
+      "deleteDescription": "Dieser Screen wird dauerhaft aus deinem Geschenk entfernt. Diese Aktion kann nicht rückgängig gemacht werden.",
+      "reorderError": "Fehler beim Neuordnen der Screens"
+    },
+    "nodeTypes": {
+      "hero": "Story-Screen",
+      "choice": "Auswahlfrage",
+      "textInput": "Texteingabe",
+      "reveal": "Große Enthüllung",
+      "media": "Medien-Screen",
+      "end": "End-Screen"
+    },
+    "nodeEditor": {
+      "title": "Screen bearbeiten",
+      "description": "Nehme Änderungen an diesem Screen vor. Änderungen werden in deinem Entwurf gespeichert.",
+      "labels": {
+        "headline": "Überschrift",
+        "headlineRequired": "Überschrift *",
+        "body": "Fließtext",
+        "backgroundImage": "Hintergrundbild",
+        "image": "Bild",
+        "imageRequired": "Bild *",
+        "question": "Frage",
+        "questionRequired": "Frage *",
+        "options": "Optionen",
+        "optionsRequired": "Optionen (2-4 erforderlich)",
+        "placeholder": "Platzhalter",
+        "caption": "Bildunterschrift",
+        "ctaLabel": "CTA-Button-Text",
+        "ctaUrl": "CTA-Button-URL",
+        "mediaUrl": "Medien-URL",
+        "minChoices": "Minimale Auswahl",
+        "maxChoices": "Maximale Auswahl",
+        "maxLength": "Maximale Länge"
+      },
+      "placeholders": {
+        "headline": "Überschrift eingeben...",
+        "body": "Fließtext eingeben...",
+        "question": "Deine Frage eingeben...",
+        "option": "Option",
+        "textInput": "Deine Antwort eingeben...",
+        "caption": "Bildunterschrift eingeben...",
+        "ctaLabel": "Button-Text...",
+        "ctaUrl": "https://..."
+      },
+      "buttons": {
+        "save": "Änderungen speichern",
+        "cancel": "Abbrechen",
+        "saving": "Wird gespeichert..."
+      },
+      "success": "Screen erfolgreich aktualisiert",
+      "error": "Fehler beim Aktualisieren des Screens",
+      "unknownType": "Unbekannter Node-Typ"
+    },
+    "publish": {
+      "dialog": {
+        "publishTitle": "Geschenk veröffentlichen?",
+        "publishDescription": "Nach der Veröffentlichung erhältst du einen eindeutigen Link, den du mit dem Empfänger teilen kannst.",
+        "publishTip": "Zeige dein Geschenk in der Vorschau an, bevor du es veröffentlichst, um sicherzustellen, dass alles perfekt aussieht!",
+        "publishButton": "Geschenk veröffentlichen",
+        "publishingButton": "Wird veröffentlicht...",
+        "shareTitle": "Teile dein Geschenk",
+        "shareDescription": "Dein Geschenk ist live! Teile diesen Link mit dem Empfänger.",
+        "copyButton": "Link kopieren",
+        "viewButton": "Live ansehen",
+        "unpublishButton": "Veröffentlichung zurückziehen",
+        "unpublishTitle": "Veröffentlichung dieses Geschenks zurückziehen?",
+        "unpublishDescription": "Der öffentliche Link funktioniert nicht mehr und dein Empfänger kann nicht mehr darauf zugreifen. Du kannst es jederzeit wieder veröffentlichen.",
+        "unpublishing": "Wird zurückgezogen...",
+        "whatHappens": "Was passiert bei der Veröffentlichung:",
+        "features": {
+          "shareLink": "Ein eindeutiger teilbarer Link wird erstellt",
+          "recipientAccess": "Dein Empfänger kann die Erfahrung ansehen",
+          "editLater": "Du kannst den Inhalt noch bearbeiten und aktualisieren",
+          "unpublishAnytime": "Du kannst die Veröffentlichung jederzeit zurückziehen"
+        }
+      },
+      "toast": {
+        "published": "Geschenk erfolgreich veröffentlicht!",
+        "unpublished": "Veröffentlichung zurückgezogen",
+        "linkCopied": "Link in Zwischenablage kopiert!",
+        "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        "publishError": "Fehler beim Veröffentlichen des Geschenks",
+        "unpublishError": "Fehler beim Zurückziehen der Veröffentlichung"
+      }
+    },
+    "theme": {
+      "dialog": {
+        "title": "Theme auswählen",
+        "description": "Wähle ein Theme, das zur emotionalen Stimmung deiner Geschenkerfahrung passt.",
+        "applyButton": "Theme anwenden",
+        "updating": "Wird aktualisiert...",
+        "success": "Theme erfolgreich aktualisiert",
+        "error": "Fehler beim Aktualisieren des Themes"
+      },
+      "names": {
+        "playful-pastel": "Verspielt Pastell",
+        "elegant-dark": "Elegant Dunkel",
+        "warm-mediterranean": "Warm Mediterran",
+        "minimal-zen": "Minimal Zen"
+      },
+      "descriptions": {
+        "playful-pastel": "Hell, fröhlich und heiter mit sanften Farben",
+        "elegant-dark": "Anspruchsvoll und dramatisch mit dunklen Tönen",
+        "warm-mediterranean": "Warm und einladend mit erdigen Farben",
+        "minimal-zen": "Klar, einfach und beruhigend"
+      }
+    },
+    "deleteConfirm": {
+      "title": "Dieses Geschenk löschen?",
+      "description": "Dies wird dein Geschenk und alle seine Screens dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+      "confirm": "Löschen",
+      "cancel": "Abbrechen"
+    }
+  },
+  "player": {
+    "buttons": {
+      "continue": "Weiter",
+      "continueWithSelection": "Weiter ({count} ausgewählt)"
+    },
+    "textInput": {
+      "placeholder": "Deine Antwort eingeben...",
+      "characterCount": "{current} / {max} Zeichen"
+    },
+    "imageAttribution": "Foto von {name} auf Unsplash",
+    "previewMode": "Vorschau-Modus"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "confirm": "Bestätigen"
+  },
+  "errors": {
+    "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "network": "Netzwerkfehler. Bitte überprüfe deine Verbindung.",
+    "unauthorized": "Du musst angemeldet sein, um das zu tun.",
+    "notFound": "Nicht gefunden",
+    "validation": "Bitte überprüfe deine Eingabe und versuche es erneut."
+  },
+  "time": {
+    "ago": "her",
+    "justNow": "gerade eben",
+    "minutesAgo": "vor {count} Minuten",
+    "hoursAgo": "vor {count} Stunden",
+    "daysAgo": "vor {count} Tagen",
+    "weeksAgo": "vor {count} Wochen",
+    "monthsAgo": "vor {count} Monaten",
+    "yearsAgo": "vor {count} Jahren"
+  }
+}

@@ -1,7 +1,12 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
-export default async function Home() {
+export default async function Home({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
   const supabase = await createClient();
   const {
     data: { user },
@@ -9,8 +14,8 @@ export default async function Home() {
 
   // Redirect to dashboard if logged in, otherwise to login
   if (user) {
-    redirect('/dashboard');
+    redirect(`/${locale}/dashboard`);
   } else {
-    redirect('/auth/login');
+    redirect(`/${locale}/auth/login`);
   }
 }

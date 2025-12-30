@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import type { ChoiceNode } from '@/types/flow';
 import { Check } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ChoiceScreenProps {
   node: ChoiceNode;
@@ -12,6 +13,7 @@ interface ChoiceScreenProps {
 }
 
 export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
+  const t = useTranslations('player.buttons');
   const { question, options, allowMultiple } = node.content;
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -65,7 +67,7 @@ export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
       {allowMultiple && selected.length > 0 && (
         <div className="text-center pt-4">
           <Button size="xl" onClick={handleSubmit} className="min-w-[200px]">
-            Continue ({selected.length} selected)
+            {t('continueWithSelection', { count: selected.length })}
           </Button>
         </div>
       )}

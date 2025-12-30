@@ -2,15 +2,17 @@ import { createClient } from '@/lib/supabase/server';
 import { notFound, redirect } from 'next/navigation';
 import { Player } from '@/components/player/player';
 import type { Project } from '@/types/flow';
+import { getTranslations } from 'next-intl/server';
 
-export default async function PreviewPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function PreviewPage({ params }: { params: Promise<{ id: string; locale: string }> }) {
+  const { id, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'player' });
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) redirect('/auth/login');
+  if (!user) redirect(`/${locale}/auth/login`);
 
   // Fetch project (must be owned by user)
   const { data: project } = await supabase
@@ -47,7 +49,7 @@ export default async function PreviewPage({ params }: { params: Promise<{ id: st
   return (
     <>
       <div className="fixed top-4 right-4 z-50 bg-yellow-500 text-black px-4 py-2 rounded-md text-sm font-medium">
-        Preview Mode
+        {t('previewMode')}
       </div>
       <Player project={projectData} nodes={nodes} />
     </>

@@ -2,14 +2,14 @@ import { createClient } from '@/lib/supabase/server';
 import { notFound, redirect } from 'next/navigation';
 import { FlowEditor } from '@/components/editor/flow-editor';
 
-export default async function ProjectEditorPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function ProjectEditorPage({ params }: { params: Promise<{ id: string; locale: string }> }) {
+  const { id, locale } = await params;
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) redirect('/auth/login');
+  if (!user) redirect(`/${locale}/auth/login`);
 
   // Fetch project
   const { data: project, error: projectError } = await supabase

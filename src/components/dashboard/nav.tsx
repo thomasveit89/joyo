@@ -2,18 +2,23 @@
 
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { User } from '@supabase/supabase-js';
+import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 export function DashboardNav({ user }: { user: User }) {
+  const t = useTranslations('dashboard.nav');
+  const params = useParams();
+  const locale = params.locale as string;
   const router = useRouter();
   const supabase = createClient();
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.push('/auth/login');
+    router.push(`/${locale}/auth/login`);
     router.refresh();
   };
 
@@ -21,7 +26,7 @@ export function DashboardNav({ user }: { user: User }) {
     <nav className="border-b bg-card">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <div className="flex items-center gap-6">
-          <Link href="/dashboard" className="flex items-center">
+          <Link href={`/${locale}/dashboard`} className="flex items-center">
             <Image
               src="/joyo.svg"
               alt="Joyo"
@@ -31,18 +36,19 @@ export function DashboardNav({ user }: { user: User }) {
             />
           </Link>
           <Link
-            href="/dashboard"
+            href={`/${locale}/dashboard`}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            My Gifts
+            {t('myGifts')}
           </Link>
         </div>
         <div className="flex items-center gap-4">
+          <LanguageSwitcher />
           <span className="text-sm text-muted-foreground hidden sm:inline">
             {user.email}
           </span>
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
-            Sign Out
+            {t('signOut')}
           </Button>
         </div>
       </div>

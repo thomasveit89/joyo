@@ -16,6 +16,7 @@ import { updateProjectThemeAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { Check, Loader2 } from 'lucide-react';
 import { Theme } from '@/types/flow';
+import { useTranslations } from 'next-intl';
 
 interface ThemeSelectorProps {
   open: boolean;
@@ -32,6 +33,10 @@ export function ThemeSelector({
   projectId,
   onThemeChange,
 }: ThemeSelectorProps) {
+  const t = useTranslations('editor.theme.dialog');
+  const tNames = useTranslations('editor.theme.names');
+  const tDescriptions = useTranslations('editor.theme.descriptions');
+  const tCommon = useTranslations('common');
   const [selectedTheme, setSelectedTheme] = useState(currentTheme);
   const [saving, setSaving] = useState(false);
 
@@ -47,10 +52,10 @@ export function ThemeSelector({
 
     if (result.success) {
       onThemeChange(selectedTheme);
-      toast.success('Theme updated successfully');
+      toast.success(t('success'));
       onClose();
     } else {
-      toast.error(result.error || 'Failed to update theme');
+      toast.error(result.error || t('error'));
     }
 
     setSaving(false);
@@ -60,9 +65,9 @@ export function ThemeSelector({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Choose a Theme</DialogTitle>
+          <DialogTitle>{t('title')}</DialogTitle>
           <DialogDescription>
-            Select a theme that matches the emotional tone of your gift experience.
+            {t('description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -76,8 +81,8 @@ export function ThemeSelector({
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="font-semibold">{theme.label}</h3>
-                  <p className="text-xs text-muted-foreground mt-1">{theme.description}</p>
+                  <h3 className="font-semibold">{tNames(key as any)}</h3>
+                  <p className="text-xs text-muted-foreground mt-1">{tDescriptions(key as any)}</p>
                 </div>
               </div>
 
@@ -110,16 +115,16 @@ export function ThemeSelector({
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose} disabled={saving}>
-            Cancel
+            {tCommon('cancel')}
           </Button>
           <Button onClick={handleSave} disabled={saving}>
             {saving ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Updating...
+                {t('updating')}
               </>
             ) : (
-              'Apply Theme'
+              t('applyButton')
             )}
           </Button>
         </DialogFooter>

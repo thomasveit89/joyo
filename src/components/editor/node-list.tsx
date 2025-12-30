@@ -10,6 +10,7 @@ import { AddScreenDialog } from './add-screen-dialog';
 import { deleteNodeAction, reorderNodesAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { AlertDialogConfirm } from '@/components/ui/alert-dialog-confirm';
+import { useTranslations } from 'next-intl';
 
 interface NodeListProps {
   nodes: any[];
@@ -20,6 +21,9 @@ interface NodeListProps {
 }
 
 export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, onSlideClick }: NodeListProps) {
+  const t = useTranslations('editor.nodeList');
+  const tTypes = useTranslations('editor.nodeTypes');
+  const tCommon = useTranslations('common');
   const [editingNode, setEditingNode] = useState<any | null>(null);
   const [deletingNodeId, setDeletingNodeId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -43,9 +47,9 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
 
     if (result.success) {
       onNodesChange(nodes.filter((n) => n.id !== nodeToDelete));
-      toast.success('Screen deleted successfully');
+      toast.success(t('deleteSuccess'));
     } else {
-      toast.error(result.error || 'Failed to delete screen');
+      toast.error(result.error || t('deleteError'));
     }
     setDeletingNodeId(null);
     setNodeToDelete(null);
@@ -113,7 +117,7 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
           } else {
             // Show error and log details
             console.error('Client: Reorder failed:', result.error);
-            toast.error(result.error || 'Failed to reorder screens');
+            toast.error(result.error || t('reorderError'));
 
             // If nodes are stale, refresh the page
             if ((result as any).needsRefresh) {
@@ -124,7 +128,7 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
           }
         } catch (error) {
           console.error('Client: Reorder exception:', error);
-          toast.error('Failed to reorder screens');
+          toast.error(t('reorderError'));
         }
 
         pendingReorderRef.current = null;
@@ -161,17 +165,17 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
   const getNodeLabel = (type: string) => {
     switch (type) {
       case 'hero':
-        return 'Story Screen';
+        return tTypes('hero');
       case 'choice':
-        return 'Choice Question';
+        return tTypes('choice');
       case 'text-input':
-        return 'Text Input';
+        return tTypes('textInput');
       case 'reveal':
-        return 'Big Reveal';
+        return tTypes('reveal');
       case 'media':
-        return 'Media Screen';
+        return tTypes('media');
       default:
-        return 'Unknown';
+        return tTypes('end');
     }
   };
 
@@ -188,11 +192,11 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
     return (
       <div className="space-y-4">
         <div className="text-center py-8 text-muted-foreground">
-          <p>No screens yet. Add your first screen to get started.</p>
+          <p>{t('addFirstScreen')}</p>
         </div>
         <Button onClick={() => handleAddClick()} className="w-full" variant="outline">
           <Plus className="h-4 w-4 mr-2" />
-          Add First Screen
+          {t('addFirstScreen')}
         </Button>
         <AddScreenDialog
           open={showAddDialog}
@@ -211,10 +215,10 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
         onConfirm={handleDeleteConfirm}
-        title="Delete this screen?"
-        description="This screen will be permanently removed from your gift. This action cannot be undone."
-        confirmText="Delete"
-        cancelText="Cancel"
+        title={t('deleteTitle')}
+        description={t('deleteDescription')}
+        confirmText={tCommon('delete')}
+        cancelText={tCommon('cancel')}
         variant="destructive"
       />
 
@@ -222,7 +226,7 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
         {/* Add Screen button at the top */}
         <Button onClick={() => handleAddClick()} className="w-full" variant="outline">
           <Plus className="h-4 w-4 mr-2" />
-          Add Screen
+          {t('addScreen')}
         </Button>
 
         <Reorder.Group

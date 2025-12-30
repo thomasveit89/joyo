@@ -5,6 +5,7 @@ import { defaultLocale } from '@/i18n/config';
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
+  const next = requestUrl.searchParams.get('next');
   const origin = requestUrl.origin;
 
   if (code) {
@@ -18,6 +19,7 @@ export async function GET(request: Request) {
     }
   }
 
-  // Redirect to dashboard on success
-  return NextResponse.redirect(`${origin}/${defaultLocale}/dashboard`);
+  // Redirect to 'next' URL if provided, otherwise dashboard
+  const redirectUrl = next ? `${origin}${next}` : `${origin}/${defaultLocale}/dashboard`;
+  return NextResponse.redirect(redirectUrl);
 }

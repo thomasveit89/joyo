@@ -8,25 +8,121 @@
     }
   },
   "landing": {
+    "header": {
+      "login": "Login",
+      "startFree": "Start Free"
+    },
     "hero": {
-      "headline": "Create Emotional Gift Journeys That Touch Hearts",
+      "headline": "Create emotional gift journeys that touch hearts",
+      "headlineAccent": "emotional",
       "subheadline": "Turn your special moments into interactive stories with AI. Perfect for proposals, announcements, surprises, and celebrations.",
-      "ctaPrimary": "Create Your First Gift",
-      "ctaSecondary": "See Example"
+      "ctaPrimary": "Start Free",
+      "ctaSecondary": "See Examples"
     },
-    "demo": {
-      "title": "See It In Action",
-      "description": "Experience how your recipients will journey through your emotional gift.",
-      "placeholder": "Demo journey will appear here"
+    "examples": {
+      "title": "Inspiration for Every Occasion",
+      "subtitle": "Explore real examples of how people use Joyo to create unforgettable moments",
+      "viewExample": "View Example",
+      "categories": {
+        "romantic": "Romantic",
+        "family": "Family",
+        "travel": "Travel",
+        "celebrations": "Celebrations"
+      },
+      "items": {
+        "romantic1": {
+          "title": "Anniversary Surprise",
+          "description": "A journey through 5 years of memories, ending with a weekend getaway reveal"
+        },
+        "romantic2": {
+          "title": "Marriage Proposal",
+          "description": "From first date to the big question, a story that led to 'yes'"
+        },
+        "family1": {
+          "title": "Pregnancy Announcement",
+          "description": "A playful way to share the news with grandparents-to-be"
+        },
+        "family2": {
+          "title": "New Home Reveal",
+          "description": "Building excitement for the family's big move"
+        },
+        "travel1": {
+          "title": "Surprise Trip to Paris",
+          "description": "Clues and hints leading to an unforgettable destination reveal"
+        },
+        "travel2": {
+          "title": "Honeymoon Adventure",
+          "description": "Discovering the dream destination together"
+        }
+      }
     },
-    "cta": {
-      "headline": "Ready to Create Something Special?",
-      "subheadline": "Start creating beautiful gift experiences in minutes",
-      "button": "Get Started Free"
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Create your gift journey in three simple steps",
+      "steps": {
+        "step1": {
+          "title": "Describe Your Gift",
+          "description": "Tell our AI about the occasion, recipient, and what you want to share"
+        },
+        "step2": {
+          "title": "Customize & Perfect",
+          "description": "Edit screens, add your photos, and choose the perfect theme"
+        },
+        "step3": {
+          "title": "Share the Magic",
+          "description": "Get a unique link to send to your recipient and watch them experience your gift"
+        }
+      }
     },
     "footer": {
+      "tagline": "Create emotional gift journeys that touch hearts",
+      "product": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "examples": "Examples",
+      "useCases": "Use Cases",
+      "proposals": "Proposals",
+      "announcements": "Announcements",
+      "celebrations": "Celebrations",
+      "surprises": "Surprises",
+      "company": "Company",
       "terms": "Terms of Service",
-      "privacy": "Privacy Policy"
+      "privacy": "Privacy Policy",
+      "business": "For Business",
+      "copyright": "© 2026 Joyo. All rights reserved."
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Start creating beautiful gift experiences today, completely free",
+      "free": {
+        "title": "Free Forever",
+        "price": "$0",
+        "period": "forever",
+        "features": {
+          "unlimited": "Unlimited gift journeys",
+          "ai": "AI-powered generation",
+          "themes": "All themes included",
+          "images": "Image library access",
+          "sharing": "Shareable links",
+          "support": "Community support"
+        },
+        "cta": "Start Free"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "q1": {
+          "question": "Is Joyo really free?",
+          "answer": "Yes! You can create unlimited gift journeys with all features at no cost."
+        },
+        "q2": {
+          "question": "Do I need a credit card?",
+          "answer": "No credit card required. Simply sign up with your email and start creating."
+        },
+        "q3": {
+          "question": "Can I use my own images?",
+          "answer": "Absolutely! Upload your own photos or choose from our integrated image library."
+        }
+      }
     }
   },
   "auth": {
@@ -55,7 +151,7 @@
       "checkEmailMessage": "We sent a password reset link to",
       "checkEmailDescription": "Click the link in the email to reset your password.",
       "useDifferentEmail": "Use a different email",
-      "backToLogin": "Back to login"
+      "backToLogin": "Back"
     },
     "resetPassword": {
       "title": "Set new password",
@@ -444,7 +540,7 @@
     "terms": {
       "title": "Terms of Service",
       "lastUpdated": "Last updated: December 30, 2025",
-      "backToLogin": "Back to login",
+      "backToLogin": "Back",
       "acceptance": {
         "title": "1. Acceptance of Terms",
         "content": "By accessing and using Joyo, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use our service."
@@ -504,7 +600,7 @@
     "privacy": {
       "title": "Privacy Policy",
       "lastUpdated": "Last updated: December 30, 2025",
-      "backToLogin": "Back to login",
+      "backToLogin": "Back",
       "introduction": {
         "title": "1. Introduction",
         "content": "Joyo ('we', 'us', or 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service."

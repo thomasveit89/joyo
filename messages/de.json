@@ -8,25 +8,121 @@
     }
   },
   "landing": {
+    "header": {
+      "login": "Anmelden",
+      "startFree": "Kostenlos starten"
+    },
     "hero": {
       "headline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",
+      "headlineAccent": "emotionale",
       "subheadline": "Verwandle deine besonderen Momente in interaktive Geschichten mit KI. Perfekt für Heiratsanträge, Ankündigungen, Überraschungen und Feiern.",
-      "ctaPrimary": "Erstes Geschenk erstellen",
-      "ctaSecondary": "Beispiel ansehen"
+      "ctaPrimary": "Kostenlos starten",
+      "ctaSecondary": "Beispiele ansehen"
     },
-    "demo": {
-      "title": "Sieh es in Aktion",
-      "description": "Erlebe, wie deine Empfänger durch dein emotionales Geschenk reisen werden.",
-      "placeholder": "Demo-Reise wird hier angezeigt"
+    "examples": {
+      "title": "Inspiration für jeden Anlass",
+      "subtitle": "Entdecke echte Beispiele, wie Menschen Joyo nutzen, um unvergessliche Momente zu schaffen",
+      "viewExample": "Beispiel ansehen",
+      "categories": {
+        "romantic": "Romantisch",
+        "family": "Familie",
+        "travel": "Reisen",
+        "celebrations": "Feiern"
+      },
+      "items": {
+        "romantic1": {
+          "title": "Jahrestags-Überraschung",
+          "description": "Eine Reise durch 5 Jahre Erinnerungen, endend mit der Enthüllung eines Wochenendausflugs"
+        },
+        "romantic2": {
+          "title": "Heiratsantrag",
+          "description": "Vom ersten Date zur großen Frage – eine Geschichte, die zu 'Ja' führte"
+        },
+        "family1": {
+          "title": "Schwangerschaftsankündigung",
+          "description": "Eine spielerische Art, die Nachricht mit den werdenden Großeltern zu teilen"
+        },
+        "family2": {
+          "title": "Neues Zuhause Enthüllung",
+          "description": "Aufbau der Vorfreude auf den großen Umzug der Familie"
+        },
+        "travel1": {
+          "title": "Überraschungsreise nach Paris",
+          "description": "Hinweise und Tipps, die zu einer unvergesslichen Zielenthüllung führen"
+        },
+        "travel2": {
+          "title": "Flitterwochen-Abenteuer",
+          "description": "Gemeinsam das Traumziel entdecken"
+        }
+      }
     },
-    "cta": {
-      "headline": "Bereit, etwas Besonderes zu erschaffen?",
-      "subheadline": "Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse",
-      "button": "Kostenlos starten"
+    "howItWorks": {
+      "title": "So funktioniert's",
+      "subtitle": "Erstelle deine Geschenkreise in drei einfachen Schritten",
+      "steps": {
+        "step1": {
+          "title": "Beschreibe dein Geschenk",
+          "description": "Erzähle unserer KI vom Anlass, dem Empfänger und was du teilen möchtest"
+        },
+        "step2": {
+          "title": "Anpassen & Perfektionieren",
+          "description": "Bearbeite deine Story, füge Fotos hinzu und wähle das perfekte Design"
+        },
+        "step3": {
+          "title": "Teile die Magie",
+          "description": "Versende den Link an deinen Empfänger und beobachte, wie er/sie dein Geschenk erlebt"
+        }
+      }
     },
     "footer": {
+      "tagline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",
+      "product": "Produkt",
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "examples": "Beispiele",
+      "useCases": "Anwendungsfälle",
+      "proposals": "Heiratsanträge",
+      "announcements": "Ankündigungen",
+      "celebrations": "Feiern",
+      "surprises": "Überraschungen",
+      "company": "Unternehmen",
       "terms": "Nutzungsbedingungen",
-      "privacy": "Datenschutz"
+      "privacy": "Datenschutz",
+      "business": "Für Unternehmen",
+      "copyright": "© 2026 Joyo. Alle Rechte vorbehalten."
+    },
+    "pricing": {
+      "title": "Einfache, transparente Preise",
+      "subtitle": "Beginne noch heute mit der Erstellung wunderschöner Geschenkerlebnisse, völlig kostenlos",
+      "free": {
+        "title": "Für immer kostenlos",
+        "price": "0€",
+        "period": "für immer",
+        "features": {
+          "unlimited": "Unbegrenzte Geschenkreisen",
+          "ai": "KI-gestützte Generierung",
+          "themes": "Alle Themen inklusive",
+          "images": "Zugang zur Bildbibliothek",
+          "sharing": "Teilbare Links",
+          "support": "Community-Support"
+        },
+        "cta": "Kostenlos starten"
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "q1": {
+          "question": "Ist Joyo wirklich kostenlos?",
+          "answer": "Ja! Du kannst unbegrenzt Geschenkreisen mit allen Funktionen kostenlos erstellen."
+        },
+        "q2": {
+          "question": "Brauche ich eine Kreditkarte?",
+          "answer": "Keine Kreditkarte erforderlich. Einfach mit deiner E-Mail anmelden und loslegen."
+        },
+        "q3": {
+          "question": "Kann ich eigene Bilder verwenden?",
+          "answer": "Auf jeden Fall! Lade deine eigenen Fotos hoch oder wähle aus unserer integrierten Bildbibliothek."
+        }
+      }
     }
   },
   "auth": {
@@ -55,7 +151,7 @@
       "checkEmailMessage": "Wir haben einen Link zum Zurücksetzen gesendet an",
       "checkEmailDescription": "Klicke auf den Link in der E-Mail, um dein Passwort zurückzusetzen.",
       "useDifferentEmail": "Andere E-Mail verwenden",
-      "backToLogin": "Zurück zur Anmeldung"
+      "backToLogin": "Zurück"
     },
     "resetPassword": {
       "title": "Neues Passwort festlegen",
@@ -444,7 +540,7 @@
     "terms": {
       "title": "Nutzungsbedingungen",
       "lastUpdated": "Zuletzt aktualisiert: 30. Dezember 2025",
-      "backToLogin": "Zurück zur Anmeldung",
+      "backToLogin": "Zurück",
       "acceptance": {
         "title": "1. Annahme der Bedingungen",
         "content": "Durch den Zugriff auf und die Nutzung von Joyo akzeptieren Sie die Bedingungen dieser Vereinbarung. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unseren Service bitte nicht."
@@ -504,7 +600,7 @@
     "privacy": {
       "title": "Datenschutzerklärung",
       "lastUpdated": "Zuletzt aktualisiert: 30. Dezember 2025",
-      "backToLogin": "Zurück zur Anmeldung",
+      "backToLogin": "Zurück",
       "introduction": {
         "title": "1. Einleitung",
         "content": "Joyo ('wir', 'uns' oder 'unser') verpflichtet sich zum Schutz Ihrer Privatsphäre. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen erfassen, verwenden, offenlegen und schützen, wenn Sie unseren Service nutzen."

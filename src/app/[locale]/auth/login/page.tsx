@@ -66,7 +66,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-joyo-cream">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-6">
@@ -149,7 +149,7 @@ export default function LoginPage() {
                 </label>
                 <Link
                   href={`/${locale}/auth/forgot-password`}
-                  className="text-xs text-primary hover:underline"
+                  className="text-xs text-joyo-coral hover:underline"
                 >
                   {t('forgotPassword')}
                 </Link>
@@ -173,7 +173,7 @@ export default function LoginPage() {
               </div>
             )}
 
-            <Button type="submit" className="w-full h-11" disabled={loading}>
+            <Button type="submit" className="w-full h-11 bg-joyo-coral hover:bg-joyo-coral-dark" disabled={loading}>
               {loading ? t('signingInButton') : t('signInButton')}
             </Button>
           </form>
@@ -182,7 +182,7 @@ export default function LoginPage() {
             <span className="text-muted-foreground">{t('noAccount')} </span>
             <Link
               href={`/${locale}/auth/signup`}
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-joyo-coral hover:underline"
             >
               {t('signUpLink')}
             </Link>

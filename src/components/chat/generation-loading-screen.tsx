@@ -62,7 +62,7 @@ export function GenerationLoadingScreen({ isVisible }: GenerationLoadingScreenPr
         {/* Lottie Animation */}
         <div className="w-64 h-64">
           <DotLottieReact
-            src="/animations/lazy_cat.lottie"
+            src="/animations/joyo-loading.lottie"
             loop
             autoplay
             className="w-full h-full"
@@ -96,11 +96,6 @@ export function GenerationLoadingScreen({ isVisible }: GenerationLoadingScreenPr
               }`}
             />
           ))}
-        </div>
-
-        {/* Optional: Animated gradient ring */}
-        <div className="relative w-32 h-1 bg-muted rounded-full overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent animate-shimmer" />
         </div>
       </div>
     </div>

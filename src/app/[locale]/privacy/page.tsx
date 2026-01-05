@@ -1,4 +1,6 @@
 import { getTranslations } from 'next-intl/server';
+import { Header } from '@/components/landing/header';
+import { Footer } from '@/components/landing/footer';
 import { BackButton } from '@/components/ui/back-button';
 
 export default async function PrivacyPage({
@@ -10,8 +12,9 @@ export default async function PrivacyPage({
   const t = await getTranslations({ locale, namespace: 'legal.privacy' });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      <div className="max-w-4xl mx-auto px-4 py-16">
+    <div className="min-h-screen bg-joyo-cream">
+      <Header locale={locale} />
+      <div className="max-w-4xl mx-auto px-4 py-24">
         <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
           <h1 className="text-4xl font-bold mb-2">{t('title')}</h1>
           <p className="text-muted-foreground mb-8">{t('lastUpdated')}</p>
@@ -110,12 +113,13 @@ export default async function PrivacyPage({
           </div>
 
           <div className="mt-8 pt-8 border-t">
-            <BackButton className="text-primary hover:underline">
+            <BackButton className="text-joyo-coral hover:underline">
               ← {t('backToLogin')}
             </BackButton>
           </div>
         </div>
       </div>
+      <Footer locale={locale} />
     </div>
   );
 }

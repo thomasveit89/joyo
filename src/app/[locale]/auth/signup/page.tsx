@@ -95,7 +95,7 @@ export default function SignupPage() {
   // Show email confirmation screen if email was sent
   if (emailSent) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-joyo-cream">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 text-6xl">📧</div>
@@ -127,7 +127,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-joyo-cream">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="mx-auto mb-6">
@@ -246,7 +246,7 @@ export default function SignupPage() {
               </div>
             )}
 
-            <Button type="submit" className="w-full h-11" disabled={loading}>
+            <Button type="submit" className="w-full h-11 bg-joyo-coral hover:bg-joyo-coral-dark" disabled={loading}>
               {loading ? t('creatingAccountButton') : t('createAccountButton')}
             </Button>
           </form>
@@ -255,7 +255,7 @@ export default function SignupPage() {
             <span className="text-muted-foreground">{t('haveAccount')} </span>
             <Link
               href={`/${locale}/auth/login`}
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-joyo-coral hover:underline"
             >
               {t('signInLink')}
             </Link>
@@ -265,14 +265,14 @@ export default function SignupPage() {
             {t('termsNotice.prefix')}{' '}
             <Link
               href={`/${locale}/terms`}
-              className="text-primary hover:underline"
+              className="text-joyo-coral hover:underline"
             >
               {t('termsNotice.termsLink')}
             </Link>{' '}
             {t('termsNotice.and')}{' '}
             <Link
               href={`/${locale}/privacy`}
-              className="text-primary hover:underline"
+              className="text-joyo-coral hover:underline"
             >
               {t('termsNotice.privacyLink')}
             </Link>

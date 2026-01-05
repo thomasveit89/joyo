@@ -45,6 +45,11 @@
   --color-error-foreground: var(--error-foreground);
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
+  --color-joyo-coral: var(--joyo-coral);
+  --color-joyo-coral-dark: var(--joyo-coral-dark);
+  --color-joyo-peach: var(--joyo-peach);
+  --color-joyo-cream: var(--joyo-cream);
+  --color-joyo-charcoal: var(--joyo-charcoal);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -97,6 +102,13 @@
   --error-foreground: oklch(0.50 0.20 25);
   --info: oklch(0.95 0.10 230);
   --info-foreground: oklch(0.40 0.18 230);
+
+  /* Joyo Landing Page Brand Colors */
+  --joyo-coral: oklch(0.62 0.15 25);
+  --joyo-coral-dark: oklch(0.55 0.15 25);
+  --joyo-peach: oklch(0.88 0.08 60);
+  --joyo-cream: oklch(0.98 0.02 80);
+  --joyo-charcoal: oklch(0.30 0 0);
 }
 
 .dark {

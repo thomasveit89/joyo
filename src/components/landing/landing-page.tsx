@@ -2,46 +2,55 @@
 
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { LanguageSwitcher } from '@/components/language-switcher';
+import { Header } from './header';
+import { ExamplesGallery } from './examples-gallery';
+import { HowItWorks } from './how-it-works';
+import { Footer } from './footer';
+import { getExamplesByLocale } from '@/data/examples';
 
 interface LandingPageProps {
   locale: string;
 }
 
 export function LandingPage({ locale }: LandingPageProps) {
-  const t = useTranslations('landing');
+  const t = useTranslations('landing.hero');
+  const examples = getExamplesByLocale(locale);
 
-  const scrollToDemo = () => {
-    document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToExamples = () => {
+    document.getElementById('examples')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50">
-      {/* Hero Section */}
-      <section className="relative px-4 pt-20 pb-32 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Logo/Brand */}
-          <div className="mb-8 flex justify-center">
-            <Image
-              src="/joyo.svg"
-              alt="joyo"
-              width={200}
-              height={80}
-              priority
-              className="h-16 w-auto sm:h-20 lg:h-24"
-            />
-          </div>
+    <div className="min-h-screen bg-joyo-cream">
+      {/* Header */}
+      <Header locale={locale} />
 
-          {/* Headline */}
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            {t('hero.headline')}
-          </h2>
+      {/* Hero Section */}
+      <section className="relative px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Headline with color accent */}
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-joyo-charcoal sm:text-5xl lg:text-6xl">
+            {locale === 'en' ? (
+              <>
+                Create <span className="text-joyo-coral">emotional</span> gift
+                journeys that touch hearts
+              </>
+            ) : (
+              <>
+                Erschaffe{' '}
+                <span className="text-joyo-coral">emotionale</span>{' '}
+                Geschenkreisen, die Herzen berühren
+              </>
+            )}
+          </h1>
 
           {/* Subheadline */}
-          <p className="mb-10 text-xl text-gray-600 sm:text-2xl">
-            {t('hero.subheadline')}
+          <p className="mb-10 text-xl text-joyo-charcoal/80 sm:text-2xl max-w-3xl mx-auto">
+            {t('subheadline')}
           </p>
 
           {/* CTAs */}
@@ -49,108 +58,55 @@ export function LandingPage({ locale }: LandingPageProps) {
             <Button
               asChild
               size="lg"
-              className="w-full bg-purple-600 text-lg hover:bg-purple-700 sm:w-auto"
+              className="w-full bg-joyo-coral text-white text-lg hover:bg-joyo-coral-dark sm:w-auto"
             >
-              <Link href={`/${locale}/auth/signup`}>
-                {t('hero.ctaPrimary')}
-              </Link>
+              <Link href={`/${locale}/auth/signup`}>{t('ctaPrimary')}</Link>
             </Button>
             <Button
               variant="outline"
               size="lg"
-              onClick={scrollToDemo}
-              className="w-full text-lg sm:w-auto"
+              onClick={scrollToExamples}
+              className="w-full text-lg border-joyo-coral text-joyo-coral hover:bg-joyo-coral hover:text-white sm:w-auto"
             >
-              {t('hero.ctaSecondary')}
+              {t('ctaSecondary')}
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Demo Section */}
-      <section id="demo" className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
-            <h3 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
-              {t('demo.title')}
-            </h3>
-            <p className="text-lg text-gray-600">
-              {t('demo.description')}
-            </p>
-          </div>
+      {/* Examples Gallery */}
+      <ExamplesGallery locale={locale} examples={examples} />
 
-          {/* Demo placeholder - can be replaced with iframe or video */}
-          <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
-            <div className="flex aspect-[9/16] max-h-[600px] items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100 sm:aspect-video">
-              <div className="text-center">
-                <div className="mb-4 text-6xl">🎁</div>
-                <p className="text-lg text-gray-600">
-                  {t('demo.placeholder')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* How It Works */}
+      <HowItWorks locale={locale} />
 
-      {/* CTA Section */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      {/* Final CTA Section */}
+      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-3xl text-center">
-          <h3 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
-            {t('cta.headline')}
+          <h3 className="mb-4 text-3xl font-bold text-joyo-charcoal sm:text-4xl">
+            {locale === 'en'
+              ? 'Ready to Create Something Special?'
+              : 'Bereit, etwas Besonderes zu erschaffen?'}
           </h3>
-          <p className="mb-8 text-xl text-gray-600">
-            {t('cta.subheadline')}
+          <p className="mb-8 text-xl text-joyo-charcoal/80">
+            {locale === 'en'
+              ? 'Start creating beautiful gift experiences in minutes'
+              : 'Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse'}
           </p>
           <Button
             asChild
             size="lg"
-            className="bg-purple-600 text-lg hover:bg-purple-700"
+            className="bg-joyo-coral text-white text-lg hover:bg-joyo-coral-dark"
           >
             <Link href={`/${locale}/auth/signup`}>
-              {t('cta.button')}
+              {locale === 'en' ? 'Start Free' : 'Kostenlos starten'}
             </Link>
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-white px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            {/* Brand */}
-            <div className="text-center sm:text-left">
-              <Image
-                src="/joyo.svg"
-                alt="joyo"
-                width={100}
-                height={40}
-                className="h-8 w-auto"
-              />
-              <p className="mt-2 text-sm text-gray-600">
-                {t.raw('hero.subheadline')?.toString().split('.')[0]}
-              </p>
-            </div>
-
-            {/* Links */}
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              <Link
-                href={`/${locale}/terms`}
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
-                {t('footer.terms')}
-              </Link>
-              <Link
-                href={`/${locale}/privacy`}
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
-                {t('footer.privacy')}
-              </Link>
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer locale={locale} />
     </div>
   );
 }

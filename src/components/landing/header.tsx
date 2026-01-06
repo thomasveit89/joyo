@@ -23,13 +23,6 @@ export function Header({ locale }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToExamples = () => {
-    document.getElementById('examples')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
-
   return (
     <header
       className={cn(
@@ -52,22 +45,6 @@ export function Header({ locale }: HeaderProps) {
               priority
             />
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={scrollToExamples}
-              className="text-sm font-medium text-joyo-charcoal hover:text-joyo-coral transition-colors"
-            >
-              {t('login').includes('Login') ? 'Examples' : 'Beispiele'}
-            </button>
-            <Link
-              href={`/${locale}/pricing`}
-              className="text-sm font-medium text-joyo-charcoal hover:text-joyo-coral transition-colors"
-            >
-              {t('login').includes('Login') ? 'Pricing' : 'Preise'}
-            </Link>
-          </div>
 
           {/* Auth Buttons */}
           <div className="flex items-center gap-3">

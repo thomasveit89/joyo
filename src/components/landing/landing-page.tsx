@@ -124,7 +124,7 @@ export function LandingPage({ locale }: LandingPageProps) {
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-4 text-3xl font-bold text-joyo-charcoal sm:text-4xl">
             {locale === 'en'
-              ? 'Ready to Create Something Special?'
+              ? 'Ready to create something special?'
               : 'Bereit, etwas Besonderes zu erschaffen?'}
           </h3>
           <p className="mb-8 text-xl text-joyo-charcoal/80">

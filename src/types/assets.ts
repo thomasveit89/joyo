@@ -60,7 +60,8 @@ export const ALLOWED_IMAGE_TYPES = [
   'image/png',
   'image/webp',
   'image/gif',
+  'application/pdf', // PDF support for vouchers
 ] as const;
 
-export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
+export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes (increased for PDFs)
 export const MAX_IMAGE_DIMENSION = 2000; // Max width or height in pixels

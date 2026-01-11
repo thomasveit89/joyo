@@ -8,6 +8,7 @@ const MAGIC_NUMBERS: Record<string, string[]> = {
   'image/png': ['89504e47'],
   'image/webp': ['52494646'], // "RIFF"
   'image/gif': ['47494638'], // "GIF8"
+  'application/pdf': ['25504446'], // "%PDF"
 };
 
 function checkMagicNumber(buffer: ArrayBuffer, mimeType: string): boolean {
@@ -62,7 +63,7 @@ export async function POST(request: NextRequest) {
     // 4. Validate file type
     if (!ALLOWED_IMAGE_TYPES.includes(file.type as (typeof ALLOWED_IMAGE_TYPES)[number])) {
       return NextResponse.json(
-        { error: 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed' },
+        { error: 'Invalid file type. Only JPEG, PNG, WebP, GIF, and PDF are allowed' },
         { status: 400 }
       );
     }

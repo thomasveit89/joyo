@@ -17,6 +17,7 @@ import { updateNodeAction } from '@/app/actions/nodes';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 import { ImagePicker } from './image-picker';
+import { PdfPicker } from './pdf-picker';
 import { useTranslations } from 'next-intl';
 
 interface NodeEditorProps {
@@ -187,32 +188,32 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ctaLabel">{t('labels.ctaLabel')}</Label>
+              <Label>{t('labels.voucherPdf')}</Label>
+              <PdfPicker
+                projectId={projectId}
+                value={content.voucher}
+                onSelect={(pdf) => updateField('voucher', pdf)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="buttonText">{t('labels.buttonText')}</Label>
               <Input
-                id="ctaLabel"
+                id="buttonText"
                 value={content.cta?.label || ''}
                 onChange={(e) =>
                   updateField('cta', { ...content.cta, label: e.target.value })
                 }
                 maxLength={50}
-                placeholder={t('placeholders.ctaLabel')}
+                placeholder={t('placeholders.buttonText')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ctaUrl">{t('labels.ctaUrl')}</Label>
+              <Label htmlFor="buttonUrl">{t('labels.buttonUrl')}</Label>
               <Input
-                id="ctaUrl"
+                id="buttonUrl"
                 value={content.cta?.url || ''}
                 onChange={(e) => updateField('cta', { ...content.cta, url: e.target.value })}
-                placeholder={t('placeholders.ctaUrl')}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>{t('labels.voucher')}</Label>
-              <ImagePicker
-                projectId={projectId}
-                value={content.voucher}
-                onSelect={(img) => updateField('voucher', img)}
+                placeholder={t('placeholders.buttonUrl')}
               />
             </div>
           </div>

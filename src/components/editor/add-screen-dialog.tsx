@@ -18,6 +18,7 @@ import { toast } from 'sonner';
 import { Loader2, MessageSquare, ListChecks, TextCursorInput, Sparkles, Image as ImageIcon } from 'lucide-react';
 import { NodeType } from '@/types/flow';
 import { ImagePicker } from './image-picker';
+import { PdfPicker } from './pdf-picker';
 import { useTranslations } from 'next-intl';
 
 interface AddScreenDialogProps {
@@ -284,31 +285,31 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ctaLabel">{tFields('ctaLabel')}</Label>
+              <Label>{tFields('voucherPdf')}</Label>
+              <PdfPicker
+                projectId={projectId}
+                value={c.voucher}
+                onSelect={(pdf) => updateField('voucher', pdf)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="buttonText">{tFields('buttonText')}</Label>
               <Input
-                id="ctaLabel"
+                id="buttonText"
                 value={c.cta?.label || ''}
                 onChange={(e) => updateField('cta', { ...(content as any).cta, label: e.target.value })}
                 maxLength={50}
-                placeholder={tFields('ctaLabelPlaceholder')}
+                placeholder={tFields('buttonTextPlaceholder')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ctaUrl">{tFields('ctaUrl')}</Label>
+              <Label htmlFor="buttonUrl">{tFields('buttonUrl')}</Label>
               <Input
-                id="ctaUrl"
+                id="buttonUrl"
                 type="url"
                 value={c.cta?.url || ''}
                 onChange={(e) => updateField('cta', { ...(content as any).cta, url: e.target.value })}
-                placeholder={tFields('ctaUrlPlaceholder')}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>{tFields('voucher')}</Label>
-              <ImagePicker
-                projectId={projectId}
-                value={c.voucher}
-                onSelect={(img) => updateField('voucher', img)}
+                placeholder={tFields('buttonUrlPlaceholder')}
               />
             </div>
           </div>

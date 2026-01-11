@@ -216,7 +216,7 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
               )}
             </div>
           )}
-          {cta && cta.label && cta.url && (
+          {hasValidVoucher && cta && cta.label && cta.url && (
             <Button size="xl" asChild className="shadow-lg">
               <a href={cta.url} target="_blank" rel="noopener noreferrer">
                 {cta.label}
@@ -224,7 +224,7 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
             </Button>
           )}
           <Button
-            variant={cta?.label ? 'outline' : 'default'}
+            variant={(hasValidVoucher && cta?.label) ? 'outline' : 'default'}
             size="xl"
             onClick={onNext}
             className={hasValidImage ? 'bg-white/10 hover:bg-white/20 text-white border-white/30' : ''}

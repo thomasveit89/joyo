@@ -175,7 +175,7 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
 
   const validateFile = (file: File): string | null => {
     if (!ALLOWED_IMAGE_TYPES.includes(file.type as (typeof ALLOWED_IMAGE_TYPES)[number])) {
-      return 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.';
+      return 'Invalid file type. Only JPEG, PNG, WebP, GIF, and PDF are allowed.';
     }
     if (file.size > MAX_FILE_SIZE) {
       return `File size must be less than ${MAX_FILE_SIZE / 1024 / 1024}MB`;
@@ -190,12 +190,17 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
       return;
     }
 
-    // Show preview immediately
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setPreview(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
+    // Show preview immediately (only for images, not PDFs)
+    if (file.type !== 'application/pdf') {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // For PDFs, show filename as preview
+      setPreview('pdf');
+    }
 
     // Upload file
     setIsUploading(true);
@@ -278,14 +283,24 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
       >
         {preview ? (
           <div className="space-y-4">
-            <div className="relative w-full aspect-video max-w-md mx-auto">
-              <Image
-                src={preview}
-                alt="Preview"
-                fill
-                className="object-contain rounded-md"
-              />
-            </div>
+            {preview === 'pdf' ? (
+              <div className="w-full max-w-md mx-auto p-8 border-2 border-dashed border-primary/50 rounded-lg bg-primary/5">
+                <div className="text-center space-y-2">
+                  <div className="text-4xl">📄</div>
+                  <p className="text-sm font-medium">PDF Selected</p>
+                  <p className="text-xs text-muted-foreground">Ready to upload</p>
+                </div>
+              </div>
+            ) : (
+              <div className="relative w-full aspect-video max-w-md mx-auto">
+                <Image
+                  src={preview}
+                  alt="Preview"
+                  fill
+                  className="object-contain rounded-md"
+                />
+              </div>
+            )}
             <Button
               variant="outline"
               size="sm"
@@ -303,10 +318,10 @@ function UploadTab({ onSelect, projectId, value }: { onSelect: (img: ImageData) 
           <div className="space-y-2">
             <Upload className="h-12 w-12 mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground">
-              Drag and drop an image here, or click to browse
+              Drag and drop a file here, or click to browse
             </p>
             <p className="text-xs text-muted-foreground">
-              Max {MAX_FILE_SIZE / 1024 / 1024}MB • JPEG, PNG, WebP, GIF
+              Max {MAX_FILE_SIZE / 1024 / 1024}MB • JPEG, PNG, WebP, GIF, PDF
             </p>
           </div>
         )}

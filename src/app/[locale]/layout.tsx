@@ -14,9 +14,36 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'app.metadata' });
 
+  const title = t('title');
+  const description = t('description');
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}/${locale === 'de' ? '' : locale}`;
+  const ogImage = `${process.env.NEXT_PUBLIC_APP_URL}/img/og-image-${locale}.png`;
+
   return {
-    title: t('title'),
-    description: t('description'),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Joyo',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: locale === 'de' ? 'de_CH' : 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 

@@ -91,6 +91,12 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
         );
 
       case 'choice':
+        // Ensure we always have 4 option slots
+        const choiceOptions = content.options || [];
+        const optionSlots = [0, 1, 2, 3].map(index =>
+          choiceOptions[index] || { id: `option-${index + 1}`, label: '' }
+        );
+
         return (
           <div className="space-y-6">
             <div className="space-y-2">
@@ -105,12 +111,12 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
             </div>
             <div className="space-y-2">
               <Label>{t('labels.optionsRequired')}</Label>
-              {content.options?.map((option: any, index: number) => (
+              {optionSlots.map((option: any, index: number) => (
                 <Input
-                  key={option.id}
+                  key={`option-${index}`}
                   value={option.label}
                   onChange={(e) => {
-                    const newOptions = [...content.options];
+                    const newOptions = [...optionSlots];
                     newOptions[index] = { ...option, label: e.target.value };
                     updateField('options', newOptions);
                   }}

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 import { type Example } from '@/data/examples';
 
 interface ExamplesGalleryProps {
@@ -10,91 +10,135 @@ interface ExamplesGalleryProps {
   examples: Example[];
 }
 
-const categoryEmojis = {
-  romantic: '💍',
-  family: '👶',
-  travel: '✈️',
-  celebrations: '🎉',
-};
+// Gallery items with image, label, and positioning
+const galleryItems = [
+  {
+    id: 'new-home',
+    image: '/img/new-home.jpg',
+    labelEn: 'New home',
+    labelDe: 'Neues Zuhause',
+    style: {
+      left: '2%',
+      top: '5%',
+      rotate: '-8deg',
+      zIndex: 1,
+    },
+  },
+  {
+    id: 'birthday',
+    image: '/img/birthday.jpg',
+    labelEn: 'Birthday',
+    labelDe: 'Geburtstag',
+    style: {
+      left: '18%',
+      top: '0%',
+      rotate: '4deg',
+      zIndex: 2,
+    },
+  },
+  {
+    id: 'city-trip',
+    image: '/img/city-trip.jpg',
+    labelEn: 'City trip',
+    labelDe: 'Städtetrip',
+    style: {
+      left: '34%',
+      top: '8%',
+      rotate: '-3deg',
+      zIndex: 3,
+    },
+  },
+  {
+    id: 'proposal',
+    image: '/img/proposal.jpg',
+    labelEn: 'Proposal',
+    labelDe: 'Heiratsantrag',
+    style: {
+      left: '50%',
+      top: '2%',
+      rotate: '6deg',
+      zIndex: 2,
+    },
+  },
+  {
+    id: 'family',
+    image: '/img/family.jpg',
+    labelEn: 'Family',
+    labelDe: 'Familie',
+    style: {
+      left: '66%',
+      top: '10%',
+      rotate: '-5deg',
+      zIndex: 1,
+    },
+  },
+  {
+    id: 'honeymoon',
+    image: '/img/honeymoon.jpg',
+    labelEn: 'Honeymoon',
+    labelDe: 'Flitterwochen',
+    style: {
+      left: '82%',
+      top: '5%',
+      rotate: '7deg',
+      zIndex: 2,
+    },
+  },
+];
 
 export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
   const t = useTranslations('landing.examples');
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section id="examples" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="examples" className="py-8 px-4 sm:px-6 lg:px-8 relative">
       <div className="container mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-joyo-charcoal mb-4">
-            {t('title')}
-          </h2>
-          <p className="text-lg text-joyo-charcoal/80 max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {examples.map((example) => (
+        {/* Scattered Gallery */}
+        <div className="relative w-full h-[500px] max-w-6xl mx-auto">
+          {galleryItems.map((item) => (
             <div
-              key={example.id}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden border border-white/50"
+              key={item.id}
+              className="absolute transition-all duration-300 ease-out cursor-pointer w-[260px]"
+              style={{
+                left: item.style.left,
+                top: item.style.top,
+                transform: `rotate(${item.style.rotate})`,
+                zIndex: hoveredId === item.id ? 50 : item.style.zIndex,
+              }}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Thumbnail */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl bg-gradient-to-br from-joyo-peach to-joyo-cream">
-                <Image
-                  src={example.thumbnailUrl}
-                  alt={t(`items.${example.id}.title`)}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  onError={(e) => {
-                    // Fallback to placeholder gradient if image fails to load
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                {/* Category Badge */}
-                <div className="inline-flex items-center gap-1.5 bg-joyo-peach text-joyo-charcoal text-xs font-medium px-3 py-1 rounded-full mb-3">
-                  <span>{categoryEmojis[example.category]}</span>
-                  <span>{t(`categories.${example.category}`)}</span>
+              {/* Card */}
+              <div
+                className={`relative bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${hoveredId === item.id ? 'scale-110' : 'scale-100'
+                  }`}
+              >
+                {/* Image */}
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={item.image}
+                    alt={locale === 'de' ? item.labelDe : item.labelEn}
+                    fill
+                    className="object-cover"
+                    sizes="260px"
+                  />
                 </div>
 
-                {/* Title */}
-                <h3 className="text-lg font-semibold text-joyo-charcoal mb-2">
-                  {t(`items.${example.id}.title`)}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-joyo-charcoal/70 mb-4 line-clamp-2">
-                  {t(`items.${example.id}.description`)}
-                </p>
-
-                {/* CTA */}
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="w-full border-joyo-coral text-joyo-coral hover:bg-joyo-coral hover:text-white transition-colors"
-                >
-                  <a
-                    href={example.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t('viewExample')}
-                  </a>
-                </Button>
+                {/* Label */}
+                <div className="absolute top-3 left-3">
+                  <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                    <span className="text-sm font-medium text-joyo-charcoal">
+                      {locale === 'de' ? item.labelDe : item.labelEn}
+                    </span>
+                  </div>
+                </div>
               </div>
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-joyo-coral/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </div>
           ))}
         </div>
+
+        {/* Bottom spacing for mobile */}
+        <div className="h-20" />
       </div>
     </section>
   );

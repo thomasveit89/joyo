@@ -75,6 +75,8 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
           options: [
             { id: crypto.randomUUID(), label: '' },
             { id: crypto.randomUUID(), label: '' },
+            { id: crypto.randomUUID(), label: '' },
+            { id: crypto.randomUUID(), label: '' },
           ],
           allowMultiple: false,
         });
@@ -203,51 +205,19 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
               />
             </div>
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <Label>{tFields('options')}</Label>
-                {c.options?.length < 4 && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      const newOptions = [
-                        ...(content as any).options,
-                        { id: crypto.randomUUID(), label: '' },
-                      ];
-                      updateField('options', newOptions);
-                    }}
-                  >
-                    {tFields('addOption')}
-                  </Button>
-                )}
-              </div>
+              <Label>{tFields('options')}</Label>
               {(content.options as Array<{ id: string; label: string }>)?.map((option, index: number) => (
-                <div key={option.id} className="flex gap-2">
-                  <Input
-                    value={option.label}
-                    onChange={(e) => {
-                      const newOptions = [...(content as any).options];
-                      newOptions[index] = { ...option, label: e.target.value };
-                      updateField('options', newOptions);
-                    }}
-                    placeholder={tFields('optionPlaceholder', { number: index + 1 })}
-                    maxLength={100}
-                  />
-                  {c.options.length > 2 && (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        const newOptions = (c.options as Array<{ id: string; label: string }>).filter((_, i: number) => i !== index);
-                        updateField('options', newOptions);
-                      }}
-                    >
-                      {tFields('remove')}
-                    </Button>
-                  )}
-                </div>
+                <Input
+                  key={option.id}
+                  value={option.label}
+                  onChange={(e) => {
+                    const newOptions = [...(content as any).options];
+                    newOptions[index] = { ...option, label: e.target.value };
+                    updateField('options', newOptions);
+                  }}
+                  placeholder={tFields('optionPlaceholder', { number: index + 1 })}
+                  maxLength={100}
+                />
               ))}
             </div>
           </div>

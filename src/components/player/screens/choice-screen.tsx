@@ -15,6 +15,8 @@ interface ChoiceScreenProps {
 export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
   const t = useTranslations('player.buttons');
   const { question, options, allowMultiple } = node.content;
+  // Filter out empty options
+  const visibleOptions = options.filter((opt) => opt.label && opt.label.trim() !== '');
   const [selected, setSelected] = useState<string[]>([]);
 
   const handleOptionClick = (optionId: string) => {
@@ -43,7 +45,7 @@ export function ChoiceScreen({ node, onAnswer }: ChoiceScreenProps) {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {options.map((option) => {
+        {visibleOptions.map((option) => {
           const isSelected = selected.includes(option.id);
           return (
             <Button

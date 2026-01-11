@@ -349,6 +349,7 @@
         "caption": "Caption",
         "ctaLabel": "CTA Button Label",
         "ctaUrl": "CTA Button URL",
+        "voucher": "Voucher (Image or PDF)",
         "mediaUrl": "Media URL",
         "minChoices": "Minimum Choices",
         "maxChoices": "Maximum Choices",
@@ -412,6 +413,7 @@
         "ctaLabelPlaceholder": "e.g., Get Your Gift",
         "ctaUrl": "Button URL",
         "ctaUrlPlaceholder": "https://...",
+        "voucher": "Voucher (Image or PDF)",
         "image": "Image *",
         "caption": "Caption (Optional)",
         "captionPlaceholder": "Enter caption..."
@@ -496,7 +498,8 @@
   "player": {
     "buttons": {
       "continue": "Continue",
-      "continueWithSelection": "Continue ({count} selected)"
+      "continueWithSelection": "Continue ({count} selected)",
+      "downloadVoucher": "Download Voucher"
     },
     "textInput": {
       "placeholder": "Type your answer...",

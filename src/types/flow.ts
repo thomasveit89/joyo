@@ -72,6 +72,7 @@ export const RevealNodeContentSchema = z.object({
   }).optional(),
   confetti: z.boolean().default(true),
   backgroundImage: ImageSchema.optional(),
+  voucher: ImageSchema.optional(), // Image or PDF voucher
 });
 
 export const RevealNodeSchema = BaseNodeSchema.extend({

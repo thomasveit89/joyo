@@ -284,45 +284,32 @@ export function AddScreenDialog({ open, onClose, projectId, insertAtIndex, onAdd
               />
             </div>
             <div className="space-y-2">
-              <Label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={!!c.cta}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      updateField('cta', { label: '', url: '' });
-                    } else {
-                      const { cta: _cta, ...rest } = content;
-                      setContent(rest);
-                    }
-                  }}
-                />
-                {tFields('addCta')}
-              </Label>
-              {c.cta && (
-                <div className="ml-6 space-y-3">
-                  <div className="space-y-2">
-                    <Label htmlFor="ctaLabel">{tFields('ctaLabel')}</Label>
-                    <Input
-                      id="ctaLabel"
-                      value={c.cta.label || ''}
-                      onChange={(e) => updateField('cta', { ...(content as any).cta, label: e.target.value })}
-                      maxLength={50}
-                      placeholder={tFields('ctaLabelPlaceholder')}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="ctaUrl">{tFields('ctaUrl')}</Label>
-                    <Input
-                      id="ctaUrl"
-                      type="url"
-                      value={c.cta.url || ''}
-                      onChange={(e) => updateField('cta', { ...(content as any).cta, url: e.target.value })}
-                      placeholder={tFields('ctaUrlPlaceholder')}
-                    />
-                  </div>
-                </div>
-              )}
+              <Label htmlFor="ctaLabel">{tFields('ctaLabel')}</Label>
+              <Input
+                id="ctaLabel"
+                value={c.cta?.label || ''}
+                onChange={(e) => updateField('cta', { ...(content as any).cta, label: e.target.value })}
+                maxLength={50}
+                placeholder={tFields('ctaLabelPlaceholder')}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="ctaUrl">{tFields('ctaUrl')}</Label>
+              <Input
+                id="ctaUrl"
+                type="url"
+                value={c.cta?.url || ''}
+                onChange={(e) => updateField('cta', { ...(content as any).cta, url: e.target.value })}
+                placeholder={tFields('ctaUrlPlaceholder')}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{tFields('voucher')}</Label>
+              <ImagePicker
+                projectId={projectId}
+                value={c.voucher}
+                onSelect={(img) => updateField('voucher', img)}
+              />
             </div>
           </div>
         );

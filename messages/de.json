@@ -349,6 +349,7 @@
         "caption": "Bildunterschrift",
         "ctaLabel": "CTA-Button-Text",
         "ctaUrl": "CTA-Button-URL",
+        "voucher": "Gutschein (Bild oder PDF)",
         "mediaUrl": "Medien-URL",
         "minChoices": "Minimale Auswahl",
         "maxChoices": "Maximale Auswahl",
@@ -412,6 +413,7 @@
         "ctaLabelPlaceholder": "z.B. Hol dir dein Geschenk",
         "ctaUrl": "Button-URL",
         "ctaUrlPlaceholder": "https://...",
+        "voucher": "Gutschein (Bild oder PDF)",
         "image": "Bild *",
         "caption": "Bildunterschrift (Optional)",
         "captionPlaceholder": "Bildunterschrift eingeben..."
@@ -496,7 +498,8 @@
   "player": {
     "buttons": {
       "continue": "Weiter",
-      "continueWithSelection": "Weiter ({count} ausgewählt)"
+      "continueWithSelection": "Weiter ({count} ausgewählt)",
+      "downloadVoucher": "Gutschein herunterladen"
     },
     "textInput": {
       "placeholder": "Deine Antwort eingeben...",

@@ -186,31 +186,35 @@ export function NodeEditor({ node, open, onClose, onSave, projectId }: NodeEdito
                 onSelect={(img) => updateField('backgroundImage', img)}
               />
             </div>
-            {content.cta && (
-              <>
-                <div className="space-y-2">
-                  <Label htmlFor="ctaLabel">{t('labels.ctaLabel')}</Label>
-                  <Input
-                    id="ctaLabel"
-                    value={content.cta?.label || ''}
-                    onChange={(e) =>
-                      updateField('cta', { ...content.cta, label: e.target.value })
-                    }
-                    maxLength={50}
-                    placeholder={t('placeholders.ctaLabel')}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="ctaUrl">{t('labels.ctaUrl')}</Label>
-                  <Input
-                    id="ctaUrl"
-                    value={content.cta?.url || ''}
-                    onChange={(e) => updateField('cta', { ...content.cta, url: e.target.value })}
-                    placeholder={t('placeholders.ctaUrl')}
-                  />
-                </div>
-              </>
-            )}
+            <div className="space-y-2">
+              <Label htmlFor="ctaLabel">{t('labels.ctaLabel')}</Label>
+              <Input
+                id="ctaLabel"
+                value={content.cta?.label || ''}
+                onChange={(e) =>
+                  updateField('cta', { ...content.cta, label: e.target.value })
+                }
+                maxLength={50}
+                placeholder={t('placeholders.ctaLabel')}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="ctaUrl">{t('labels.ctaUrl')}</Label>
+              <Input
+                id="ctaUrl"
+                value={content.cta?.url || ''}
+                onChange={(e) => updateField('cta', { ...content.cta, url: e.target.value })}
+                placeholder={t('placeholders.ctaUrl')}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('labels.voucher')}</Label>
+              <ImagePicker
+                projectId={projectId}
+                value={content.voucher}
+                onSelect={(img) => updateField('voucher', img)}
+              />
+            </div>
           </div>
         );
 

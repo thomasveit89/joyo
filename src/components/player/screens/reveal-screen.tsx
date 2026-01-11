@@ -43,7 +43,7 @@ const CONFETTI_CONFIGS = {
 
 export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableConfetti = false }: RevealScreenProps) {
   const t = useTranslations('player.buttons');
-  const { headline, body, cta, confetti: showConfetti, backgroundImage } = node.content;
+  const { headline, body, cta, confetti: showConfetti, backgroundImage, voucher } = node.content;
   const [revealed, setRevealed] = useState(false);
 
   // Check if image URL is valid (not a placeholder)
@@ -51,6 +51,15 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
     backgroundImage.url &&
     !backgroundImage.url.startsWith('UNSPLASH:') &&
     backgroundImage.url.startsWith('http');
+
+  // Check if voucher is valid
+  const hasValidVoucher = voucher &&
+    voucher.url &&
+    !voucher.url.startsWith('UNSPLASH:') &&
+    voucher.url.startsWith('http');
+
+  // Check if voucher is a PDF
+  const isPdfVoucher = hasValidVoucher && voucher.url.toLowerCase().endsWith('.pdf');
 
   useEffect(() => {
     // Enhanced reveal sequence with better timing
@@ -185,7 +194,29 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
           }`}
           style={{ transitionDelay: '2200ms' }}
         >
-          {cta && (
+          {hasValidVoucher && (
+            <div className="w-full max-w-md space-y-3">
+              {isPdfVoucher ? (
+                <Button size="xl" asChild className="w-full shadow-lg">
+                  <a href={voucher.url} download target="_blank" rel="noopener noreferrer">
+                    {t('downloadVoucher')}
+                  </a>
+                </Button>
+              ) : (
+                <a href={voucher.url} download target="_blank" rel="noopener noreferrer" className="block">
+                  <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <Image
+                      src={voucher.url}
+                      alt={voucher.alt || 'Voucher'}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </a>
+              )}
+            </div>
+          )}
+          {cta && cta.label && cta.url && (
             <Button size="xl" asChild className="shadow-lg">
               <a href={cta.url} target="_blank" rel="noopener noreferrer">
                 {cta.label}
@@ -193,7 +224,7 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
             </Button>
           )}
           <Button
-            variant={cta ? 'outline' : 'default'}
+            variant={cta?.label ? 'outline' : 'default'}
             size="xl"
             onClick={onNext}
             className={hasValidImage ? 'bg-white/10 hover:bg-white/20 text-white border-white/30' : ''}

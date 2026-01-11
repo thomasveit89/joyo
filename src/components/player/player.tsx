@@ -38,20 +38,35 @@ export function Player({ project, nodes }: PlayerProps) {
   };
 
   // Extract attribution from current node based on type
-  const getAttribution = (): string | null => {
-    if (currentNode.type === 'hero' && currentNode.content.backgroundImage?.attribution) {
-      return currentNode.content.backgroundImage.attribution;
+  const getAttributionData = (): {
+    text: string;
+    photographerName?: string;
+    photographerUrl?: string;
+    attributionUrl?: string;
+  } | null => {
+    let imageData = null;
+
+    if (currentNode.type === 'hero' && currentNode.content.backgroundImage) {
+      imageData = currentNode.content.backgroundImage;
+    } else if (currentNode.type === 'reveal' && currentNode.content.backgroundImage) {
+      imageData = currentNode.content.backgroundImage;
+    } else if (currentNode.type === 'media' && currentNode.content.image) {
+      imageData = currentNode.content.image;
     }
-    if (currentNode.type === 'reveal' && currentNode.content.backgroundImage?.attribution) {
-      return currentNode.content.backgroundImage.attribution;
+
+    if (!imageData?.attribution) {
+      return null;
     }
-    if (currentNode.type === 'media' && currentNode.content.image?.attribution) {
-      return currentNode.content.image.attribution;
-    }
-    return null;
+
+    return {
+      text: imageData.attribution,
+      photographerName: imageData.photographerName,
+      photographerUrl: imageData.photographerUrl,
+      attributionUrl: imageData.attributionUrl,
+    };
   };
 
-  const attribution = getAttribution();
+  const attributionData = getAttributionData();
 
   // Create session on mount
   useEffect(() => {
@@ -163,7 +178,7 @@ export function Player({ project, nodes }: PlayerProps) {
       case 'text-input':
         return <TextInputScreen node={currentNode} onAnswer={handleAnswer} />;
       case 'reveal':
-        return <RevealScreen node={currentNode} onNext={handleNext} theme={project.theme} />;
+        return <RevealScreen node={currentNode} theme={project.theme} />;
       case 'media':
         return <MediaScreen node={currentNode} onNext={handleNext} />;
       default:
@@ -217,10 +232,33 @@ export function Player({ project, nodes }: PlayerProps) {
       )}
 
       {/* Image Attribution */}
-      {attribution && (
+      {attributionData && (
         <div className="fixed bottom-2 right-2 z-50">
           <p className="text-xs text-muted-foreground opacity-60">
-            {attribution}
+            {attributionData.photographerName && attributionData.photographerUrl && attributionData.attributionUrl ? (
+              <>
+                Photo by{' '}
+                <a
+                  href={attributionData.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-100 transition-opacity"
+                >
+                  {attributionData.photographerName}
+                </a>
+                {' '}on{' '}
+                <a
+                  href={attributionData.attributionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:opacity-100 transition-opacity"
+                >
+                  Unsplash
+                </a>
+              </>
+            ) : (
+              attributionData.text
+            )}
           </p>
         </div>
       )}

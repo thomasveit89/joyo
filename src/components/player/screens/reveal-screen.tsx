@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import type { RevealNode } from '@/types/flow';
 import type { Theme } from '@/types/flow';
@@ -12,7 +11,6 @@ import { useTranslations } from 'next-intl';
 
 interface RevealScreenProps {
   node: RevealNode;
-  onNext: () => void;
   theme?: Theme;
   disableConfetti?: boolean;
 }
@@ -41,7 +39,7 @@ const CONFETTI_CONFIGS = {
   },
 };
 
-export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableConfetti = false }: RevealScreenProps) {
+export function RevealScreen({ node, theme = 'playful-pastel', disableConfetti = false }: RevealScreenProps) {
   const t = useTranslations('player.buttons');
   const { headline, body, cta, confetti: showConfetti, backgroundImage, voucher } = node.content;
   const [revealed, setRevealed] = useState(false);
@@ -223,15 +221,6 @@ export function RevealScreen({ node, onNext, theme = 'playful-pastel', disableCo
               </a>
             </Button>
           )}
-          <Button
-            variant={(hasValidVoucher && cta?.label) ? 'outline' : 'default'}
-            size="xl"
-            onClick={onNext}
-            className={hasValidImage ? 'bg-white/10 hover:bg-white/20 text-white border-white/30' : ''}
-          >
-            {t('continue')}
-            <ChevronRight className="ml-2 h-5 w-5" />
-          </Button>
         </div>
       </div>
     </Card>

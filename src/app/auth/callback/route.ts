@@ -1,21 +1,53 @@
-import { createClient } from '@/lib/supabase/server';
-import { NextResponse } from 'next/server';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { NextResponse, type NextRequest } from 'next/server';
 import { defaultLocale } from '@/i18n/config';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
   const next = requestUrl.searchParams.get('next');
   const type = requestUrl.searchParams.get('type');
   const origin = requestUrl.origin;
 
+  // Redirect to 'next' URL if provided, otherwise dashboard
+  const redirectUrl = next ? `${origin}${next}` : `${origin}/${defaultLocale}/dashboard`;
+
+  // Create the redirect response
+  const response = NextResponse.redirect(redirectUrl);
+
   if (code) {
-    const supabase = await createClient();
+    // Create Supabase client that sets cookies on the response
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return request.cookies.get(name)?.value;
+          },
+          set(name: string, value: string, options: CookieOptions) {
+            response.cookies.set({
+              name,
+              value,
+              ...options,
+            });
+          },
+          remove(name: string, options: CookieOptions) {
+            response.cookies.set({
+              name,
+              value: '',
+              ...options,
+            });
+          },
+        },
+      }
+    );
+
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (error) {
       console.error('Auth callback error:', error);
-      // Redirect to login with error
+      // Return error redirect without cookies
       return NextResponse.redirect(`${origin}/${defaultLocale}/auth/login?error=auth_failed`);
     }
   }
@@ -25,7 +57,5 @@ export async function GET(request: Request) {
     return NextResponse.redirect(`${origin}/${defaultLocale}/auth/reset-password`);
   }
 
-  // Redirect to 'next' URL if provided, otherwise dashboard
-  const redirectUrl = next ? `${origin}${next}` : `${origin}/${defaultLocale}/dashboard`;
-  return NextResponse.redirect(redirectUrl);
+  return response;
 }

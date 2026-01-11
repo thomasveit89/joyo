@@ -225,6 +225,16 @@
     "characterCount": "{current} / {max}",
     "generateButton": "Generate Gift Experience",
     "generatingButton": "Generating...",
+    "loading": {
+      "stages": {
+        "stage1": "Shaping your story",
+        "stage2": "Finding perfect visuals",
+        "stage3": "Selecting the right theme",
+        "stage4": "Crafting magical moments",
+        "stage5": "Almost there"
+      },
+      "subtitle": "Creating your personalized gift experience. This usually takes 15-30 seconds."
+    },
     "replaceDialog": {
       "title": "Replace existing text?",
       "description": "You already have text in the input. Do you want to replace it with this example?",

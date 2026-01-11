@@ -2,22 +2,27 @@
 
 import { useEffect, useState } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { useTranslations } from 'next-intl';
 
 interface GenerationLoadingScreenProps {
   isVisible: boolean;
 }
 
-const LOADING_STAGES = [
-  { text: 'Shaping your story', duration: 4000 },
-  { text: 'Finding perfect visuals', duration: 5000 },
-  { text: 'Selecting the right theme', duration: 4000 },
-  { text: 'Crafting magical moments', duration: 5000 },
-  { text: 'Almost there', duration: 3000 }
-];
+const STAGE_DURATIONS = [4000, 5000, 4000, 5000, 3000];
 
 export function GenerationLoadingScreen({ isVisible }: GenerationLoadingScreenProps) {
+  const t = useTranslations('chat.loading');
   const [currentStage, setCurrentStage] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
+
+  // Get translated stage texts
+  const loadingStages = [
+    t('stages.stage1'),
+    t('stages.stage2'),
+    t('stages.stage3'),
+    t('stages.stage4'),
+    t('stages.stage5'),
+  ];
 
   useEffect(() => {
     if (!isVisible) {
@@ -29,29 +34,29 @@ export function GenerationLoadingScreen({ isVisible }: GenerationLoadingScreenPr
     let currentIndex = 0;
 
     const cycleStages = () => {
-      const stage = LOADING_STAGES[currentIndex];
+      const stageDuration = STAGE_DURATIONS[currentIndex];
 
       // Fade out current text
       setFadeIn(false);
 
       setTimeout(() => {
         // Update to next stage
-        currentIndex = (currentIndex + 1) % LOADING_STAGES.length;
+        currentIndex = (currentIndex + 1) % loadingStages.length;
         setCurrentStage(currentIndex);
 
         // Fade in new text
         setFadeIn(true);
 
         // Schedule next transition
-        timeoutId = setTimeout(cycleStages, stage.duration);
+        timeoutId = setTimeout(cycleStages, stageDuration);
       }, 300);
     };
 
     // Start the cycle
-    timeoutId = setTimeout(cycleStages, LOADING_STAGES[0].duration);
+    timeoutId = setTimeout(cycleStages, STAGE_DURATIONS[0]);
 
     return () => clearTimeout(timeoutId);
-  }, [isVisible]);
+  }, [isVisible, loadingStages.length]);
 
   if (!isVisible) return null;
 
@@ -76,17 +81,17 @@ export function GenerationLoadingScreen({ isVisible }: GenerationLoadingScreenPr
               fadeIn ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {LOADING_STAGES[currentStage].text}
+            {loadingStages[currentStage]}
           </h2>
 
           <p className="text-sm text-muted-foreground max-w-sm">
-            Creating your personalized gift experience. This usually takes 15-30 seconds.
+            {t('subtitle')}
           </p>
         </div>
 
         {/* Progress Dots */}
         <div className="flex gap-2">
-          {LOADING_STAGES.map((_, index) => (
+          {loadingStages.map((_, index) => (
             <div
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-500 ${

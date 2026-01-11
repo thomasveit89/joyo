@@ -25,6 +25,9 @@ export interface ImageData {
   url: string;
   alt: string;
   attribution?: string;
+  attributionUrl?: string; // Link to photo page for Unsplash images
+  photographerName?: string; // Photographer name for Unsplash images
+  photographerUrl?: string; // Link to photographer profile for Unsplash images
   source?: ImageSource;
   assetId?: string; // Link to assets table for uploads
 }
@@ -34,6 +37,9 @@ export const ImageDataSchema = z.object({
   url: z.string().url(),
   alt: z.string(),
   attribution: z.string().optional(),
+  attributionUrl: z.string().url().optional(),
+  photographerName: z.string().optional(),
+  photographerUrl: z.string().url().optional(),
   source: z.enum(['unsplash', 'upload', 'manual']).optional(),
   assetId: z.string().uuid().optional(),
 });

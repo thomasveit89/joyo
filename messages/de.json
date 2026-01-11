@@ -225,6 +225,16 @@
     "characterCount": "{current} / {max}",
     "generateButton": "Geschenkerfahrung generieren",
     "generatingButton": "Wird generiert...",
+    "loading": {
+      "stages": {
+        "stage1": "Forme deine Geschichte",
+        "stage2": "Finde perfekte Bilder",
+        "stage3": "Wähle das richtige Thema",
+        "stage4": "Erschaffe magische Momente",
+        "stage5": "Fast fertig"
+      },
+      "subtitle": "Erstelle deine personalisierte Geschenkerfahrung. Dies dauert normalerweise 15-30 Sekunden."
+    },
     "replaceDialog": {
       "title": "Vorhandenen Text ersetzen?",
       "description": "Du hast bereits Text im Eingabefeld. Möchtest du ihn durch dieses Beispiel ersetzen?",

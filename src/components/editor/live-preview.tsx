@@ -70,6 +70,7 @@ export function LivePreview({
             project={project}
             nodes={nodes}
             currentSlideIndex={currentSlideIndex}
+            onSlideChange={onSlideChange}
           />
         </div>
       </div>
@@ -111,10 +112,12 @@ function PreviewFrame({
   project,
   nodes,
   currentSlideIndex,
+  onSlideChange,
 }: {
   project: Project;
   nodes: Node[];
   currentSlideIndex: number;
+  onSlideChange: (index: number) => void;
 }) {
   const currentNode = nodes[currentSlideIndex];
 
@@ -130,20 +133,24 @@ function PreviewFrame({
   const { MediaScreen } = require('@/components/player/screens/media-screen');
 
   const renderScreen = () => {
-    // Dummy handlers for preview mode
-    const dummyHandler = () => { };
+    // Handler that advances to next slide (if not last)
+    const handleNext = () => {
+      if (currentSlideIndex < nodes.length - 1) {
+        onSlideChange(currentSlideIndex + 1);
+      }
+    };
 
     switch (currentNode.type) {
       case 'hero':
-        return <HeroScreen node={currentNode} onNext={dummyHandler} />;
+        return <HeroScreen node={currentNode} onNext={handleNext} />;
       case 'choice':
-        return <ChoiceScreen node={currentNode} onAnswer={dummyHandler} />;
+        return <ChoiceScreen node={currentNode} onAnswer={handleNext} />;
       case 'text-input':
-        return <TextInputScreen node={currentNode} onAnswer={dummyHandler} />;
+        return <TextInputScreen node={currentNode} onAnswer={handleNext} />;
       case 'reveal':
-        return <RevealScreen node={currentNode} onNext={dummyHandler} theme={project.theme} disableConfetti={true} />;
+        return <RevealScreen node={currentNode} theme={project.theme} disableConfetti={true} />;
       case 'media':
-        return <MediaScreen node={currentNode} onNext={dummyHandler} />;
+        return <MediaScreen node={currentNode} onNext={handleNext} />;
       default:
         return <div className="p-8 text-center">Unknown screen type</div>;
     }

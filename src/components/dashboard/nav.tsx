@@ -18,8 +18,7 @@ export function DashboardNav({ user }: { user: User }) {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.push(`/${locale}/auth/login`);
-    router.refresh();
+    window.location.href = `/${locale}`;
   };
 
   return (

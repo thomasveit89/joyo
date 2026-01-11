@@ -34,7 +34,7 @@ export function PdfPicker({ onSelect, value, projectId }: PdfPickerProps) {
     return null;
   };
 
-  const handleFileUpload = async (file: File) => {
+  const handleFileUpload = useCallback(async (file: File) => {
     const error = validateFile(file);
     if (error) {
       toast.error(error);
@@ -89,7 +89,7 @@ export function PdfPicker({ onSelect, value, projectId }: PdfPickerProps) {
       toast.error('Failed to upload PDF');
       setFileName(null);
     }
-  };
+  }, [projectId, onSelect]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ export function PdfPicker({ onSelect, value, projectId }: PdfPickerProps) {
     if (file) {
       handleFileUpload(file);
     }
-  }, []);
+  }, [handleFileUpload]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();

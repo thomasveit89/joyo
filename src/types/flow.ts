@@ -11,6 +11,9 @@ export const ImageSchema = z.object({
   url: z.string().url(),
   alt: z.string(),
   attribution: z.string().optional(),
+  attributionUrl: z.string().url().optional(),
+  photographerName: z.string().optional(),
+  photographerUrl: z.string().url().optional(),
   source: z.enum(['unsplash', 'upload', 'manual']).optional(),
   assetId: z.string().uuid().optional(),
 });

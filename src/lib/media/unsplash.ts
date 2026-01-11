@@ -4,6 +4,9 @@ export interface UnsplashImage {
   url: string;
   alt: string;
   attribution: string;
+  attributionUrl?: string;
+  photographerName?: string;
+  photographerUrl?: string;
 }
 
 export async function searchUnsplashImage(

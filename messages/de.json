@@ -10,13 +10,13 @@
   "landing": {
     "header": {
       "login": "Anmelden",
-      "startFree": "Kostenlos starten"
+      "startFree": "Geschenkreise erstellen"
     },
     "hero": {
       "headline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",
       "headlineAccent": "emotionale",
       "subheadline": "Verwandle deine besonderen Momente in interaktive Geschichten mit KI. Perfekt für Heiratsanträge, Ankündigungen, Überraschungen und Feiern.",
-      "ctaPrimary": "Kostenlos starten",
+      "ctaPrimary": "Erstelle deine Geschenkreise",
       "ctaSecondary": "Beispiele ansehen"
     },
     "examples": {
@@ -73,6 +73,11 @@
           "description": "Versende den Link an deinen Empfänger und beobachte, wie er/sie dein Geschenk erlebt"
         }
       }
+    },
+    "finalCta": {
+      "title": "Bereit, etwas Besonderes zu erschaffen?",
+      "subtitle": "Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse",
+      "button": "Erstelle deine Geschenkreise"
     },
     "footer": {
       "tagline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",

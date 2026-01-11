@@ -15,7 +15,8 @@ interface LandingPageProps {
 }
 
 export function LandingPage({ locale }: LandingPageProps) {
-  const t = useTranslations('landing.hero');
+  const tHero = useTranslations('landing.hero');
+  const tFinalCta = useTranslations('landing.finalCta');
   const examples = getExamplesByLocale(locale);
 
   const { scrollY } = useScroll();
@@ -25,13 +26,6 @@ export function LandingPage({ locale }: LandingPageProps) {
   const blob2Y = useTransform(scrollY, [0, 1000], [0, 100]);
   const blob3Y = useTransform(scrollY, [0, 1000], [0, -80]);
   const blob4Y = useTransform(scrollY, [0, 1000], [0, 50]);
-
-  const scrollToExamples = () => {
-    document.getElementById('examples')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -89,7 +83,7 @@ export function LandingPage({ locale }: LandingPageProps) {
 
           {/* Subheadline */}
           <p className="mb-10 text-xl text-joyo-charcoal/80 sm:text-2xl max-w-3xl mx-auto">
-            {t('subheadline')}
+            {tHero('subheadline')}
           </p>
 
           {/* CTAs */}
@@ -99,15 +93,7 @@ export function LandingPage({ locale }: LandingPageProps) {
               size="lg"
               className="w-full bg-joyo-coral text-white text-lg hover:bg-joyo-coral-dark sm:w-auto"
             >
-              <Link href={`/${locale}/auth/signup`}>{t('ctaPrimary')}</Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={scrollToExamples}
-              className="w-full text-lg border-joyo-coral text-joyo-coral hover:bg-joyo-coral hover:text-white sm:w-auto"
-            >
-              {t('ctaSecondary')}
+              <Link href={`/${locale}/auth/signup`}>{tHero('ctaPrimary')}</Link>
             </Button>
           </div>
         </div>
@@ -123,14 +109,10 @@ export function LandingPage({ locale }: LandingPageProps) {
       <section className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-4 text-3xl font-bold text-joyo-charcoal sm:text-4xl">
-            {locale === 'en'
-              ? 'Ready to create something special?'
-              : 'Bereit, etwas Besonderes zu erschaffen?'}
+            {tFinalCta('title')}
           </h3>
           <p className="mb-8 text-xl text-joyo-charcoal/80">
-            {locale === 'en'
-              ? 'Start creating beautiful gift experiences in minutes'
-              : 'Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse'}
+            {tFinalCta('subtitle')}
           </p>
           <Button
             asChild
@@ -138,7 +120,7 @@ export function LandingPage({ locale }: LandingPageProps) {
             className="bg-joyo-coral text-white text-lg hover:bg-joyo-coral-dark"
           >
             <Link href={`/${locale}/auth/signup`}>
-              {locale === 'en' ? 'Start Free' : 'Kostenlos starten'}
+              {tFinalCta('button')}
             </Link>
           </Button>
         </div>

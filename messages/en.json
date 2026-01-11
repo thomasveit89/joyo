@@ -10,13 +10,13 @@
   "landing": {
     "header": {
       "login": "Login",
-      "startFree": "Start Free"
+      "startFree": "Start creating"
     },
     "hero": {
       "headline": "Create emotional gift journeys that touch hearts",
       "headlineAccent": "emotional",
       "subheadline": "Turn your special moments into interactive stories with AI. Perfect for proposals, announcements, surprises, and celebrations.",
-      "ctaPrimary": "Start Free",
+      "ctaPrimary": "Create your gift journey",
       "ctaSecondary": "See Examples"
     },
     "examples": {
@@ -74,6 +74,11 @@
         }
       }
     },
+    "finalCta": {
+      "title": "Ready to create something special?",
+      "subtitle": "Start creating beautiful gift experiences in minutes",
+      "button": "Create your gift journey"
+    },
     "footer": {
       "tagline": "Create emotional gift journeys that touch hearts",
       "product": "Product",
@@ -106,7 +111,7 @@
           "sharing": "Shareable links",
           "support": "Community support"
         },
-        "cta": "Start Free"
+        "cta": "Create your gift journey"
       },
       "faq": {
         "title": "Frequently Asked Questions",

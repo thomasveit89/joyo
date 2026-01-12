@@ -36,15 +36,15 @@
         },
         "romantic2": {
           "title": "Heiratsantrag",
-          "description": "Vom ersten Date zur großen Frage – eine Geschichte, die zu 'Ja' führte"
+          "description": "Vom ersten Date zur grossen Frage – eine Geschichte, die zu 'Ja' führte"
         },
         "family1": {
           "title": "Schwangerschaftsankündigung",
-          "description": "Eine spielerische Art, die Nachricht mit den werdenden Großeltern zu teilen"
+          "description": "Eine spielerische Art, die Nachricht mit den werdenden Grosseltern zu teilen"
         },
         "family2": {
           "title": "Neues Zuhause Enthüllung",
-          "description": "Aufbau der Vorfreude auf den großen Umzug der Familie"
+          "description": "Aufbau der Vorfreude auf den grossen Umzug der Familie"
         },
         "travel1": {
           "title": "Überraschungsreise nach Paris",
@@ -259,7 +259,7 @@
       },
       "romantic2": {
         "title": "Heiratsantrag-Geschichte",
-        "prompt": "Baue eine Geschichte darüber, wie wir uns kennengelernt haben, mit Auswahlmöglichkeiten über unser erstes Date, die zu einem großen Heiratsantrag mit einem schönen Ringfoto führen."
+        "prompt": "Baue eine Geschichte darüber, wie wir uns kennengelernt haben, mit Auswahlmöglichkeiten über unser erstes Date, die zu einem grossen Heiratsantrag mit einem schönen Ringfoto führen."
       },
       "romantic3": {
         "title": "Liebesbrief-Reise",
@@ -267,19 +267,19 @@
       },
       "family1": {
         "title": "Schwangerschaftsankündigung",
-        "prompt": "Mache eine verspielte Reise zur Ankündigung unserer Schwangerschaft an die Großeltern. Füge Baby-Fragen hinzu und enthülle ein Ultraschallfoto."
+        "prompt": "Mache eine verspielte Reise zur Ankündigung unserer Schwangerschaft an die Grosseltern. Füge Baby-Fragen hinzu und enthülle ein Ultraschallfoto."
       },
       "family2": {
         "title": "Neues Zuhause Enthüllung",
         "prompt": "Erstelle eine spannende Reise, um unser neues Zuhause der Familie zu zeigen. Füge Fotos von der Haussuche, Nachbarschaftsaufnahmen und die finale Hausenthüllung hinzu."
       },
       "family3": {
-        "title": "Geschenk für Großeltern",
+        "title": "Geschenk für Grosseltern",
         "prompt": "Baue eine herzliche Reise von den Enkelkindern mit Fotos, Sprachnachrichten und einer besonderen Enthüllung über unseren kommenden Besuch."
       },
       "travel1": {
         "title": "Überraschungsreise",
-        "prompt": "Erstelle eine mysteriöse Reise mit Reisehinweisen und Hinweisen, die zur großen Enthüllung einer Überraschungsreise nach Japan führen."
+        "prompt": "Erstelle eine mysteriöse Reise mit Reisehinweisen und Hinweisen, die zur grossen Enthüllung einer Überraschungsreise nach Japan führen."
       },
       "travel2": {
         "title": "Geburtstags-Abenteuer",
@@ -342,7 +342,7 @@
       "hero": "Story-Screen",
       "choice": "Auswahlfrage",
       "textInput": "Texteingabe",
-      "reveal": "Große Enthüllung",
+      "reveal": "Grosse Enthüllung",
       "media": "Medien-Screen",
       "end": "End-Screen"
     },
@@ -352,7 +352,7 @@
       "labels": {
         "headline": "Überschrift",
         "headlineRequired": "Überschrift *",
-        "body": "Fließtext",
+        "body": "Fliesstext",
         "backgroundImage": "Hintergrundbild",
         "image": "Bild",
         "imageRequired": "Bild *",
@@ -372,7 +372,7 @@
       },
       "placeholders": {
         "headline": "Überschrift eingeben...",
-        "body": "Fließtext eingeben...",
+        "body": "Fliesstext eingeben...",
         "question": "Deine Frage eingeben...",
         "option": "Option",
         "textInput": "Deine Antwort eingeben...",
@@ -399,7 +399,7 @@
         "hero": "Hero / Story",
         "choice": "Multiple Choice",
         "textInput": "Texteingabe",
-        "reveal": "Große Enthüllung",
+        "reveal": "Grosse Enthüllung",
         "media": "Bildanzeige"
       },
       "typeDescriptions": {
@@ -412,8 +412,8 @@
       "fields": {
         "headline": "Überschrift *",
         "headlinePlaceholder": "Überschrift eingeben...",
-        "body": "Fließtext",
-        "bodyPlaceholder": "Fließtext eingeben...",
+        "body": "Fliesstext",
+        "bodyPlaceholder": "Fliesstext eingeben...",
         "backgroundImage": "Hintergrundbild (Optional)",
         "question": "Frage *",
         "questionPlaceholder": "Frage eingeben...",
@@ -530,7 +530,7 @@
     "save": "Speichern",
     "delete": "Löschen",
     "edit": "Bearbeiten",
-    "close": "Schließen",
+    "close": "Schliessen",
     "back": "Zurück",
     "next": "Weiter",
     "previous": "Zurück",
@@ -578,11 +578,11 @@
       },
       "content": {
         "title": "4. Benutzerinhalte",
-        "ownership": "Sie behalten alle Rechte an den Inhalten, die Sie mit Joyo erstellen. Durch die Nutzung unseres Service gewähren Sie uns eine eingeschränkte Lizenz zum Speichern, Verarbeiten und Anzeigen Ihrer Inhalte ausschließlich zum Zweck der Bereitstellung des Service.",
+        "ownership": "Sie behalten alle Rechte an den Inhalten, die Sie mit Joyo erstellen. Durch die Nutzung unseres Service gewähren Sie uns eine eingeschränkte Lizenz zum Speichern, Verarbeiten und Anzeigen Ihrer Inhalte ausschliesslich zum Zweck der Bereitstellung des Service.",
         "responsibility": "Sie sind allein verantwortlich für die Inhalte, die Sie erstellen und teilen. Sie müssen sicherstellen, dass Ihre Inhalte:",
         "prohibited": {
           "title": "Nicht:",
-          "illegal": "Gegen Gesetze oder Vorschriften verstoßen",
+          "illegal": "Gegen Gesetze oder Vorschriften verstossen",
           "harmful": "Schädliches, bedrohliches oder belästigendes Material enthalten",
           "infringing": "Die geistigen Eigentumsrechte anderer verletzen",
           "spam": "Spam, Malware oder anderen bösartigen Code enthalten"
@@ -590,12 +590,12 @@
       },
       "intellectual": {
         "title": "5. Geistiges Eigentum",
-        "ownership": "Der Joyo-Service, einschließlich seiner ursprünglichen Inhalte, Funktionen und Funktionalität, ist Eigentum von Joyo und durch internationale Urheber-, Marken- und andere Gesetze zum Schutz des geistigen Eigentums geschützt.",
+        "ownership": "Der Joyo-Service, einschliesslich seiner ursprünglichen Inhalte, Funktionen und Funktionalität, ist Eigentum von Joyo und durch internationale Urheber-, Marken- und andere Gesetze zum Schutz des geistigen Eigentums geschützt.",
         "license": "Wir gewähren Ihnen eine eingeschränkte, nicht-exklusive, nicht übertragbare Lizenz zur Nutzung des Service für Ihre persönlichen oder kommerziellen Zwecke, vorbehaltlich dieser Bedingungen."
       },
       "termination": {
         "title": "6. Kündigung",
-        "content": "Wir behalten uns das Recht vor, Ihr Konto jederzeit mit oder ohne Vorankündigung zu sperren oder zu kündigen, wenn Sie gegen diese Bedingungen verstoßen oder aus einem anderen Grund. Sie können Ihr Konto auch jederzeit kündigen, indem Sie uns kontaktieren."
+        "content": "Wir behalten uns das Recht vor, Ihr Konto jederzeit mit oder ohne Vorankündigung zu sperren oder zu kündigen, wenn Sie gegen diese Bedingungen verstossen oder aus einem anderen Grund. Sie können Ihr Konto auch jederzeit kündigen, indem Sie uns kontaktieren."
       },
       "disclaimer": {
         "title": "7. Haftungsausschluss",
@@ -627,8 +627,8 @@
         "content": "Wir sammeln verschiedene Arten von Informationen:",
         "types": {
           "account": "Kontoinformationen: E-Mail-Adresse, Name und Authentifizierungsdaten (bei E-Mail/Passwort-Login)",
-          "content": "Inhaltsdaten: Die Geschenkerlebnisse, die Sie erstellen, einschließlich Text, Bilder und Konfigurationseinstellungen",
-          "usage": "Nutzungsdaten: Wie Sie mit unserem Service interagieren, einschließlich verwendeter Funktionen und verbrachter Zeit",
+          "content": "Inhaltsdaten: Die Geschenkerlebnisse, die Sie erstellen, einschliesslich Text, Bilder und Konfigurationseinstellungen",
+          "usage": "Nutzungsdaten: Wie Sie mit unserem Service interagieren, einschliesslich verwendeter Funktionen und verbrachter Zeit",
           "technical": "Technische Daten: IP-Adresse, Browsertyp, Geräteinformationen und Cookies"
         }
       },
@@ -653,7 +653,7 @@
       },
       "dataSecurity": {
         "title": "5. Datensicherheit",
-        "content": "Wir implementieren angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer Informationen. Keine Übertragungsmethode über das Internet ist jedoch zu 100% sicher, und wir können absolute Sicherheit nicht garantieren."
+        "content": "Wir implementieren angemessene technische und organisatorische Massnahmen zum Schutz Ihrer Informationen. Keine Übertragungsmethode über das Internet ist jedoch zu 100% sicher, und wir können absolute Sicherheit nicht garantieren."
       },
       "cookies": {
         "title": "6. Cookies und Tracking",
@@ -682,7 +682,7 @@
       },
       "dataRetention": {
         "title": "9. Datenspeicherung",
-        "content": "Wir speichern Ihre Informationen so lange, wie Ihr Konto aktiv ist oder wie es zur Bereitstellung unserer Dienste erforderlich ist. Wenn Sie Ihr Konto löschen, löschen wir Ihre persönlichen Informationen innerhalb von 30 Tagen, außer wenn wir sie aus rechtlichen Gründen aufbewahren müssen."
+        "content": "Wir speichern Ihre Informationen so lange, wie Ihr Konto aktiv ist oder wie es zur Bereitstellung unserer Dienste erforderlich ist. Wenn Sie Ihr Konto löschen, löschen wir Ihre persönlichen Informationen innerhalb von 30 Tagen, ausser wenn wir sie aus rechtlichen Gründen aufbewahren müssen."
       },
       "children": {
         "title": "10. Datenschutz für Kinder",

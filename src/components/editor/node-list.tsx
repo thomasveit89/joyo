@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { GripVertical, Pencil, Trash2, Plus } from 'lucide-react';
+import { GripVertical, Pencil, Trash2, Plus, MessageSquare, ListChecks, TextCursorInput, Sparkles, Image as ImageIcon } from 'lucide-react';
 import { Reorder, useDragControls } from 'framer-motion';
 import { NodeEditor } from './node-editor';
 import { AddScreenDialog } from './add-screen-dialog';
@@ -148,17 +148,17 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
   const getNodeIcon = (type: string) => {
     switch (type) {
       case 'hero':
-        return '🎭';
+        return MessageSquare;
       case 'choice':
-        return '🔀';
+        return ListChecks;
       case 'text-input':
-        return '✍️';
+        return TextCursorInput;
       case 'reveal':
-        return '🎉';
+        return Sparkles;
       case 'media':
-        return '🖼️';
+        return ImageIcon;
       default:
-        return '📄';
+        return MessageSquare;
     }
   };
 
@@ -257,7 +257,12 @@ export function NodeList({ nodes, projectId, onNodesChange, currentSlideIndex, o
 
                     <div className="flex-1 min-w-0 pointer-events-none">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl">{getNodeIcon(node.type)}</span>
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                          {(() => {
+                            const Icon = getNodeIcon(node.type);
+                            return <Icon className="h-4 w-4 text-primary" />;
+                          })()}
+                        </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="text-sm font-medium text-muted-foreground">

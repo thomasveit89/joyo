@@ -178,14 +178,13 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
                 style={{
                   left: item.style.left,
                   top: item.style.top,
+                  transform: `rotate(${item.style.rotate})`,
                   zIndex: hoveredId === item.id ? 50 : item.style.zIndex,
                 }}
-                initial={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{
                   opacity: 1,
                   y: 0,
-                  rotate: parseFloat(item.style.rotate),
-                  scale: 1,
                 }}
                 transition={{
                   duration: 0.7,
@@ -198,21 +197,21 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
                 {/* Card */}
                 <div
                   className={`relative bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${
-                    hoveredId === item.id ? 'scale-110 rotate-0' : 'scale-100'
+                    hoveredId === item.id ? 'scale-110' : 'scale-100'
                   }`}
                 >
-                  {/* Image */}
-                  <div className="relative aspect-[3/4]">
-                    <Image
-                      src={item.image}
-                      alt={locale === 'de' ? item.labelDe : item.labelEn}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="260px"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                    {/* Image */}
+                    <div className="relative aspect-[3/4]">
+                      <Image
+                        src={item.image}
+                        alt={locale === 'de' ? item.labelDe : item.labelEn}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="260px"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
 
                   {/* Label */}
                   <div className="absolute top-3 left-3">

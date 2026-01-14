@@ -10,14 +10,75 @@
   "landing": {
     "header": {
       "login": "Anmelden",
-      "startFree": "Geschenkreise erstellen"
+      "startFree": "Kostenlos starten"
     },
     "hero": {
       "headline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",
       "headlineAccent": "emotionale",
       "subheadline": "Verwandle deine besonderen Momente in interaktive Geschichten mit KI. Perfekt für Heiratsanträge, Ankündigungen, Überraschungen und Feiern.",
-      "ctaPrimary": "Erstelle deine Geschenkreise",
-      "ctaSecondary": "Beispiele ansehen"
+      "ctaPrimary": "Kostenlos loslegen",
+      "ctaSecondary": "Beispiele ansehen",
+      "ctaMicro": "Keine Kreditkarte erforderlich • Dauert weniger als 2 Minuten"
+    },
+    "features": {
+      "title": "Alles, was du brauchst, um Magie zu erschaffen",
+      "subtitle": "Leistungsstarke Tools, null Kosten. Erstelle unbegrenzt Geschenkreisen mit allen Funktionen inklusive.",
+      "items": {
+        "ai": {
+          "title": "KI-gestützte Erstellung",
+          "description": "Beschreibe dein Geschenk und sieh zu, wie die KI eine wunderschöne Reise erstellt"
+        },
+        "unlimited": {
+          "title": "Unbegrenzte Reisen",
+          "description": "Erstelle so viele Geschenkerlebnisse wie du möchtest, komplett kostenlos"
+        },
+        "themes": {
+          "title": "Wunderschöne Themen",
+          "description": "Wähle aus atemberaubenden Designs, die zur Emotion deines Geschenks passen"
+        },
+        "images": {
+          "title": "Bildbibliothek",
+          "description": "Zugriff auf tausende Fotos oder lade deine eigenen Erinnerungen hoch"
+        },
+        "sharing": {
+          "title": "Einfaches Teilen",
+          "description": "Erhalte einen eindeutigen Link zum Teilen per SMS, E-Mail oder jeder App"
+        },
+        "nocreditcard": {
+          "title": "Keine Kreditkarte",
+          "description": "Starte sofort mit dem Erstellen. Niemals Zahlungsinformationen erforderlich."
+        }
+      }
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Alles, was du über das Erstellen von Geschenkreisen wissen musst",
+      "items": {
+        "q1": {
+          "question": "Ist Joyo wirklich kostenlos?",
+          "answer": "Ja! Joyo ist 100% für immer kostenlos. Erstelle unbegrenzt Geschenkreisen mit allen Funktionen ohne Kosten. Keine versteckten Gebühren, keine Premium-Stufen, keine Kreditkarte erforderlich."
+        },
+        "q2": {
+          "question": "Brauche ich eine Kreditkarte zur Anmeldung?",
+          "answer": "Nein! Melde dich einfach mit deiner E-Mail an und starte sofort. Wir werden niemals nach Zahlungsinformationen fragen."
+        },
+        "q3": {
+          "question": "Wie funktioniert die KI-Erstellung?",
+          "answer": "Beschreibe einfach deine Geschenkidee in deinen eigenen Worten—für wen es ist, der Anlass, was du teilen möchtest. Unsere KI erstellt sofort eine vollständige Geschenkreise mit Screens, Fragen und dem perfekten Thema. Du kannst dann alles anpassen, um es perfekt zu machen."
+        },
+        "q4": {
+          "question": "Kann ich meine eigenen Fotos verwenden?",
+          "answer": "Auf jeden Fall! Du kannst deine eigenen Fotos hochladen oder aus unserer integrierten Bildbibliothek mit tausenden schönen Bildern wählen."
+        },
+        "q5": {
+          "question": "Wie sehen Empfänger das Geschenk?",
+          "answer": "Nach der Erstellung deines Geschenks erhältst du einen eindeutigen teilbaren Link. Sende ihn per SMS, E-Mail, WhatsApp oder jeder Messaging-App. Empfänger öffnen ihn im Browser—kein App-Download nötig."
+        },
+        "q6": {
+          "question": "Kann ich nach der Veröffentlichung bearbeiten?",
+          "answer": "Ja! Du kannst deine Geschenkreise jederzeit bearbeiten, auch nach der Veröffentlichung. Änderungen werden sofort auf dem Teilen-Link angezeigt."
+        }
+      }
     },
     "examples": {
       "title": "Inspiration für jeden Anlass",
@@ -76,8 +137,9 @@
     },
     "finalCta": {
       "title": "Bereit, etwas Besonderes zu erschaffen?",
-      "subtitle": "Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse",
-      "button": "Erstelle deine Geschenkreise"
+      "subtitle": "Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse—komplett kostenlos, keine Kreditkarte erforderlich",
+      "button": "Kostenlos loslegen",
+      "badge": "Für Immer Kostenlos"
     },
     "footer": {
       "tagline": "Erschaffe emotionale Geschenkreisen, die Herzen berühren",

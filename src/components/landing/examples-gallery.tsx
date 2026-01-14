@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { type Example } from '@/data/examples';
 
 interface ExamplesGalleryProps {
@@ -106,40 +107,56 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
         <div className="md:hidden">
           <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
             <div className="flex gap-4 py-4">
-              {galleryItems.map((item) => {
+              {galleryItems.map((item, index) => {
                 const demoUrl = exampleMap.get(item.exampleId);
 
                 return (
-                  <a
+                  <motion.a
                     key={item.id}
                     href={demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-shrink-0 w-[240px] transition-transform duration-300 active:scale-95"
+                    className="group flex-shrink-0 w-[240px] transition-transform duration-300 active:scale-95"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.1 * index,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                   >
                     {/* Card */}
-                    <div className="relative bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
                       {/* Image */}
                       <div className="relative aspect-[3/4]">
                         <Image
                           src={item.image}
                           alt={locale === 'de' ? item.labelDe : item.labelEn}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-300 group-active:scale-105"
                           sizes="240px"
                         />
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-active:opacity-100 transition-opacity duration-300" />
                       </div>
 
                       {/* Label */}
                       <div className="absolute top-3 left-3">
                         <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                          <span className="text-sm font-medium text-joyo-charcoal">
+                          <span className="text-sm font-semibold text-joyo-charcoal">
                             {locale === 'de' ? item.labelDe : item.labelEn}
                           </span>
                         </div>
                       </div>
+
+                      {/* View demo button (shown on active) */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-active:opacity-100 transition-opacity duration-300">
+                        <div className="bg-joyo-coral text-white px-4 py-2 rounded-full shadow-lg text-sm font-semibold whitespace-nowrap">
+                          {t('viewExample')}
+                        </div>
+                      </div>
                     </div>
-                  </a>
+                  </motion.a>
                 );
               })}
             </div>
@@ -148,21 +165,32 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
 
         {/* Desktop: Scattered Gallery */}
         <div className="hidden md:block relative w-full h-[500px] max-w-6xl mx-auto">
-          {galleryItems.map((item) => {
+          {galleryItems.map((item, index) => {
             const demoUrl = exampleMap.get(item.exampleId);
 
             return (
-              <a
+              <motion.a
                 key={item.id}
                 href={demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute transition-all duration-300 ease-out cursor-pointer w-[260px] block"
+                className="group absolute transition-all duration-300 ease-out cursor-pointer w-[260px] block"
                 style={{
                   left: item.style.left,
                   top: item.style.top,
-                  transform: `rotate(${item.style.rotate})`,
                   zIndex: hoveredId === item.id ? 50 : item.style.zIndex,
+                }}
+                initial={{ opacity: 0, y: 40, rotate: 0, scale: 0.9 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  rotate: parseFloat(item.style.rotate),
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.15 * index,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -170,7 +198,7 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
                 {/* Card */}
                 <div
                   className={`relative bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${
-                    hoveredId === item.id ? 'scale-110' : 'scale-100'
+                    hoveredId === item.id ? 'scale-110 rotate-0' : 'scale-100'
                   }`}
                 >
                   {/* Image */}
@@ -179,21 +207,33 @@ export function ExamplesGallery({ locale, examples }: ExamplesGalleryProps) {
                       src={item.image}
                       alt={locale === 'de' ? item.labelDe : item.labelEn}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="260px"
                     />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* Label */}
                   <div className="absolute top-3 left-3">
                     <div className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                      <span className="text-sm font-medium text-joyo-charcoal">
+                      <span className="text-sm font-semibold text-joyo-charcoal">
                         {locale === 'de' ? item.labelDe : item.labelEn}
                       </span>
                     </div>
                   </div>
+
+                  {/* View demo button (shown on hover) */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="bg-joyo-coral text-white px-6 py-3 rounded-full shadow-xl text-sm font-bold whitespace-nowrap flex items-center gap-2">
+                      {t('viewExample')}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </a>
+              </motion.a>
             );
           })}
         </div>

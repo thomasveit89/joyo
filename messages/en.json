@@ -10,14 +10,75 @@
   "landing": {
     "header": {
       "login": "Login",
-      "startFree": "Start creating"
+      "startFree": "Start for Free"
     },
     "hero": {
       "headline": "Create emotional gift journeys that touch hearts",
       "headlineAccent": "emotional",
       "subheadline": "Turn your special moments into interactive stories with AI. Perfect for proposals, announcements, surprises, and celebrations.",
-      "ctaPrimary": "Create your gift journey",
-      "ctaSecondary": "See Examples"
+      "ctaPrimary": "Start Creating for Free",
+      "ctaSecondary": "See Examples",
+      "ctaMicro": "No credit card required • Takes less than 2 minutes"
+    },
+    "features": {
+      "title": "Everything You Need to Create Magic",
+      "subtitle": "Powerful tools, zero cost. Create unlimited gift journeys with all features included.",
+      "items": {
+        "ai": {
+          "title": "AI-Powered Creation",
+          "description": "Describe your gift and watch AI craft a beautiful journey in seconds"
+        },
+        "unlimited": {
+          "title": "Unlimited Journeys",
+          "description": "Create as many gift experiences as you want, completely free"
+        },
+        "themes": {
+          "title": "Beautiful Themes",
+          "description": "Choose from stunning designs that match your gift's emotion"
+        },
+        "images": {
+          "title": "Image Library",
+          "description": "Access thousands of photos or upload your own memories"
+        },
+        "sharing": {
+          "title": "Easy Sharing",
+          "description": "Get a unique link to share via text, email, or any app"
+        },
+        "nocreditcard": {
+          "title": "No Credit Card",
+          "description": "Start creating immediately. No payment info required, ever."
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about creating gift journeys",
+      "items": {
+        "q1": {
+          "question": "Is Joyo really free?",
+          "answer": "Yes! Joyo is 100% free forever. Create unlimited gift journeys with all features at no cost. No hidden fees, no premium tiers, no credit card required."
+        },
+        "q2": {
+          "question": "Do I need a credit card to sign up?",
+          "answer": "Nope! Simply sign up with your email and start creating immediately. We'll never ask for payment information."
+        },
+        "q3": {
+          "question": "How does the AI creation work?",
+          "answer": "Just describe your gift idea in your own words—who it's for, the occasion, what you want to share. Our AI instantly creates a complete gift journey with screens, questions, and the perfect theme. You can then customize everything to make it perfect."
+        },
+        "q4": {
+          "question": "Can I use my own photos?",
+          "answer": "Absolutely! You can upload your own photos or choose from our integrated image library with thousands of beautiful images."
+        },
+        "q5": {
+          "question": "How do recipients view the gift?",
+          "answer": "After creating your gift, you'll get a unique shareable link. Send it via text, email, WhatsApp, or any messaging app. Recipients open it in their browser—no app download needed."
+        },
+        "q6": {
+          "question": "Can I edit after publishing?",
+          "answer": "Yes! You can edit your gift journey anytime, even after publishing. Changes are reflected immediately on the share link."
+        }
+      }
     },
     "examples": {
       "title": "Inspiration for Every Occasion",
@@ -76,8 +137,9 @@
     },
     "finalCta": {
       "title": "Ready to create something special?",
-      "subtitle": "Start creating beautiful gift experiences in minutes",
-      "button": "Create your gift journey"
+      "subtitle": "Start creating beautiful gift experiences in minutes—completely free, no credit card required",
+      "button": "Start Creating for Free",
+      "badge": "Free Forever"
     },
     "footer": {
       "tagline": "Create emotional gift journeys that touch hearts",

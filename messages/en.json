@@ -135,6 +135,40 @@
         }
       }
     },
+    "howItWorksInteractive": {
+      "title": "How It Works",
+      "subtitle": "Create your perfect gift journey in minutes with our intuitive editor",
+      "steps": {
+        "createWithAi": {
+          "title": "Describe Your Gift",
+          "description": "Tell AI about your occasion and recipient"
+        },
+        "aiGenerating": {
+          "title": "AI Creates Your Journey",
+          "description": "Watch as AI generates your complete gift flow"
+        },
+        "editor": {
+          "title": "Visual Editor",
+          "description": "See all your screens in one organized view"
+        },
+        "editScreen": {
+          "title": "Edit Any Screen",
+          "description": "Customize text, images, and interactions"
+        },
+        "addScreen": {
+          "title": "Add New Screens",
+          "description": "Insert additional moments into your journey"
+        },
+        "chooseDesign": {
+          "title": "Choose Your Theme",
+          "description": "Select from beautiful pre-designed themes"
+        },
+        "shareGift": {
+          "title": "Share Your Gift",
+          "description": "Get a unique link to send to your recipient"
+        }
+      }
+    },
     "finalCta": {
       "title": "Ready to create something special?",
       "subtitle": "Start creating beautiful gift experiences in minutes—completely free, no credit card required",

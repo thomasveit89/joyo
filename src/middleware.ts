@@ -72,7 +72,8 @@ export const config = {
      * - images, videos, fonts, and other static assets
      * - api routes (must not go through i18n middleware)
      * - animations, img, examples folders (static assets)
+     * - txt files (robots.txt, llm.txt, ai.txt)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|animations|img|examples|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|lottie)$).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|animations|img|examples|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|lottie|txt)$).*)',
   ],
 };

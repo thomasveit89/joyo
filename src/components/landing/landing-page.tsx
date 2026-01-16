@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Header } from './header';
 import { FeaturesSection } from './features-section';
 import { ExamplesGallery } from './examples-gallery';
-import { HowItWorks } from './how-it-works';
+import { HowItWorksInteractive } from './how-it-works-interactive';
 import { FaqSection } from './faq-section';
 import { StickyCta } from './sticky-cta';
 import { Footer } from './footer';
@@ -129,7 +129,7 @@ export function LandingPage({ locale }: LandingPageProps) {
       <FeaturesSection locale={locale} />
 
       {/* How It Works */}
-      <HowItWorks locale={locale} />
+      <HowItWorksInteractive locale={locale} />
 
       {/* FAQ Section */}
       <FaqSection locale={locale} />

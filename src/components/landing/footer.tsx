@@ -51,6 +51,14 @@ export function Footer({ locale }: FooterProps) {
             >
               {t('privacy')}
             </Link>
+            <a
+              href="/llm.txt"
+              className="text-sm text-joyo-charcoal/70 hover:text-joyo-coral transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AI Info
+            </a>
             <LanguageSwitcher />
           </div>
         </div>

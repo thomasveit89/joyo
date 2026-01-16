@@ -1,0 +1,95 @@
+# Joyo - AI Gift Journey Builder
+
+## Overview
+Joyo is a free web platform that enables users to create emotional, interactive gift journeys using AI. These journeys are shareable experiences that combine storytelling, questions, media, and reveals to create memorable moments for special occasions.
+
+## What is a Gift Journey?
+A gift journey is an interactive sequence of screens that recipients experience one-by-one on their device. Each journey can include:
+- Story screens with text and images
+- Multiple choice questions
+- Text input prompts
+- Big reveal moments (with confetti animations)
+- Full-screen media displays
+- Custom themes and styling
+
+## Key Features
+- **AI-Powered Creation**: Describe your gift idea in natural language, and AI generates a complete journey with 5-8 screens
+- **Visual Editor**: Drag-and-drop interface to reorder, edit, add, or delete screens
+- **Image Integration**: Upload custom images or search Unsplash directly in the editor
+- **Beautiful Themes**: Choose from 4 professionally designed themes (Playful Pastel, Elegant Dark, Warm Mediterranean, Minimal Zen)
+- **Shareable Links**: Each journey gets a unique URL to share with recipients
+- **Mobile-First Design**: Fully responsive experiences that work on any device
+- **Multi-Language Support**: Available in English and German
+- **Free Forever**: No payment required, unlimited journeys
+
+## Perfect For
+- Proposals and engagements
+- Pregnancy announcements
+- Birthday surprises
+- Travel reveals and trip planning
+- Anniversary celebrations
+- Family milestones
+- Romantic gestures
+- Creative gift-giving moments
+- Party invitations with a twist
+
+## How It Works
+1. **Sign up** with email (passwordless magic link authentication)
+2. **Describe your gift** to the AI chat interface
+3. **AI generates** a complete journey tailored to your occasion
+4. **Customize** in the visual editor (reorder, edit text, add images, change theme)
+5. **Publish** to generate a shareable link
+6. **Share** the link with your recipient
+7. **Recipient experiences** the journey on their device, answering questions and discovering reveals
+
+## Technical Details
+- Built with Next.js 16 and React 19
+- Powered by Anthropic Claude AI (Sonnet 4.5)
+- Hosted on Vercel
+- Free tier includes unlimited journeys and storage
+
+## Screen Types Available
+1. **Hero Screen**: Opening story moment with headline, body text, and optional background image
+2. **Choice Screen**: Multiple choice questions (2-4 options, single or multi-select)
+3. **Text Input Screen**: Open-ended question where recipient types their answer
+4. **Reveal Screen**: Big reveal moment with confetti animation and call-to-action button
+5. **Media Screen**: Full-screen image display with optional caption
+6. **End Screen**: Closing screen (automatically added)
+
+## Pricing
+Completely free. No credit card required. No premium tiers. Just create and share unlimited gift journeys.
+
+## Languages
+- English (en)
+- German (de)
+
+## Website
+https://joyo.com
+
+## Target Audience
+Anyone wanting to create memorable, personalized gift experiences for loved ones. Popular with:
+- Romantic partners planning proposals or anniversaries
+- Friends surprising each other for birthdays
+- Parents announcing pregnancies to family
+- Travel enthusiasts revealing trip destinations
+- Creative gift-givers looking for unique ways to present gifts
+
+## Brand Personality
+Warm, emotional, joyful, and creative. Joyo focuses on helping people create heartfelt moments that touch hearts and bring joy.
+
+## Competitive Advantage
+Unlike traditional greeting cards or simple messages, Joyo combines:
+- AI-powered personalization
+- Interactive engagement (questions and choices)
+- Beautiful visual design
+- Memorable delivery format
+- Easy creation process (minutes, not hours)
+- Completely free (no hidden costs)
+
+## Example Use Case
+"I want to propose to my girlfriend. She loves hiking and we had our first date at a mountain viewpoint. I want to create a journey that tells our story and leads to the big question."
+
+→ AI generates a journey with screens showing your story, hiking memories, a choice about favorite moments, a reveal screen with the proposal question and confetti, and a final romantic message.
+
+## Last Updated
+January 2026

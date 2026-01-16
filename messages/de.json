@@ -135,6 +135,40 @@
         }
       }
     },
+    "howItWorksInteractive": {
+      "title": "So funktioniert's",
+      "subtitle": "Erstelle in Minuten deine perfekte Geschenkreise mit unserem intuitiven Editor",
+      "steps": {
+        "createWithAi": {
+          "title": "Beschreibe dein Geschenk",
+          "description": "Erzähle der KI von deinem Anlass und Empfänger"
+        },
+        "aiGenerating": {
+          "title": "KI erstellt deine Reise",
+          "description": "Sieh zu, wie die KI deine komplette Geschenkreise generiert"
+        },
+        "editor": {
+          "title": "Visueller Editor",
+          "description": "Sieh alle deine Screens in einer übersichtlichen Ansicht"
+        },
+        "editScreen": {
+          "title": "Screen bearbeiten",
+          "description": "Passe Text, Bilder und Interaktionen an"
+        },
+        "addScreen": {
+          "title": "Neue Screens hinzufügen",
+          "description": "Füge weitere Momente zu deiner Reise hinzu"
+        },
+        "chooseDesign": {
+          "title": "Wähle dein Theme",
+          "description": "Wähle aus wunderschönen vorgestalteten Themes"
+        },
+        "shareGift": {
+          "title": "Teile dein Geschenk",
+          "description": "Erhalte einen eindeutigen Link für deinen Empfänger"
+        }
+      }
+    },
     "finalCta": {
       "title": "Bereit, etwas Besonderes zu erschaffen?",
       "subtitle": "Beginne in wenigen Minuten mit der Erstellung wunderschöner Geschenkerlebnisse—komplett kostenlos, keine Kreditkarte erforderlich",

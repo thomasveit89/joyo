@@ -1,0 +1,57 @@
+# Joyo - AI Gift Journey Builder
+
+## Quick Summary
+Joyo is a free platform for creating emotional, interactive gift journeys using AI. Perfect for proposals, announcements, surprises, and special moments.
+
+## What We Do
+We help people create beautiful, shareable gift experiences that combine storytelling, questions, reveals, and media into a guided journey that recipients experience on their device.
+
+## Key Information
+- **Product**: AI-powered gift journey builder
+- **Price**: Free forever
+- **Languages**: English, German
+- **Platform**: Web-based (mobile & desktop)
+- **AI Model**: Anthropic Claude Sonnet 4.5
+- **Creation Time**: 2-5 minutes
+- **Authentication**: Passwordless email (magic links)
+
+## Main Features
+1. AI generates complete gift journeys from natural language descriptions
+2. Visual drag-and-drop editor for customization
+3. 6 screen types (story, choice, text input, reveal, media, end)
+4. 4 beautiful themes
+5. Image upload and Unsplash integration
+6. Unique shareable links
+7. Mobile-first responsive design
+8. Confetti animations for big reveals
+
+## Common Use Cases
+- Marriage proposals
+- Pregnancy announcements
+- Birthday surprises
+- Travel destination reveals
+- Anniversary celebrations
+- Creative gift presentations
+- Party invitations
+- Family milestone celebrations
+
+## How to Use
+1. Sign up at joyo.com
+2. Describe your gift idea to AI
+3. AI creates your journey
+4. Customize in the editor
+5. Publish and share the link
+
+## Target Users
+Anyone wanting to create personalized, emotional experiences for loved ones. No technical skills required.
+
+## URLs
+- Main site: https://joyo.com
+- English: https://joyo.com/en
+- German: https://joyo.com/de
+
+## Contact & Support
+Available through the website contact form
+
+## Last Updated
+January 2026

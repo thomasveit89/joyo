@@ -1,0 +1,42 @@
+# robots.txt for Joyo
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# AI-specific crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Disallow private areas
+Disallow: /dashboard
+Disallow: /preview
+Disallow: /auth
+
+# Allow public play pages
+Allow: /play
+
+# Sitemap
+Sitemap: https://joyo.com/sitemap.xml
+
+# AI-readable files
+# https://joyo.com/llm.txt
+# https://joyo.com/ai.txt

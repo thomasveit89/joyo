@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -23,11 +23,6 @@ const steps = [
 export function HowItWorksInteractive({ locale }: HowItWorksInteractiveProps) {
   const t = useTranslations('landing.howItWorksInteractive');
   const [activeStep, setActiveStep] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const goToPrevious = () => {
     setActiveStep((prev) => (prev === 0 ? steps.length - 1 : prev - 1));
@@ -58,42 +53,30 @@ export function HowItWorksInteractive({ locale }: HowItWorksInteractiveProps) {
 
         {/* Slideshow */}
         <div className="relative">
-          {/* Image */}
-          <div className="relative mb-8">
-            {mounted ? (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative"
-                >
-                  <Image
-                    src={steps[activeStep].image}
-                    alt={t(`steps.${steps[activeStep].key}.title`)}
-                    width={2400}
-                    height={1600}
-                    quality={100}
-                    unoptimized
-                    className="w-full h-auto rounded-2xl"
-                    priority={activeStep === 0}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            ) : (
-              <Image
-                src={steps[activeStep].image}
-                alt={t(`steps.${steps[activeStep].key}.title`)}
-                width={2400}
-                height={1600}
-                quality={100}
-                unoptimized
-                className="w-full h-auto rounded-2xl"
-                priority={activeStep === 0}
-              />
-            )}
+          {/* Image - fixed aspect ratio container to prevent layout shift */}
+          <div className="relative mb-12 aspect-[3/2] p-4">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.key}
+                initial={false}
+                animate={{
+                  opacity: index === activeStep ? 1 : 0,
+                }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-4"
+                style={{ pointerEvents: index === activeStep ? 'auto' : 'none' }}
+              >
+                <Image
+                  src={step.image}
+                  alt={t(`steps.${step.key}.title`)}
+                  fill
+                  quality={100}
+                  unoptimized
+                  className="object-contain"
+                  priority={index === 0}
+                />
+              </motion.div>
+            ))}
 
             {/* Navigation Arrows */}
             <button
@@ -112,41 +95,30 @@ export function HowItWorksInteractive({ locale }: HowItWorksInteractiveProps) {
             </button>
           </div>
 
-          {/* Step Info */}
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            {mounted ? (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="text-sm font-semibold text-joyo-coral mb-2">
-                    {locale === 'en' ? 'Step' : 'Schritt'} {activeStep + 1} {locale === 'en' ? 'of' : 'von'} {steps.length}
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-joyo-charcoal mb-3">
-                    {t(`steps.${steps[activeStep].key}.title`)}
-                  </h3>
-                  <p className="text-lg text-joyo-charcoal/70">
-                    {t(`steps.${steps[activeStep].key}.description`)}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            ) : (
-              <div>
+          {/* Step Info - fixed height container to prevent layout shift */}
+          <div className="relative text-center max-w-2xl mx-auto mb-8 min-h-[140px]">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.key}
+                initial={false}
+                animate={{
+                  opacity: index === activeStep ? 1 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0"
+                style={{ pointerEvents: index === activeStep ? 'auto' : 'none' }}
+              >
                 <div className="text-sm font-semibold text-joyo-coral mb-2">
-                  {locale === 'en' ? 'Step' : 'Schritt'} {activeStep + 1} {locale === 'en' ? 'of' : 'von'} {steps.length}
+                  {locale === 'en' ? 'Step' : 'Schritt'} {index + 1} {locale === 'en' ? 'of' : 'von'} {steps.length}
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-joyo-charcoal mb-3">
-                  {t(`steps.${steps[activeStep].key}.title`)}
+                  {t(`steps.${step.key}.title`)}
                 </h3>
                 <p className="text-lg text-joyo-charcoal/70">
-                  {t(`steps.${steps[activeStep].key}.description`)}
+                  {t(`steps.${step.key}.description`)}
                 </p>
-              </div>
-            )}
+              </motion.div>
+            ))}
           </div>
 
           {/* Dot Indicators */}

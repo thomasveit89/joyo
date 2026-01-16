@@ -61,6 +61,21 @@ export function Footer({ locale }: FooterProps) {
             </a>
             <LanguageSwitcher />
           </div>
+
+          {/* Made by */}
+          <div className="mt-4 pt-4 border-t border-joyo-charcoal/10 w-full max-w-md">
+            <p className="text-xs text-joyo-charcoal/50">
+              Made with care by{' '}
+              <a
+                href="https://designsnack.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-joyo-charcoal/70 hover:text-joyo-coral transition-colors font-semibold"
+              >
+                DESIGNSNACK
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

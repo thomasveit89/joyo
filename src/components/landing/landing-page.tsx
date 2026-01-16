@@ -10,7 +10,6 @@ import { FeaturesSection } from './features-section';
 import { ExamplesGallery } from './examples-gallery';
 import { HowItWorksInteractive } from './how-it-works-interactive';
 import { FaqSection } from './faq-section';
-import { StickyCta } from './sticky-cta';
 import { Footer } from './footer';
 import { getExamplesByLocale } from '@/data/examples';
 
@@ -175,9 +174,6 @@ export function LandingPage({ locale }: LandingPageProps) {
 
       {/* Footer */}
       <Footer locale={locale} />
-
-      {/* Sticky Mobile CTA */}
-      <StickyCta locale={locale} />
     </div>
   );
 }
